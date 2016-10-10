@@ -41,6 +41,14 @@ router.get('/:id', function(req, res) {
   .catch(function(error) {
     res.status(400).render('main/404');
   });
+
+  db.post.find({
+    where: { id: 1 },
+    include: [db.comment]
+  }).then(function(post) {
+      // by using eager loading, the post model should have a comments key
+    console.log(post.comments);
+  });
 });
 
 module.exports = router;

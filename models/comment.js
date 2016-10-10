@@ -1,16 +1,15 @@
 'use strict';
 module.exports = function(sequelize, DataTypes) {
-  var post = sequelize.define('post', {
+  var comment = sequelize.define('comment', {
     title: DataTypes.STRING,
     content: DataTypes.TEXT,
-    authorId: DataTypes.INTEGER
+    postId: DataTypes.INTEGER
   }, {
     classMethods: {
       associate: function(models) {
-        models.post.belongsTo(models.author);
-        models.author.hasMany(models.comment);
+        models.comment.belongsTo(models.post);
       }
     }
   });
-  return post;
+  return comment;
 };
