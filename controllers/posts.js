@@ -43,6 +43,7 @@ router.get('/:id', function(req, res) {
     console.log(error);
     res.status(400).render('main/404');
   });
+});
 
 router.post('/:id', function(req, res) {
   var id = req.params.id;
@@ -52,19 +53,26 @@ router.post('/:id', function(req, res) {
   } else if(req.body.content < 6) {
     res.send("Error, please write a longer coment");
   } else {
-    db.comment.create({
-      name: req.body.name,
-      content: req.body.content
-    }).then(function(comment) {
-      if(comment) {
-        // res.send("redirect broken")
-        res.redirect("./" + id);
+    db.post.findOne({
+      where:{id: req.params.id}
+    }).then(function(post) {
+      if(post) {
+        post.createComment({
+          name: req.body.name,
+          content: req.body.content
+        }).then(function(comment) {
+          if(comment) {
+            // res.send("redirect broken")
+            res.redirect("./" + id);
+          } else {
+            res.send("An error has occured while you were creating a comment");
+          }
+        });
       } else {
-        res.send("An error has occured while you were creating a comment");
+        res.send("couldn't find teh post you were trying to comment on.")
       }
     });
   }
-});
 });
 
 module.exports = router;
