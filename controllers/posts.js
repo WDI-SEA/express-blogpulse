@@ -32,23 +32,39 @@ router.get('/new', function(req, res) {
 router.get('/:id', function(req, res) {
   db.post.find({
     where: { id: req.params.id },
-    include: [db.author]
+    // add comment table
+    include: [db.author, db.comment]
   })
   .then(function(post) {
     if (!post) throw Error();
     res.render('posts/show', { post: post });
   })
   .catch(function(error) {
+    console.log(error);
     res.status(400).render('main/404');
   });
 
-  db.post.find({
-    where: { id: 1 },
-    include: [db.comment]
-  }).then(function(post) {
-      // by using eager loading, the post model should have a comments key
-    console.log(post.comments);
-  });
+router.post('/:id', function(req, res) {
+  var id = req.params.id;
+  console.log(id);
+  if(req.body.name.length <= 2) {
+    res.send("Error, you need to have a longer name.");
+  } else if(req.body.content < 6) {
+    res.send("Error, please write a longer coment");
+  } else {
+    db.comment.create({
+      name: req.body.name,
+      content: req.body.content
+    }).then(function(comment) {
+      if(comment) {
+        // res.send("redirect broken")
+        res.redirect("./" + id);
+      } else {
+        res.send("An error has occured while you were creating a comment");
+      }
+    });
+  }
+});
 });
 
 module.exports = router;
