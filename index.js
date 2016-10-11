@@ -35,6 +35,41 @@ app.get('/', function(req, res) {
 // bring in authors and posts controllers
 app.use('/authors', require('./controllers/authors'));
 app.use('/posts', require('./controllers/posts'));
+// app.use('/comments', require('./controllers/comments'));
+
+
+// app.get("/posts/:id", function(req, res){
+//   db.comment.create({
+//     name: req.body.post.name,
+//     content: req.body.post.content,
+//     postId: req.body.post.postId
+//   })
+//   console.log("test");
+// });
+
+
+
+
+
+// app.get('/posts/:id', function(req, res){
+//   db.comment.create({
+//     name: req.body.name,
+//     content: req.body.content,
+//     postId: req.body.postId
+//   })
+//   .then(function(comment) {
+//     res.redirect('/');
+//   })
+// });
+
+
+
+
+
+
+
+
+
 
 var server = app.listen(process.env.PORT || 3000);
 

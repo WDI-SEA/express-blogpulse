@@ -1,19 +1,8 @@
-<h1><%= post.title %> <small>by <%= post.author.getFullName() %></small></h1>
 
-<p>
-  <strong><%= moment(post.createdAt).calendar() %></strong>
-</p>
-
-<p><%= post.content %></p>
-
-<hr />
-<!-- comment here  -->
+<h3>Comments</h3>
 
 
-
-
-
-<form action="/posts" method="POST">
+<form action="/comment" method="POST">
   <div class="form-group">
     <label for="name">Name:</label>
     <input type="text" class="form-control" id="name" name="name" required>
@@ -29,10 +18,8 @@
 
 <hr>
 
+<% comment.forEach(function(comment){  %>
+<%= comment.content %> <br>
+- <%= comment.name %>
 
-
-
-
-<a href="/">&larr; Back Home</a>
-
-
+<% }); %>
