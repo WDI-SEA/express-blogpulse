@@ -11,6 +11,8 @@ app.use(require('morgan')('dev'));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(ejsLayouts);
 app.use(express.static(__dirname + '/public/'));
+app.use(express.static(__dirname + '/node_modules/marked'));
+app.use(express.static(__dirname + '/node_modules/bootstrap-markdown'));
 /* middleware that allows us to access the 'moment' library
  * in every single EJS view, without having to define it
  */
