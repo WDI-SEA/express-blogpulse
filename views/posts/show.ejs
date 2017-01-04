@@ -5,6 +5,35 @@
 </p>
 
 <p><%= post.content %></p>
+<a href="/posts/edit/<%= post.id %>">Edit</a>
+
+<h3>Create a new comment</h3>
+<form action="/posts/<%= post.id %>/comments" method="POST">
+  <div class="form-group">
+    <label for="name">Name</label>
+    <input type="text" class="form-control" id="name" name="name" placeholder="Enter name"required>
+  </div>
+
+  <div class="form-group">
+    <label for="content">Content</label>
+    <textarea type="text" class="form-control" id="content" name="content" placeholder="Enter comment" required></textarea>
+  </div>
+
+
+  <input type="submit" class="btn btn-primary">
+</form>
+
+<h3>Comment</h3>
+<% post.comments.forEach(function(comment) { %>
+  <div class="well">
+    <p>
+      <%= comment.content %>
+    </p>
+    <p>
+      <strong>- <%= comment.name %></strong>
+    </p>
+  </div>
+<% }); %>
 
 <hr />
 

@@ -32,7 +32,7 @@ router.get('/new', function(req, res) {
 router.get('/:id', function(req, res) {
   db.post.find({
     where: { id: req.params.id },
-    include: [db.author]
+    include: [db.author, db.comment]
   })
   .then(function(post) {
     if (!post) throw Error();
@@ -43,4 +43,46 @@ router.get('/:id', function(req, res) {
   });
 });
 
+// POST /comments - create a new comment
+router.post('/:id/comments', function(req, res) {
+  db.comment.create({
+    name: req.body.name,
+    content: req.body.content,
+    postId: req.params.id
+  })
+  .then(function(comment) {
+    // req.params.id can be used in up&then function
+    // res.redirect('/posts/' + req.params.id);
+    res.redirect('/posts/' + comment.postId);
+  })
+  .catch(function(error) {
+    res.status(400).render('main/404');
+  });
+});
+
+// edit post
+router.get('/edit/:id', function(req, res) {
+  db.post.find({
+    where: { id: req.params.id },
+    include: [db.author, db.comment]
+  })
+  .then(function(post) {
+    if (!post) throw Error();
+    res.render('posts/edit', { post: post });
+  })
+  .catch(function(error) {
+    res.status(400).render('main/404');
+  });
+});
+
+router.post('/edit/:id', function(req, res) {
+  db.post.findById(req.params.id).then(function(post) {
+    if (!post) throw Error();
+    post.update(req.body);
+    res.redirect('/posts/' + req.params.id);
+  })
+  .catch(function(error) {
+    res.status(400).render('main/404');
+  });
+});
 module.exports = router;
