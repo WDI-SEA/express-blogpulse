@@ -1,6 +1,7 @@
 var express = require('express');
 var db = require('../models');
 var router = express.Router();
+var marked = require('marked');
 
 // POST /posts - create a new post
 router.post('/', function(req, res) {
@@ -36,7 +37,7 @@ router.get('/:id', function(req, res) {
   })
   .then(function(post) {
     if (!post) throw Error();
-    res.render('posts/show', { post: post });
+    res.render('posts/show', { post: post, marked: marked });
   })
   .catch(function(error) {
     res.status(400).render('main/404');

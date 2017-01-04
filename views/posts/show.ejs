@@ -4,7 +4,7 @@
   <strong><%= moment(post.createdAt).calendar() %></strong>
 </p>
 
-<p><%= post.content %></p>
+<p><%- marked(post.content) %></p>
 <a href="/posts/edit/<%= post.id %>">Edit</a>
 
 <h3>Create a new comment</h3>
@@ -27,7 +27,7 @@
 <% post.comments.forEach(function(comment) { %>
   <div class="well">
     <p>
-      <%= comment.content %>
+      <%- marked(comment.content) %>
     </p>
     <p>
       <strong>- <%= comment.name %></strong>
