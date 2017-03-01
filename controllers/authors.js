@@ -24,7 +24,7 @@ router.post('/', function(req, res) {
     res.redirect('/authors');
   })
   .catch(function(error) {
-    res.status(400).render('main/404');
+    res.status(404).render('main/404');
   });
 });
 
