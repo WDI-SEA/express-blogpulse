@@ -28,12 +28,17 @@ textarea,
     margin: 0 auto;
 }
 
-.comment-form input {
-    width: 83%;
+.comment-form input,
+.comment-form textarea {
+    width: 100%;
 }
 
-#comment-submit {
-    width: 96%;
+.comment-form .submit {
+    padding: 0.5em;
+}
+
+.col-100 {
+    width: 100%;
 }
 
 label {
