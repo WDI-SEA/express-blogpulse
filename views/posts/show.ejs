@@ -8,4 +8,10 @@
 
 <hr />
 
+<h3>Cool Comments</h3>
+<% post.comments.forEach(function(comment) { %>
+  <p><%= comment.content %></p>
+  <p><%= comment.name %></p>
+<% }); %>
+
 <a href="/">&larr; Back Home</a>

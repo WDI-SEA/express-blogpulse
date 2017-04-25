@@ -39,6 +39,7 @@ router.get('/:id', function(req, res) {
             res.render('posts/show', { post: post });
         })
         .catch(function(error) {
+            console.log(error);
             res.status(400).render('main/404');
         });
 });
