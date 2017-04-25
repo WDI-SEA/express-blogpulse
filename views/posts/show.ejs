@@ -8,4 +8,19 @@
 
 <hr />
 
+<% post.comments.forEach(function(comment) { %>
+<div class="well">
+  <p><%= comment.content %></p>
+  <span><b><%= comment.name %></b></span>
+</div>
+<% }); %>
+
+<form action="/posts/<%= post.id %>/comments" method="POST">
+  <div class="flex column">
+    <input type="text" name="name" placeholder="Your name">
+    <textarea name="content" placeholder="Write your comment" cols="30" rows="10"></textarea>
+  </div>
+  <input type="submit" value="Add Comment">
+</form>
+
 <a href="/">&larr; Back Home</a>
