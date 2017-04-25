@@ -51,7 +51,7 @@ router.post('/:id/comments', function(req, res) {
         content: req.body.content,
         postId: postId
     }).then(function(comment) {
-        res.redirct('../' + postId);
+        res.redirect('../' + postId);
     }).catch(function(error) {
         res.status(400).render('main/404');
     });

@@ -11,16 +11,23 @@
 <% post.comments.forEach(function(comment) { %>
 <div class="well">
   <p><%= comment.content %></p>
-  <span><b><%= comment.name %></b></span>
+  <span><strong>- <%= comment.name %></strong></span>
 </div>
 <% }); %>
 
+<hr />
+
+<h4>Leave a Comment</h3>
+
 <form action="/posts/<%= post.id %>/comments" method="POST">
   <div class="flex column">
-    <input type="text" name="name" placeholder="Your name">
-    <textarea name="content" placeholder="Write your comment" cols="30" rows="10"></textarea>
+    <label for="name"><strong>Name</strong></label>
+    <input class="form-control spacer third" type="text" name="name">
+
+    <label for="content"><strong>Comment</strong></label>
+    <textarea class="form-control spacer" name="content" cols="30" rows="10"></textarea>
   </div>
-  <input type="submit" value="Add Comment">
+  <input class="btn btn-primary spacer" type="submit" value="Add Comment">
 </form>
 
 <a href="/">&larr; Back Home</a>

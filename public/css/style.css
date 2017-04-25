@@ -5,3 +5,11 @@
 .column {
     flex-direction: column;
 }
+
+.third {
+    width: 33%;
+}
+
+.spacer {
+    margin-bottom: 1em;
+}
