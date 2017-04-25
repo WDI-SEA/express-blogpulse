@@ -8,4 +8,21 @@
 
 <hr />
 
+<form method="POST" action="<%= '/posts/'+ post.id + '/comments'%>">
+    <p><label name="name">Name:</label>
+    <input type="text" name="name"></p>
+    <p><label name ="content">Comment:</label>
+    <textarea name="content" cols="16" rows="5" placeholder="Write your comment..."></textarea></p>
+    <p><input type="submit" value="Submit Comment"></p>
+
+</form>
+
+<hr />
+
+<% comments.forEach(function(comment){%>
+   <p><%=comment.dataValues.content%> by <%=comment.dataValues.name%>  </p>
+
+<%})%>
+
+
 <a href="/">&larr; Back Home</a>
