@@ -7,7 +7,7 @@ module.exports = function(sequelize, DataTypes) {
     }, {
         classMethods: {
             associate: function(models) {
-                models.comment.belongsTo(models.author);
+                models.comment.belongsTo(models.postId);
             }
         }
     });

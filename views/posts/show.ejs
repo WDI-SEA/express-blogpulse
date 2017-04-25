@@ -6,6 +6,31 @@
 
 <p><%= post.content %></p>
 
+
+<h2>Comments:</h2>
+
+ <% post.comments.forEach(function(comment) { %>
+
+   <div class="well">
+     <h3>
+       <%= comment.name %>
+     </h3>
+
+     <p>
+       <%= comment.content %>
+     </p>
+   </div>
+
+ <% }) %>
+
+ <form action="/posts/<%= post.id %>/comments" method="POST">
+   <input type="text" name="name" placeholder="eneter your name">
+   <textarea name="content" placeholder="enter your comment"></textarea>
+
+   <input type="submit" value="Add Comment">
+ </form>
+
+
 <hr />
 
 <a href="/">&larr; Back Home</a>
