@@ -52,6 +52,7 @@ router.get('/:id', function(req, res) {
         });
 });
 
+// make a new comment
 router.post('/:id/comments', function(req, res) {
     var postId = req.params.id;
     var commentName = req.body.name;
