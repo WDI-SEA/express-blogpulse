@@ -31,22 +31,25 @@ app.get('/', function(req, res) {
         res.status(400).render('main/404');
     });
 });
+///still busted, error portion not cooperating
+app.get('/:id/comment', function(req, res) {
+    db.post.find({
+        where: { id: req.params.id },
+        include: [db.author, db.comment]
+    }).then(function(post) {
 
-////stop point
-app.get('/posts/:id', function(req, res) {
-            db.comment.find({
-
-            })
-        }
+    });
+});
 
 
 
 
-        // bring in authors and posts controllers
-        app.use('/authors', require('./controllers/authors')); app.use('/posts', require('./controllers/posts'));
+// bring in authors and posts controllers
+app.use('/authors', require('./controllers/authors'));
+app.use('/posts', require('./controllers/posts'));
 
-        var server = app.listen(process.env.PORT || 3000, function() {
-            rowdy.print();
-        });
+var server = app.listen(process.env.PORT || 3000, function() {
+    rowdy.print();
+});
 
-        module.exports = server;
+module.exports = server;
