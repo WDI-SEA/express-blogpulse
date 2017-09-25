@@ -21,6 +21,7 @@ app.use(function(req, res, next) {
   next();
 });
 
+
 // GET / - display all posts and their authors
 app.get('/', function(req, res) {
   db.post.findAll({
