@@ -40,4 +40,27 @@ var server = app.listen(process.env.PORT || 3000, function() {
   rowdy.print();
 });
 
+//tester -add comment
+// db.comment.create({
+//   name: 'Paul Allen',
+//   content: 'This is really neat! Thanks for posting.',
+//   postId: 1
+// }).then(function(comment) {
+//   console.log(comment.get());
+// });
+
+//tester -check association
+db.post.find({
+  where: { id: 1 },
+  include: [db.comment]
+}).then(function(post) {
+  // by using eager loading, the post model should have a comments key
+  console.log(post.comments);
+});
+
+
+
+
+
+
 module.exports = server;
