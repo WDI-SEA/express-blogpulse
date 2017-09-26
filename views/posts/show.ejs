@@ -1,3 +1,4 @@
+<div id="mainStuffs">
 <h1><%= post.title %> <small>by <%= post.author.getFullName() %></small></h1>
 
 <p>
@@ -5,17 +6,9 @@
 </p>
 
 <p><%= post.content %></p>
-
-<hr />
-
-<% post.comments.forEach(function(comment) { %>
-<div class="well">
-  <p><%= comment.content %></p>
-  <span>- <%= comment.name %></span>
 </div>
-<% }); %>
-
 <hr />
+
 <h2>Comments:</h2>
 <form action="/posts/<%= post.id %>/comments" method="POST" >
   <label for="name">Name</label>
@@ -24,6 +17,14 @@
   <textarea type="text" name="content" id="content"></textarea>
   <input type="submit" value="Cyber Bully Now!" class="btn btn-danger">
 </form>
+
+<hr />
+<% post.comments.forEach(function(comment) { %>
+<div class="well">
+  <p><%= comment.content %></p>
+  <span>- <%= comment.name %></span>
+</div>
+<% }); %>
 
 
 <a href="/">&larr; Back Home</a>

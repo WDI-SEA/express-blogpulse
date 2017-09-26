@@ -43,9 +43,9 @@ router.get('/:id', function(req, res) {
         });
 });
 
+//create comment within that post's id
 router.post('/:id/comments', function(req, res) {
     var postId = req.params.id;
-
     db.comment.create({
         name: req.body.name,
         content: req.body.content,
