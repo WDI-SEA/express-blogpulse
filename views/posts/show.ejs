@@ -6,6 +6,15 @@
 
 <p><%= post.content %></p>
 
+<p>
+  <strong>Tags:&nbsp;</strong>
+  <% post.tags.forEach(function(tag) { %>
+    <a href=<%= '/posts/tags/' + tag.name %> >
+      <%= tag.name %>
+    </a>
+  <% }); %>
+</p>
+
 <h2>Comments</h2>
 <% post.comments.forEach(function(comment) { %>
   <div class='well well-small'>

@@ -1,6 +1,6 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-  var postsTags = sequelize.define('postsTags', {
+  var postTags = sequelize.define('postTags', {
     postId: DataTypes.INTEGER,
     tagId: DataTypes.INTEGER
   }, {
@@ -10,5 +10,5 @@ module.exports = (sequelize, DataTypes) => {
       }
     }
   });
-  return postsTags;
+  return postTags;
 };
