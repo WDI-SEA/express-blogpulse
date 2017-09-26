@@ -30,9 +30,10 @@ router.get('/new', function(req, res) {
 
 // GET /posts/:id - display a specific post and its author
 router.get('/:id', function(req, res) {
+  console.log("in the get /posts/id");
   db.post.find({
     where: { id: req.params.id },
-    include: [db.author]
+    include: [db.author,db.comment]
   })
   .then(function(post) {
     if (!post) throw Error();
@@ -42,5 +43,44 @@ router.get('/:id', function(req, res) {
     res.status(400).render('main/404');
   });
 });
+
+router.post('/:id/comments', function(req, res) {
+  db.post.find({
+    where: { id: req.params.id }
+  }).then(function(post) {
+    post.createComment({
+      name: req.body.name,
+      content: req.body.content
+    }).then(function() {
+      console.log("comment has been created");
+      res.redirect('/post' + req.params.id);
+    })
+  }).catch(function(error) {
+    res.status(400).render('main/404');
+  });
+});
+
+
+// db.comment.create({
+// name: 'Paul Allen',
+// content: 'This is really neat! Thanks for posting.',
+// postId: 1
+// }).then(function(comment) {
+// console.log(comment.get());
+// })
+// .then(function(post) {
+//   console.log(post.comment);
+// });
+
+// db.post.find
+
+
+// router.post('/:id')
+//
+//     console.log("comments");
+//   where: {id: comment}
+//   })
+//   ///this is where step one goes
+// });
 
 module.exports = router;
