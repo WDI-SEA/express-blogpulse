@@ -9,3 +9,20 @@
 <hr />
 
 <a href="/">&larr; Back Home</a>
+
+<h2>Comments</h2>
+	<% post.comments.forEach(function(comment) { %>
+		<div class="well">
+			<h3><%= comment.name %></h3>
+			<p><%= comment.content %></p>
+		</div>
+	<% }); %>
+<form action="/posts/<%= post.id %>/comments" method="POST">
+	<div class="form-group">
+		<label for="name">Comment here, tough guy</label>
+		<input type="text" class="form-control" id="comment" name="comment" required>
+	</div>
+
+	<input type="submit" class="btn btn-primary">
+</form>
+
