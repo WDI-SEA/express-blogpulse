@@ -8,4 +8,29 @@
 
 <hr />
 
+<h3>Post a Comment</h3>
+<form action='/posts/<%= post.id %>/comments' method='POST'>
+  <div class='comment-form'>
+    <label id='name'>Name</label>
+    <input type='text' class='name-input'>
+  </div>
+
+  <div class='content-form'>
+    <label id='content'>Content</label>
+    <textarea type='text' class='content-input'></textarea>
+    <input type="submit" class="btn btn-primary">
+  </div>
+</form>
+
+
+<h3>Comments</h3>
+<% post.comments.forEach(function(comment){ %>
+  <div>
+    <h4><%= comment.name %></h4>
+    <p><%= comment.content %></p>
+  </div>
+<% }); %>
+
+
+
 <a href="/">&larr; Back Home</a>
