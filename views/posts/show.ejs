@@ -7,17 +7,18 @@
 <p><%= post.content %></p>
 
 <hr />
+<% post.comments.forEach(function(comment){ %>
 
   <div>
-      <h1>"<%= comment[0].content %>"</h1>
-      <h3> -- <%= comment[0].name %> </h3>
+      <h1>"<%= comment.content %>"</h1>
+      <h3> -- <%= comment.name %> </h3>
   </div>
-
+<% }); %>
 <hr />
 
 <h1>Put a comment here</h1>
 
-<form method="POST" action="/posts/:id/comments">
+<form method="POST" action="/posts/<%=post.id%>/comments">
     Enter name: <br>
     <input type="text" name="name"> <br>
     Enter comment: <br>

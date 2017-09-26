@@ -19,12 +19,15 @@ router.post('/', function(req, res) {
 
 //POST /handles the new comments
 router.post("/:id/comments", function(req, res){
+    var id = req.params.id;
+    console.log(id);
     db.comment.create({
         content: req.body.comment,
-        name: req.body.name
+        name: req.body.name,
+        postId: req.params.id
     })
       .then(function(comment){
-        res.redirect("/:id");
+        res.redirect("/posts/" + req.params.id);
       })
 })
 
@@ -44,21 +47,12 @@ router.get('/:id', function(req, res) {
   console.log("made it here");
   db.post.find({
     where: { id: req.params.id },
-    include: [db.author]
+    include: [db.author, db.comment]
   })
   .then(function(post){
-      console.log("made it here");
       if (!post) throw Error();
-      post.getComments({
-        where: {id: req.params.id}
-      }).then(function(comment){
-          console.log(comment);
-          res.render('posts/show', {
-              post: post,
-              comment: comment
-          });
+        res.render('posts/show', {post: post});
       })
-  })
   .catch(function(error) {
     res.status(400).render('main/404');
   });
