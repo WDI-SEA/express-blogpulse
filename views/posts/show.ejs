@@ -8,6 +8,9 @@
 
 <hr />
 
+<% post.tags.forEach(function(tag){ %>
+<a href="/tags/<%=tag.id%>" id="<%=tag.id%>"> <%= tag.name %> </a>
+<%});%>
 <h1> Comments </h1>
 
 <% post.comments.forEach(function(comment){ %>
