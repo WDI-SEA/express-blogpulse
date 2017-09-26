@@ -20,13 +20,13 @@
 
   <form action="/posts/<%= post.id %>/comments" method="POST">
     <div class="form-group">
-      <label for="name">Name</label>
-      <input type="text" class="form-control" id="name" required>
+      <label for="name">Name:</label>
+      <input type="text" class="form-control" id="name" name="name" required>
     </div>
 
     <div class="form-group">
-      <label for="content">Content</label>
-      <textarea type="text" class="form-control" id="comment" required></textarea>
+      <label for="content">Your Comment:</label>
+      <textarea type="text" class="form-control" id="comment" name="content" required></textarea>
     </div>
     <input type="submit" class="btn btn-primary" id="submitComment">
   </form>
