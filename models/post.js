@@ -7,7 +7,9 @@ module.exports = function(sequelize, DataTypes) {
   }, {
     classMethods: {
       associate: function(models) {
+        //one post can belong to only one author
         models.post.belongsTo(models.author);
+        models.post.hasMany(models.comment);
       }
     }
   });

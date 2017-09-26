@@ -7,6 +7,7 @@ module.exports = function(sequelize, DataTypes) {
   }, {
     classMethods: {
       associate: function(models) {
+        //each author can have many posts
         models.author.hasMany(models.post);
       }
     },

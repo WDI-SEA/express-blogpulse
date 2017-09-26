@@ -1,0 +1,11 @@
+<div class="well">
+  <% comments.forEach(function(comment) { %>
+
+    <h3>
+     <%= comment.contentOfTheComment %> <small>by <%= comment.name %></small>
+    </h3>
+
+  <% }); %>
+</div>
+
+<a href="/posts/<%=postId%>"> Back To The Post</a>
