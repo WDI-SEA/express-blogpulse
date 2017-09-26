@@ -8,4 +8,21 @@
 
 <hr />
 
-<a href="/">&larr; Back Home</a>
+<h3>Here's what the trolls say:</h3>
+
+<%comment.forEach(function(comment){ %>
+<p><strong><%= moment(comment.createdAt).calendar() %></strong></p>
+<p><%= comment.content %></p>
+<p><i>by: <%= comment.name %></i></p>
+<hr />
+<% }) %>
+<hr />
+
+
+
+<hr />
+
+<a href="/posts/<%= post.id %>/comment">Be a troll</a>
+<br>
+<a href="/">Go Home</a>
+

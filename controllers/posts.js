@@ -36,11 +36,48 @@ router.get('/:id', function(req, res) {
   })
   .then(function(post) {
     if (!post) throw Error();
-    res.render('posts/show', { post: post });
+    console.log(post);
+    db.comment.findAll({
+      where: {postId: post.dataValues.id}
+    })
+    .then(function(comment){
+      console.log(comment);
+      res.render('posts/show', { post: post, comment: comment});
+    })
   })
   .catch(function(error) {
     res.status(400).render('main/404');
   });
+});
+
+// GET /posts/:id - display a specific post and its author
+router.get('/:id/comment', function(req, res) {
+  db.post.find({
+    where: { id: req.params.id },
+    include: [db.author]
+  })
+  .then(function(post) {
+    if (!post) throw Error();
+    res.render('posts/comment', { post: post });
+  })
+  .catch(function(error) {
+    res.status(400).render('main/404');
+  });
+});
+
+router.post('/:id/comment', function(req, res){
+  //updates comment table
+    db.comment.create({
+    name: req.body.commenterName,
+    content: req.body.comment,
+    postId: req.params.id
+  })
+        .then(function(author) {
+          res.redirect('/posts/' + req.params.id);
+        })
+        .catch(function(error) {
+          res.status(400).render('main/404');
+        });
 });
 
 module.exports = router;

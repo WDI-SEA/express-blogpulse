@@ -1,0 +1,27 @@
+<h1><%= post.title %> <small>by <%= post.author.getFullName() %></small></h1>
+
+<p>
+  <strong><%= moment(post.createdAt).calendar() %></strong>
+</p>
+
+<p><%= post.content %></p>
+
+<hr />
+
+
+<form action="/posts/<%= post.id %>/comment" method="POST">
+  <div class="form-group">
+    <label for="commenterName">Commenter Name</label>
+    <input type="commenterName" class="form-control" id="commenterName" name="commenterName" required>
+  </div>
+
+  <div class="form-group">
+    <label for="comment">Comment</label>
+    <textarea type="text" class="form-control" id="comment" name="comment" required></textarea>
+  </div>
+
+  <input type="submit" class="btn btn-primary">
+</form>
+
+</br>
+<a href="/">Go Home</a>
