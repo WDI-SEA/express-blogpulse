@@ -2,6 +2,7 @@ var express = require('express');
 var db = require('../models');
 var router = express.Router();
 
+
 // POST /posts - create a new post
 router.post('/', function(req, res) {
   db.post.create({
@@ -10,12 +11,20 @@ router.post('/', function(req, res) {
     authorId: req.body.authorId
   })
   .then(function(post) {
+    db.tag.findOrCreate({ //we added this findOrCreate to add tags to posts
+      where: {name: req.body.tag}
+    }).spread(function (tag, created){  //this returns an array consisting of [object, boolean value] as to whether it was created.
+      post.addTag(tag).then(function(){
+        console.log('IT WORKED!');
+      })
+    })
     res.redirect('/');
   })
   .catch(function(error) {
     res.status(400).render('main/404');
   });
 });
+
 
 // GET /posts/new - display form for creating new posts
 router.get('/new', function(req, res) {
@@ -33,7 +42,7 @@ router.get('/new', function(req, res) {
 router.get('/:id', function(req, res) {
   db.post.find({
     where: { id: req.params.id },
-    include: [db.author, db.comment]
+    include: [db.author, db.comment, db.tag]
   })
   .then(function(post) {
     if (!post) throw Error();
@@ -54,8 +63,12 @@ router.post('/:id/comments', function(req, res) {
   }).then(function(comment){
     res.redirect('/posts/' + req.params.id);
   });
-
 });
+
+
+
+
+
 
 
 
