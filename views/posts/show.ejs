@@ -9,3 +9,10 @@
 <hr />
 
 <a href="/">&larr; Back Home</a>
+
+<h1><%= post.title %> <small>by <%= post.author.getFullName() %></small></h1>
+
+
+<!-- PRIOR:
+     index.js="app.use('/posts', require('./controllers/posts'));"
+     res.render('posts/show', { post: post }); -->

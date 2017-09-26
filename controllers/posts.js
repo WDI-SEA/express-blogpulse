@@ -28,19 +28,47 @@ router.get('/new', function(req, res) {
   });
 });
 
-// GET /posts/:id - display a specific post and its author
-router.get('/:id', function(req, res) {
-  db.post.find({
-    where: { id: req.params.id },
-    include: [db.author]
-  })
-  .then(function(post) {
-    if (!post) throw Error();
-    res.render('posts/show', { post: post });
-  })
-  .catch(function(error) {
-    res.status(400).render('main/404');
-  });
-});
+// GET /posts/:id - display a specific post and its author //PRIOR:
+                                                           //index.js="app.use('/posts', require('./controllers/posts'));"
+                                                           //
+
+ router.get('/:id', function(req, res) {
+   db.post.find({
+     where: { id: req.params.id },
+     include: [db.author]
+   })
+   .then(function(post) {
+     if (!post) throw Error();
+     res.render('posts/show', { post: post });
+   })
+   .catch(function(error) {
+     res.status(400).render('main/404');
+   });
+ });
+
+// router.get('/:id', function(req, res) {
+//   db.post.find({
+//     where: { id: req.params.id },
+//     include: [db.author]
+//   }).then(function(post) {
+//     if (!post) throw Error();
+//     post.getComments({
+//       where: {id: req.params.id}
+//     }).then(function(comment) {
+//       // console.log(comment);
+//       res.render('posts/show', {
+//         post: post,
+//         comment: comment
+//       })
+//     })
+//   })
+//   .catch(function(error) {
+//     res.status(400).render('main/404');
+//   });
+// });
+
+//
+
+
 
 module.exports = router;
