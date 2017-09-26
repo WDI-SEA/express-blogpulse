@@ -1,11 +1,14 @@
 body {
 	background: black;
-	color: white;
+	background-image: url('../img/neonback.jpg');
+	color: #7FFF00;
 	font-family: Gruppo;
+	font-weight: lighter;
 }
 
 .well {
 	background: black;
+	opacity: .8;
 }
 
 input {
@@ -13,5 +16,26 @@ input {
 }
 
 .navbar {
-	background: #99CCFF
+	background: black;
+}
+
+a {
+	color: #7FFF00;
+}
+
+a:hover {
+	color: white;
+}
+
+.btn {
+	background: black;
+}
+
+#comments {
+	background: black;
+	opacity: .8;
+}
+
+.tags {
+	color: gray;
 }

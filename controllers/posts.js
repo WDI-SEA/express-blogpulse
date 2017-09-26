@@ -10,6 +10,13 @@ router.post('/', function(req, res) {
     authorId: req.body.authorId
   })
   .then(function(post) {
+    db.tag.findOrCreate({
+      where: {name: req.body.tag}
+    }).spread(function(tag, created) {
+      post.addTag(tag).then(function(tag) {
+        console.log(tag, "added to", post);
+      });
+    });
     res.redirect('/');
   })
   .catch(function(error) {
@@ -32,7 +39,7 @@ router.get('/new', function(req, res) {
 router.get('/:id', function(req, res) {
   db.post.find({
     where: { id: req.params.id },
-    include: [db.author, db.comment]
+    include: [db.author, db.comment, db.tag]
   })
   .then(function(post) {
     if (!post) throw Error();

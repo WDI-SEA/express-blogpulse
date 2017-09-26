@@ -5,20 +5,29 @@
 </p>
 
 <p><%= post.content %></p>
+<p class="tags">(&nbsp;Tags: 
+	<% post.tags.forEach(function(tag) { %>
+		<a href=''><%= tag.name %>&nbsp;</a>
+	<% }); %>)
+</p>
 
 <hr />
 
 <form action="/posts/<%= post.id %>/comments" method='POST'>
-	<input type='text' placeholder='Type Comment' name='content' style='width: 400px'>
+	<input type='text' placeholder='Type Comment' name='content' required>
 	<br>
-	<input type='text' placeholder='Type Name' name='name'>
-	<button type="submit" class="btn btn-primary">Submit</button>
+	<input type='text' placeholder='Type Name' name='name' required>
+	<button type="submit" class="btn btn-outline-success">Submit</button>
 </form>
 
 <hr />
 
+<div id='comments'>
 <% post.comments.forEach(function(comment) { %>
 	<p>"<%= comment.content %>" - <%= comment.name %></p>
+	<hr />
 <% }); %>
 
 <a href="/">&larr; Back Home</a>
+</div>
+
