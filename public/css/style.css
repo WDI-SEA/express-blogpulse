@@ -21,7 +21,8 @@ p {
 }
 
 .indexBody {
-    height: 600px;
+    height: 620px;
+    overflow: auto;
     border: 1px solid rgba(0, 0, 0, 0.2);
     border-radius: 0px 0px 30px 30px;
     background-color: white;

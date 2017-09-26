@@ -6,6 +6,11 @@
 </p>
 
 <p><%= post.content %></p>
+<p>
+  <% post.tags.forEach(function(tag) { %>
+    <a href="/posts/tags/<%= tag.name %>"><%= tag.name %></a>&nbsp;
+  <% }); %>
+</p>
 </div>
 <hr />
 
