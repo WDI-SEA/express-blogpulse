@@ -17,6 +17,11 @@ router.post('/', function(req, res) {
   });
 });
 
+//POST /handles the new comments
+router.post("/:id/comments", function(req, res){
+  
+})
+
 // GET /posts/new - display form for creating new posts
 router.get('/new', function(req, res) {
   db.author.findAll()
@@ -30,13 +35,23 @@ router.get('/new', function(req, res) {
 
 // GET /posts/:id - display a specific post and its author
 router.get('/:id', function(req, res) {
+  console.log("made it here");
   db.post.find({
     where: { id: req.params.id },
     include: [db.author]
   })
-  .then(function(post) {
-    if (!post) throw Error();
-    res.render('posts/show', { post: post });
+  .then(function(post){
+      console.log("made it here");
+      if (!post) throw Error();
+      post.getComments({
+        where: {id: req.params.id}
+      }).then(function(comment){
+          console.log(comment);
+          res.render('posts/show', {
+              post: post,
+              comment: comment
+          });
+      })
   })
   .catch(function(error) {
     res.status(400).render('main/404');

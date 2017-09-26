@@ -8,8 +8,17 @@
 
 <hr />
 
+  <div>
+      <h1>"<%= comment[0].content %>"</h1>
+      <h3> -- <%= comment[0].name %> </h3>
+      <p><%= comment.length%></p>
+  </div>
+
+<hr />
+
 <h1>Put a comment here</h1>
-<form method="POST" action="/links">
+
+<form method="POST" action="/posts/">
     Enter name: <br>
     <input type="text" name="name"> <br>
     Enter comment: <br>
