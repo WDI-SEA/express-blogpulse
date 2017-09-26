@@ -32,14 +32,33 @@ router.get('/new', function(req, res) {
 router.get('/:id', function(req, res) {
   db.post.find({
     where: { id: req.params.id },
-    include: [db.author]
+    include: [db.author, db.comment]
   })
   .then(function(post) {
+    console.log(post.comments);
     if (!post) throw Error();
-    res.render('posts/show', { post: post });
+    res.render('posts/show', { post: post});
   })
   .catch(function(error) {
     res.status(400).render('main/404');
+  });
+});
+
+
+router.post('/:id/comments', function(req, res){
+  var postId = req.params.id;
+  var commentName = req.body.name;
+  var commentContent = req.body.content;
+  db.comment.create({
+    name: req.body.name,
+    content: req.body.content
+  }).then(function(comment){
+    db.post.find({
+      where: {id: postId}
+    }).then(function(post){
+      post.addComment(comment);
+    });
+    res.redirect('/posts/'+postId);
   });
 });
 
