@@ -4,7 +4,7 @@ var router = express.Router();
 var bodyParser = require('body-parser');
 
 // POST /comments - take what is in comments/newcomment and add to DB
-router.post('/', function(req, res) {
+router.post('/', function(req, res) { //WHY AREN'T THINGS PASSING THROUGH TO THIS?
   db.comment.create({
     name: "name",
     content: "content",
@@ -17,20 +17,6 @@ router.post('/', function(req, res) {
     res.status(400).render('main/404');
   });
 });
-
-// router.post('/', function(req, res) {
-//   db.post.create({
-//     title: req.body.title,
-//     content: req.body.content,
-//     authorId: req.body.authorId
-//   })
-//   .then(function(post) {
-//     res.redirect('/');
-//   })
-//   .catch(function(error) {
-//     res.status(400).render('main/404');
-//   });
-// });
 
 // GET /posts/:id - display form for creating new comment //NEXT: posts/show
 router.get('/new', function(req, res) {

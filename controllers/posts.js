@@ -49,27 +49,34 @@ router.get('/new', function(req, res) {
 router.get('/:id', function(req, res) {
   db.post.find({
     where: { id: req.params.id },
-    include: [db.author]
+    include: [db.author, db.comment]
   }).then(function(post) {
     if (!post) throw Error();
-    post.getComments({
-      where: {id: req.params.id}
-    }).then(function(comment) {
-      // console.log(comment);
       res.render('posts/show', {
-        post: post,
-        comment: comment
-      })
-      console.log("xxxxxx" + comment);
-    })
-  })
-  .catch(function(error) {
+        post: post
+      });
+      // console.log("CONTROLLERS/POSTS.JS CONSOLING LOGGING ..COMMENT..: - " + comment);
+    }).catch(function(error) {
     res.status(400).render('main/404');
   });
 });
 
-//
-
+//finds post and POSTS it to database
+router.post('/:id/comments', function(req, res) { //this is posts/:id:/comments
+  db.post.findOne({
+    where: { id: req.params.id }
+  }).then(function(post) {
+    post.createComment({
+      name: req.body.name,
+      content: req.body.content
+    }).then(function() {
+      console.log("comment created");
+      res.redirect('/posts/' + req.params.id);
+    })
+  }).catch(function(error) {
+    res.status(400).render('main/404');
+  });
+});
 
 
 module.exports = router;
