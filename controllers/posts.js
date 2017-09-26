@@ -43,4 +43,22 @@ router.get('/:id', function(req, res) {
   });
 });
 
+//POST /comment - create a new comment
+router.post('/:id/comments', function(req, res){
+  var postId = req.params.id;
+  var commentName = req.body.name;
+  var commentContent = req.body.content;
+  db.comment.create({
+    name: req.body.name,
+    content: req.body.content
+  }).then(function(comment){
+    db.post.find({
+      where: {id: postId}
+    }).then(function(post){
+      post.addComment(comment);
+    });
+    res.redirect('/posts/'+commentId);
+  });
+});
+
 module.exports = router;
