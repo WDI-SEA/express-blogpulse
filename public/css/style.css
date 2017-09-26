@@ -1,0 +1,50 @@
+h1 {
+    font-family: 'Nunito', sans-serif;
+    font-weight: bold;
+}
+
+.navbar {
+    margin-bottom: 0px;
+}
+
+.navbar a {
+    font-size: 1.3em;
+    font-family: 'Libre Baskerville', serif;
+}
+
+body {
+    background-color: #39D1D1;
+}
+
+p {
+    font-family: 'Nunito', sans-serif;
+}
+
+.indexBody {
+    height: 600px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 0px 0px 30px 30px;
+    background-color: white;
+}
+
+.indexBody h1 {
+    text-align: center;
+    color: #39D1D1;
+}
+
+.posting {
+    margin-bottom: 1%;
+    font-family: 'Libre Baskerville', serif;
+}
+
+small {
+    font-family: 'Nunito', sans-serif;
+}
+
+.logo {
+    width: 100%;
+}
+
+.sidePiece {
+    background: rgba(255, 255, 255 0.9);
+}
