@@ -1,0 +1,31 @@
+body {
+  font-family: 'Roboto', sans-serif;
+  background: url('../img/dots.jpg');
+  color: white;
+}
+
+h1, h2, h3 {
+  font-family: 'Encode Sans Condensed', sans-serif;
+  color: white;
+}
+
+.comment-div {
+  width: 200px;
+  margin: 20px 0px;
+}
+
+.well {
+  background-color: rgba(50, 50, 50, 0.8);
+}
+
+.navbar-default {
+  background-color: rgba(50, 50, 50, 0.8);
+}
+
+
+
+
+
+/*Fonts
+font-family: 'Encode Sans Condensed', sans-serif;
+font-family: 'Roboto', sans-serif;*/
