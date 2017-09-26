@@ -1,0 +1,37 @@
+body{
+  font-family: 'PT Serif', serif;
+  background-image: url("../img/paper.jpg");
+  background-size:cover;
+  background-position: center;
+}
+.title{
+  text-align: center;
+  margin-bottom: 50px;
+  font-size: 50px;
+  text-decoration:underline;
+  font-weight: bold;
+  text-shadow: 2px 2px white;
+}
+.navbar{
+  background-image: url("../img/paper2.jpeg");
+  background-size:cover;
+  background-position: center;
+}
+.form-group{
+  background-image: url("../img/paper2.jpeg");
+  background-size:cover;
+  background-position: center;
+}
+.well{
+  background-image: url("../img/paper2.jpeg");
+  background-size:cover;
+  background-position: center;
+  font-family: 'Shrikhand', cursive;
+  text-shadow: 2px 2px lightgrey;
+  box-shadow: 3px 3px grey;
+  text-align: center;
+  text-decoration:underline;
+}
+.col-sm-4{
+  text-shadow: 2px 2px white;
+}
