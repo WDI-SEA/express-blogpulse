@@ -8,4 +8,17 @@
 
 <hr />
 
+<form action="/posts/<%= post.id %>/comments" method='POST'>
+	<input type='text' placeholder='Type Comment' name='content' style='width: 400px'>
+	<br>
+	<input type='text' placeholder='Type Name' name='name'>
+	<button type="submit">Submit</button>
+</form>
+
+<hr />
+
+<% post.comments.forEach(function(comment) { %>
+	<p>"<%= comment.content %>" - <%= comment.name %></p>
+<% }); %>
+
 <a href="/">&larr; Back Home</a>
