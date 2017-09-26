@@ -19,7 +19,13 @@ router.post('/', function(req, res) {
 
 //POST /handles the new comments
 router.post("/:id/comments", function(req, res){
-  
+    db.comment.create({
+        content: req.body.comment,
+        name: req.body.name
+    })
+      .then(function(comment){
+        res.redirect("/:id");
+      })
 })
 
 // GET /posts/new - display form for creating new posts
