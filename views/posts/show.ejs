@@ -1,3 +1,4 @@
+
 <h1><%= post.title %> <small>by <%= post.author.getFullName() %></small></h1>
 
 <p>
@@ -6,14 +7,35 @@
 
 <p><%= post.content %></p>
 
-<a>write a comment</a>
-<hr/>
-<form method="POST" action="<%= '/post/'+ post.id '/comments'%>">
-    <p> <label name="name">Your Name: </label><br>
-    <input type="text" name="name"></p>
-    <p><label name ="content">Comments:</label><br>
-    <textarea name="content" cols="35" rows ="6" placeholder="Please enlighten me..."></textarea></p>
-    <p><input class ="submit" type="sumit" value="Sumbit"</p>
+<hr />
+
+<h2>write a comment</h2>
+
+    <% post.comments.forEach(function(comment) { %>
+      <div class="well">
+        <h4><%= comment.name %></h4>
+        <p><%= comment.content %></p>
+      </div>
+    <% }); %>
+
+<hr />
+
+<h3>Submit a new comment:</h1>
+
+<form action="/posts/<%= post.id %>/comments" method="POST">
+  <div class="form-group">
+    <label for="name">Your Name</label>
+    <input type="text" class="form-control" id="name" name="name" required>
+  </div>
+
+  <div class="form-group">
+    <label for="content">Please enlighten me...</label>
+    <textarea type="text" class="form-control" id="content" name="content" required></textarea>
+  </div>
+
+  <input type="submit" class="btn btn-primary">
 </form>
+
+<hr />
 
 <a href="/">&larr; Back Home</a>

@@ -32,7 +32,7 @@ router.get('/new', function(req, res) {
 router.get('/:id', function(req, res) {
   db.post.find({
     where: { id: req.params.id },
-    include: [db.author]
+    include: [db.author, db.comment]
   })
   .then(function(post) {
     if (!post) throw Error();
@@ -43,22 +43,21 @@ router.get('/:id', function(req, res) {
   });
 });
 
-//POST /comment - create a new comment
-router.post('/:id/comments', function(req, res){
-  var postId = req.params.id;
-  var commentName = req.body.name;
-  var commentContent = req.body.content;
-  db.comment.create({
-    name: req.body.name,
-    content: req.body.content
-  }).then(function(comment){
-    db.post.find({
-      where: {id: postId}
-    }).then(function(post){
-      post.addComment(comment);
-    });
-    res.redirect('/posts/'+commentId);
-  });
+// POST /posts/:id/comments - create a new comment
+router.post('/:id/comments', function(req, res) {
+    // console.log(req.params.id);
+    // console.log(req.body);
+    // res.send(req.body);
+    db.comment.create({
+            name: req.body.name,
+            content: req.body.content,
+            postId: req.params.id
+        })
+        .then(function(comment) {
+            res.redirect('/posts/' + req.params.id);
+        })
+        .catch(function(error) {
+            res.status(400).render('main/404');
+        });
 });
-
 module.exports = router;
