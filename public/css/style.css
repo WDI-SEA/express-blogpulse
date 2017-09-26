@@ -1,0 +1,17 @@
+body {
+	background: black;
+	color: white;
+	font-family: Gruppo;
+}
+
+.well {
+	background: black;
+}
+
+input {
+	color: black;
+}
+
+.navbar {
+	background: #99CCFF
+}
