@@ -10,20 +10,22 @@
 
 <h1> Comments </h1>
 
-<form class="comment-form" method="POST" action="<%= '/posts/'+ post.id + '/comments'%>">
-     <p class="col-100"><label name="name">Name:</label>
-     <input type="text" name="name"></p>
-     <p class="col-100"><label class="top" name ="content">Comment:</label>
-     <textarea name="content" cols="50" rows="5" placeholder="Your comment..."></textarea></p>
-     <p class="col-100"><input class="submit" type="submit" value="Submit Comment"></p>
-
-</form>
-
 <% post.comments.forEach(function(comment){ %>
   <div class="well">
     <p> <%= comment.content %> </p>
     <p> <%= comment.name %> </p>
   </div>
 <%});%>
+
+<hr />
+
+<form method="POST" action="<%= '/posts/'+ post.id + '/comments'%>">
+     <p><label name="name">Name:</label><br>
+     <input type="text" name="name"></p>
+     <p><label name ="content">Comment:</label><br>
+     <textarea name="content" cols="50" rows="5" placeholder="Your comment..."></textarea></p>
+     <p><input class="submit" type="submit" value="Submit Comment"></p>
+
+</form>
 
 <a href="/">&larr; Back Home</a>

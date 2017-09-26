@@ -47,8 +47,6 @@ router.get('/:id', function(req, res) {
 
 router.post('/:id/comments', function(req, res){
   var postId = req.params.id;
-  var commentName = req.body.name;
-  var commentContent = req.body.content;
   db.comment.create({
     name: req.body.name,
     content: req.body.content
@@ -56,6 +54,8 @@ router.post('/:id/comments', function(req, res){
     db.post.find({
       where: {id: postId}
     }).then(function(post){
+      //.addComment from sequelize https://stackoverflow.com/questions/18828218/sequelize-add-association
+      //https://sequelize.readthedocs.io/en/v3/docs/associations/
       post.addComment(comment);
     });
     res.redirect('/posts/'+postId);
