@@ -8,4 +8,21 @@
 
 <hr />
 
+<ul>
+  <% post.comments.forEach(function(comment) { %>
+    <li><%= comment.content %> - <%= comment.name %></li>
+  <% }); %>
+</ul>
+
+<hr />
+
+<p>Make a comment:</p>
+<form action="/posts/<%= post.id %>/comments" method="POST">
+  <input type="text" name="name" placeholder="Enter your name..." />
+  <input type="text" name="content" placeholder="Spit your rhymes..." />
+  <input type="submit" value="Preach!" />
+</form>
+
+<hr />
+
 <a href="/">&larr; Back Home</a>
