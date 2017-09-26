@@ -6,6 +6,35 @@
 
 <p><%= post.content %></p>
 
+<h2>Comments</h2>
+<% post.comments.forEach(function(comment) { %>
+  <div class='well well-small'>
+    <p>
+      <%= comment.content %>
+    </p>
+    <h4>
+      - <%= comment.name %>
+    </h4>
+    <p>
+      <%= moment(comment.createdAt).calendar() %>
+    </p>
+  </div>
+<% }); %>
+
+<h3>Comment on this post</h3>
+<form method='POST' action='/comments/new'>
+  <input hidden name='id' value=<%= post.id %> / >
+  <div class='form-group'>
+    <label for='name'>Name</label>
+    <input type='text' class='form-control' name='name' />
+  </div>
+  <div class='form-group'>
+    <label for='content'>Content</label>
+    <textarea class='form-control' name='content' rows='3' /></textarea>
+  </div>
+  <button class='btn btn-primary' type='submit'>Add Comment</button>
+</form>
+
 <hr />
 
 <a href="/">&larr; Back Home</a>
