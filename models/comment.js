@@ -2,7 +2,7 @@
 module.exports = (sequelize, DataTypes) => {
   var comment = sequelize.define('comment', {
     name: DataTypes.STRING,
-    context: DataTypes.TEXT,
+    content: DataTypes.TEXT,
     postId: DataTypes.INTEGER
   }, {
     classMethods: {

@@ -1,16 +1,17 @@
 var express = require('express');
 var db = require('../models');
 var router = express.Router();
+var bodyParser = require('body-parser');
 
 // POST /comments - take what is in comments/newcomment and add to DB
-router.post('/newcomment', function(req, res) {
-  db.post.create({
-    name: req.body.name,
-    content: req.body.content,
+router.post('/', function(req, res) {
+  db.comment.create({
+    name: "name",
+    content: "content",
     postId: req.body.postId
   })
   .then(function(comment) {
-    res.redirect('/posts/show');
+    res.redirect('/posts/'+ req.params.postId);
   })
   .catch(function(error) {
     res.status(400).render('main/404');
