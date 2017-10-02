@@ -1,0 +1,35 @@
+<h1>Edit Post</h1>
+
+<a href="/posts/<%=post.id%>" class="btn btn-primary">Back To Post</a>
+
+<form action="/posts/edit/<%=post.id%>" role="form">
+  <div class="well">
+    <%=post.id%>
+  </div>
+  <div class="form-group">
+    <textarea type="text" class="form-control" id="body" placeholder="content" name="content"><%=post.content%></textarea>
+  </div>
+
+  <a type="button" class="btn btn-primary" href="/posts/<%=post.id%>">Submit</a>
+</form>
+
+<script
+  src="https://code.jquery.com/jquery-3.2.1.min.js"
+  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  crossorigin="anonymous"></script>
+<script>
+  $('[type=button]').on('click', function(e) {
+    //e.preventDefault();
+    var updateUrl = $(this).parent().attr('action');
+    //will take form data and put in post data
+    var body = $(this).parent().serialize();
+    $.ajax({
+      method: 'PUT',
+      url: updateUrl,
+      data: body
+    }).done(function(data) {
+      // get data returned from the PUT route
+      console.log(data);
+    });
+  });
+</script>

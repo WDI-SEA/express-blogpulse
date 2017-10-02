@@ -19,7 +19,7 @@ router.post('/', function(req, res) {
   });
 });
 
-// GET /comments/:id - display a specific post and its
+// GET /comments/:id - display a specific post and its comments
 router.get('/:postId', function(req, res) {
   console.log("getting comments for post");
   db.comment.findAll({

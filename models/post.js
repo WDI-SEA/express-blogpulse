@@ -10,6 +10,7 @@ module.exports = function(sequelize, DataTypes) {
         //one post can belong to only one author
         models.post.belongsTo(models.author);
         models.post.hasMany(models.comment);
+        models.post.belongsToMany(models.tag, {through: "postsTags"});
       }
     }
   });
