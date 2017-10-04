@@ -55,7 +55,7 @@ db.post.find({
   include: [db.comment]
 }).then(function(post) {
   // by using eager loading, the post model should have a comments key
-  console.log(post.comments);
+  // console.log(post.comments);
 });
 
 

@@ -4,7 +4,16 @@
   <strong><%= moment(post.createdAt).calendar() %></strong>
 </p>
 
-<p><%= post.content %></p>
+<div = class="well">
+	<p><%= post.content %></p>
+</div>
+
+<p>
+	TAGS: 
+	<% post.tags.forEach(function(tag){ %>
+	<a href="/posts/tags/<%= tag.name %>"><%= tag.name %></a>&nbsp;
+	<% }); %>
+</p>
 
 <hr />
 
@@ -17,7 +26,7 @@
     <p><%= comment.content%></p>
     <p>- <%= comment.name%></p>
   </div>
-<% });%>
+<% }); %>
 
 <h3>Comment on this post</h3>
 <form class="well" action="<%= "/posts/"+post.id+"/comments" %>" method="POST">
