@@ -1,11 +1,36 @@
 <h1><%= post.title %> <small>by <%= post.author.getFullName() %></small></h1>
 
 <p>
-  <strong><%= moment(post.createdAt).calendar() %></strong>
+  <h4><%= moment(post.createdAt).calendar() %></h4>
 </p>
 
 <p><%= post.content %></p>
 
+<br />
+
+<hr />
+<h4>Comments:</h4>
+<% if(post.comments.length < 1) { %>
+  <p>Be the first to comment!</p>
+<% } else { %>
+<% post.comments.forEach(function(comment){ %>
+
+
+<p><span><%= comment.content %></span></p>
+<p><strong>- <%= comment.name %>: </strong></p>
+<br />
+<% }); %>
+<% } %>
+
 <hr />
 
+<h5>Add a comment</h5>
+<form method="POST" action="/posts/<%= post.id %>/comments">
+  <input type="text" name="name" placeholder="Enter your name..." />
+  <input type="text" name="content" placeholder="Enter your comment..." />
+  <input type="hidden" name="postId" value="<%= post.id %>">
+  <input type="submit" value="Add" />
+</form>
+
+<hr />
 <a href="/">&larr; Back Home</a>
