@@ -28,6 +28,24 @@ router.post('/', function(req, res) {
         });
 });
 
+router.post('/:id/:postId/edit', function(req, res) {
+  db.author.findOne({
+    where: {id:req.params.id}
+  }).then(function(author) {
+  author.getPosts({
+    where: {id:req.params.postId}
+  }).then(function(posts) {
+    posts[0].update({
+      title: req.body.title,
+      content: req.body.content
+    }).then(function(data) {
+      var url = '/posts/' + req.params.postId;
+      res.redirect(url);
+    });
+  });
+});
+});
+
 // GET /authors/new - display form for creating a new author
 router.get('/new', function(req, res) {
   res.render('authors/new');

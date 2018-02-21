@@ -1,10 +1,11 @@
-<h1><%= author.posts[0].title %> <small>by <%= author.getFullName() %></small></h1>
 
-<p>
-  <strong><%= moment(author.posts[0].createdAt).calendar() %></strong>
-</p>
 
-<p><%= author.posts[0].content %></p>
+<form action="/authors/<%=author.id%>/<%=author.posts[0].id%>/edit" method='post'>
+  <h1><input style='width:60%' type="text" name="title" value='<%= author.posts[0].title %>'></h1>
+  <h1><small>by <%= author.getFullName() %></small></h1>
+  <p><input style='width:70%' type="text" name="content" value='<%= author.posts[0].content %>'></p>
+  <input type="submit" value='Edit Blog Post'>
+</form>
 
 <hr />
 
