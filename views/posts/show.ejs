@@ -1,11 +1,58 @@
-<h1><%= post.title %> <small>by <%= post.author.getFullName() %></small></h1>
+    <h1><%= post.title %> <small>by <%= post.author.getFullName() %></small></h1>
 
-<p>
-  <strong><%= moment(post.createdAt).calendar() %></strong>
-</p>
+    <p>
+      <strong><%= moment(post.createdAt).calendar() %></strong>
+    </p>
 
-<p><%= post.content %></p>
+    <p><%= post.content %></p>
 
-<hr />
+    <hr />
+    <!-- add comments section -->
+    <% if(post.comments){ %>
+      <% post.comments.forEach(function(comment){ %>
+        <ul class="list-group">
+          <li class="list-group-item"><%= comment.name %></li>
+          <li class="list-group-item">
+            <!-- <a class="update-item" href="/comments/update/<%= comment.id %>">Oops...!?</a> -->
+            <!-- <a class="update-item" href="/comments/update/">Oops...!?</a> -->
+            <p><%= comment.content %></p>
+          </li>
+          <li class="list-group-item"><%= moment(comment.createdAt).calendar() %></li>
+          <!-- <li class="list-group-item">
+            <a class="delete-item" href="/comments/delete/<%= comment.id %>">Destroy.</a>
+          </li> -->
+        </ul>
+      <% }); %>
+    <% } else { %>
+      <p>No comments to display.</p>
+    <% } %>
 
-<a href="/">&larr; Back Home</a>
+    <!-- add form section for new comments -->
+    <form class="" action="/comments" method="post">
+      <input type="text" name="name" >
+      <input type="text" name="content">
+      <input type="hidden" name="postId" value="<%= post.id %>">
+      <input type="submit" value="What's Your Opinion">
+    </form>
+
+    <div class="modal" tabindex="-1" role="dialog">
+      <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Modal title</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <p>Modal body text goes here.</p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary">Save changes</button>
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    <a href="/">&larr; Back Home</a>
