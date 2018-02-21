@@ -32,7 +32,7 @@ router.get('/new', function(req, res) {
 router.get('/:id', function(req, res) {
   db.post.find({
     where: { id: req.params.id },
-    include: [db.author]
+    include: [db.author, db.comment]
   })
   .then(function(post) {
     if (!post) throw Error();
