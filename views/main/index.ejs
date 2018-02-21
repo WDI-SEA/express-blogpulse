@@ -6,7 +6,7 @@
       <div class="well">
         <h2>
           <a href="/posts/<%= post.id %>"><%= post.title %></a>
-          <small>by <%= post.author.getFullName() %></small>
+        </br> <small>by <%= post.author.getFullName() %></small>
         </h2>
         <p>
           <strong><%= moment(post.createdAt).calendar() %></strong>

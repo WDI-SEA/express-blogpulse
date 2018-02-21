@@ -17,6 +17,22 @@ router.post('/', function(req, res) {
   });
 });
 
+router.post('/:id', function(req, res){
+  db.post.find({
+    where: { id: req.body.postId}
+  }).then(function(post){
+    post.createComment({
+      name: req.body.name,
+      content: req.body.content
+    }).then(function(comment){
+      res.redirect('/posts/' + req.params.id);
+    });
+    });
+  });
+
+
+
+
 // GET /posts/new - display form for creating new posts
 router.get('/new', function(req, res) {
   db.author.findAll()
@@ -32,7 +48,7 @@ router.get('/new', function(req, res) {
 router.get('/:id', function(req, res) {
   db.post.find({
     where: { id: req.params.id },
-    include: [db.author]
+    include: [db.author,db.comment]
   })
   .then(function(post) {
     if (!post) throw Error();

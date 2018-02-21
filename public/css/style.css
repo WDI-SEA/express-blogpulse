@@ -1,0 +1,75 @@
+.container {
+  color: #f0e995;
+  background-color: black;
+  text-align: center;
+  border-color: black;
+}
+#navbar {
+  color: #f0e995;
+}
+label {
+  font-size: 16pt;
+}
+a {
+  color: #f0e995;
+}
+
+.button {
+  color: black;
+}
+body {
+  background-color: black;
+}
+p {
+  color: silver;
+  background-color: black;
+}
+
+
+
+
+/*
+
+.start:hover, .next:hover, .restart-button:hover {
+  transform: scale(1.15);
+  box-shadow: 0 0 5px;
+}
+
+.start {
+  cursor: pointer;
+  cursor: pointer;
+  margin-bottom: 15px;
+}
+
+.next {
+  display: none;
+}
+
+.restart-button {
+  display: none;
+  cursor: pointer;
+  margin-bottom: 15px;
+}
+
+.current-question-box p {
+  background-color: black;
+
+}
+
+li{
+  cursor: pointer;
+  color: black;
+}
+
+li:hover {
+  transform: scale(1.15);
+  /* box-shadow: 0 0 1 #000; */
+  /* color: gold;
+} */
+
+/* .score {
+  color: silver;
+  display: none;
+  background-color: black;
+  text-align: center;
+}  */

@@ -1,4 +1,4 @@
-<h1><%= post.title %> <small>by <%= post.author.getFullName() %></small></h1>
+<h1><%= post.title %> </br> <small>by <%= post.author.getFullName() %></small></h1>
 
 <p>
   <strong><%= moment(post.createdAt).calendar() %></strong>
@@ -7,5 +7,16 @@
 <p><%= post.content %></p>
 
 <hr />
+<form method='post' action='/posts/<%= post.id %>'>
+      <input type='text' name='name' placeholder="Enter your name">
+      <input type='text' name='content' placeholder="Enter your comment">
+      <input type='hidden' name='postId' value='<%= post.id %>'>
+      <input type='submit' class= "button" value='Add Post'>
+    </form>
+
+    <% post.comments.forEach(function(comment){ %>
+      <h4><%= comment.name %></h4>
+      <p><%= comment.content %></p>
+    <%});%>
 
 <a href="/">&larr; Back Home</a>
