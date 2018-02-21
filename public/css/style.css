@@ -1,0 +1,62 @@
+/*font-family: 'Bitter', serif;
+font-family: 'Work Sans', sans-serif;*/
+
+html, body {
+	margin: 0;
+	padding: 0;
+	font-family: 'Bitter', serif;
+	background-color: #fffde7;
+}
+
+p{ 
+	font-family: 'Work Sans', sans-serif;
+}
+
+a {
+	color: #fbc02d;
+}
+
+a:hover {
+	color: #ffb300;
+}
+
+h1 {
+	color: #00695c;
+	font-size: 48px;
+}
+
+h2 {
+	font-size: 24px;
+}
+
+.postdeets  {
+	color: lightgrey;
+}
+
+.well {
+	border-left: solid #4db6ac 3px;
+	padding-left: 10px;
+}
+
+.about {
+	color: #4db6ac;
+}
+
+.post-comment {
+	width: 400px;
+	background-color: #e0f2f1;
+	padding: 25px;
+	border-radius: 20px;
+	margin-top: 30px;
+}
+
+.comment {
+	margin: 0px 0px 5px 25px;
+	border-left: dashed 3px #4db6ac;
+}
+
+.dropdown-button {
+	text-transform: capitalize;
+	margin-left: 20px;
+	background-color: #80cbc4;
+}

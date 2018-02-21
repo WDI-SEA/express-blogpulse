@@ -1,10 +1,34 @@
-<h1><%= post.title %> <small>by <%= post.author.getFullName() %></small></h1>
+<!DOCTYPE html>
 
-<p>
+<h1><%= post.title %></h1>
+ <p class='postdeets'>by <a href="/authors/<%=post.authorId %>"><%= post.author.getFullName() %></a> <br>
   <strong><%= moment(post.createdAt).calendar() %></strong>
 </p>
 
-<p><%= post.content %></p>
+<div class='well'>
+	<p><%= post.content %></p>
+</div>
+<% for(var i=0; i<post.comments.length; i++) {%>
+	
+	<br>
+	<div class='post-comment comment'>
+		<a href='#'><%= post.comments[i].name %> </a> * <a id="delete-comment" href='/posts/<%= post.id %>'>Delete Comment</a>
+		<p><%= post.comments[i].content %></p>
+	</div>
+
+<% } %>
+
+<form class="post-comment col s3" method="POST" action="/posts/<%= post.id %>">
+	<input type='text' name='name' placeholder='Enter Username'>
+	<div class="row">
+        <div class="input-field col s12">
+          <textarea id="textarea1" class="materialize-textarea" type='text' name='content'></textarea>
+          <label for="textarea1">Enter comment...</label>
+        </div>
+      </div>
+	<input type='hidden' name='postId' value='<%= post.id %>'>
+	<input class='waves-effect waves-light btn' type='submit' value='Submit Comment'>
+</form>
 
 <hr />
 

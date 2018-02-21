@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <h1>Create a new post</h1>
 
 <form action="/posts" method="POST">
@@ -7,12 +8,14 @@
   </div>
 
   <div class="form-group">
-    <label for="author">Author</label>
-    <select name="authorId" id="author" class="form-control" required>
+    <label for="author">Find your name: </label>
+    <a class='dropdown-button btn' href='#' data-activates='dropdown1'>User List &darr;</a>
+
+    <ul id='dropdown1' class='dropdown-content'>
       <% authors.forEach(function(author) { %>
-        <option value="<%= author.id %>"><%= author.getFullName() %></option>
+        <li><a href="<%= author.id %>"><%= author.getFullName() %></a></li>
       <% }); %>
-    </select>
+    </ul>
     <p>If your name doesn't show up, please <a href="/authors/new">sign up to be an author.</a></p>
   </div>
 
