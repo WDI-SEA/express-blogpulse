@@ -16,19 +16,25 @@
     <p>
       <%= comment.content %>
     </p>
-    <h3>
-      <%= comment.name %>
-    </h3>
+    <h6>
+      - <%= comment.name %>
+    </h6>
   </div>
 <% }); %>
 
+<h4>Comment on this Post</h4>
+
 <form method='POST' action="<%= '/posts/' + post.id + '/comments' %>">
-  <h6>name</h6>
-  <input type='text' name='name' placeholder="Enter commenter's name...">
-  <h6>comment</h6>
-  <input type='text' name='content' placeholder="Enter comment...">
-  <input type='hidden' name='postId' value='<%= post.id %>'>
-  <input type='submit' value='Add Comment'>
+  <div class="form-group">
+    <label for="name">Name</label>
+    <input type='text' class="form-control" name='name' placeholder="Enter name...">
+  </div>
+  <div class="form-group">
+    <label for="content">Content</label>
+      <textarea type='text' class="form-control" name='content' placeholder="Enter comment..."></textarea>
+      <input type='hidden' name='postId' value='<%= post.id %>'>
+  </div>
+  <input type='submit' class="btn btn-primary" value='Add Comment'>
 </form>
 
 <a href="/">&larr; Back Home</a>
