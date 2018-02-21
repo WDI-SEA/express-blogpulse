@@ -8,4 +8,25 @@
 
 <hr />
 
+
+<form action="/posts/<%=post.id%>/comments" method="POST">
+  <div class="form-group">
+    <label for="title">Create a new comment</label>
+    <input type="text" class="form-control" name="name" placeholder="Enter your name..." required>
+    <input type="text" class="form-control" name="content" placeholder="Enter your comment" required>
+    <input type="hidden" name="postId" value="<%=post.id%>">
+  	<input type="submit" value="Add Comment">
+
+  </div>
+</form>
+
+<hr />
+
+<% post.comments.forEach(function(item) { %>
+<!-- comment here has to be plural-comments becuase it is 1-many relationship -->
+	<h4><%= item.name %></h4>
+	<p><%= item.content %></p>
+<% }); %>
+
+
 <a href="/">&larr; Back Home</a>
