@@ -1,4 +1,5 @@
-<h1><%= post.title %> <small>by <%= post.author.getFullName() %></small></h1>
+<h1><%= post.title %></h1>
+<h3>by <%= post.author.getFullName() %></h3>
 
 <p>
   <strong><%= moment(post.createdAt).calendar() %></strong>
@@ -7,5 +8,18 @@
 <p><%= post.content %></p>
 
 <hr />
+
+    <% post.comments.forEach(function(item) { %>
+        <div class='comment'>
+            <p class='commenter-name'><%= item.name %>:</p>
+            <p class='comment-text'><%= item.comment %></p>
+        </div>
+    <% }) %>
+    </p>
+<form method="POST" action="/comments/<%= post.id %>">
+    <textarea class="comment-textarea" name="comment" placeholder="Add a new comment..."></textarea><br>
+    <input id='name-box' type="text" name="name" placeholder="Name">
+    <input class="btn btn-primary" type="submit" value="Submit Comment">
+</form>
 
 <a href="/">&larr; Back Home</a>

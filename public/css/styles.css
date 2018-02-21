@@ -1,0 +1,77 @@
+body {
+    background: rgb(253, 253, 253);
+}
+
+a {
+    color: black;
+}
+
+a:hover {
+    color: black;   
+}
+
+a.underline {
+    text-decoration: underline;
+}
+
+.navbar {
+    background: rgb(12, 12, 12);
+    
+}
+
+.bordered {
+    border: 1px solid gray;
+    background: rgb(100, 100, 100);
+    border-radius: 5px;
+}
+
+.text-light {
+    color: rgb(211, 211, 211);
+}
+
+.comment {
+    border: 1px solid gray;
+    padding: 1%;
+    margin: 1% 0;
+}
+
+.commenter-name {
+    font-style: italic;
+    color: rgb(50, 79, 168);
+    font-weight: 600;
+}
+
+.comment-textarea {
+    width: 100%;
+    padding: 1%;
+    margin: 1% 0;
+    border: 1px solid rgb(175, 175, 175);
+}
+
+.btn-primary {
+    background-color: rgb(42, 65, 109);
+}
+
+.hover-letter:hover {
+    color: rgb(102, 125, 169);
+}
+
+#name-box {
+    padding: 6px 12px;
+    border: 1px solid rgb(175, 175, 175);
+    margin-right: 7px;
+}
+
+#banner {
+    font-size: 5em;
+    text-align: center;
+    font-weight: bold;
+    letter-spacing: 0.75em;
+    padding-bottom: 0.5em;
+    text-transform: uppercase;
+    color: rgb(42, 65, 109);
+}
+
+.navbar-default .navbar-nav>li>a, .navbar-default .navbar-brand {
+    color: rgb(211, 211, 211);
+}
