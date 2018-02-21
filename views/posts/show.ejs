@@ -7,5 +7,26 @@
 <p><%= post.content %></p>
 
 <hr />
+<h3>Comments</h3>
+<% if(post.comments.length < 1){ %>
+  <p>No Comments have been added yet! Be the first below</p>
+<% }else{ %>
+  <% post.comments.forEach(function(comment){ %>
+    <h5>User: <%= comment.name %></h5>
+    <p><%= comment.content %></p>
+    <hr />
+  <% }) %>
+<% } %>
+
+
+
+<h4>Add Comment</h4>
+<hr />
+<form method="POST" action="/posts/<%= post.id %>/comments">
+  <input type="text" name="name" placeholder="Enater Name">
+  <input type="hidden" name="postId" value="<%= post.id %>">
+  <input type="text" name="content" placeholder="What would you like to add?">
+  <input type="submit" value="Add Comment">
+</form>
 
 <a href="/">&larr; Back Home</a>
