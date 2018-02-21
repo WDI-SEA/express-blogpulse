@@ -22,6 +22,40 @@
       <%- body %>
     </div>
 
+    <!-- Modal -->
+    <div class="modal fade" id="authorModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel">Sign up for BlogPulse</h4>
+          </div>
+          <form action="/authors" method="POST">
+            <div class="modal-body">
+              <div class="form-group">
+                <label for="firstName">First Name</label>
+                <input type="text" class="form-control" id="firstName" name="firstName" required>
+              </div>
+
+              <div class="form-group">
+                <label for="lastName">Last Name</label>
+                <input type="text" class="form-control" id="lastName" name="lastName" required>
+              </div>
+
+              <div class="form-group">
+                <label for="bio">Bio</label>
+                <textarea type="text" class="form-control" id="bio" name="bio" required></textarea>
+              </div>
+                  
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              <input type="submit" class="btn btn-primary">
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
     <!-- jQuery -->
     <script src="//code.jquery.com/jquery.js"></script>
     <!-- Bootstrap JavaScript -->

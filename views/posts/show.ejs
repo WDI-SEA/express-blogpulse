@@ -1,11 +1,45 @@
-<h1><%= post.title %> <small>by <%= post.author.getFullName() %></small></h1>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-8 offset-sm-4">
+      <h1><%= post.title %> <small>by <%= post.author.getFullName() %></small></h1>
 
-<p>
-  <strong><%= moment(post.createdAt).calendar() %></strong>
-</p>
+      <p>
+        <strong><%= moment(post.createdAt).calendar() %></strong>
+        <a href="/posts/<%= post.id %>/edit" class="btn btn-info">Edit</a>
+      </p>
 
-<p><%= post.content %></p>
+      <p><%= post.content %></p>
 
-<hr />
+      <hr />
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-3">
+
+    </div>
+    <div class="col-sm-6">
+      <% post.comments.forEach(function(comment) { %>
+        <div class="well">
+          <p><%= comment.content %></p>
+          <h6><%= comment.name %></h6>
+        </div>
+      <% }); %>
+
+      <hr />
+
+      <h4>Comment</h4>
+      <form method="POST" action="/comments">
+        <input type="text" name="name" class="form-control" placeholder="Your name"><br />
+        <input type="text" name="content" class="form-control" placeholder="Your Comment Goes Here"><br />
+        <input type="hidden" name="postId" value="<%= post.id %>">
+        <input type="submit" class="btn btn-primary btn-sm" value="Add Comment">
+      </form>
+    </div>
+    <div class="col-sm-3">
+
+    </div>
+  </div>
+</div>
 
 <a href="/">&larr; Back Home</a>

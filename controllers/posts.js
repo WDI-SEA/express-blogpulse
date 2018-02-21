@@ -17,6 +17,28 @@ router.post('/', function(req, res) {
   });
 });
 
+router.get('/:id/edit', function(req, res) {
+  db.post.find({
+    where: {id: req.params.id},
+    include: [db.author]
+  }).then(function(post) {
+    res.render('posts/edit', {post: post});
+  }).catch(function(error) {
+    res.status(400).render('main/404');
+  });
+});
+
+router.put('/:id', function(req, res) {
+  db.post.update({
+    title: req.body.title,
+    content: req.body.content,
+  }, {
+    where: {id: req.params.id}
+  }).then(function() {
+    res.send();
+  });
+});
+
 // GET /posts/new - display form for creating new posts
 router.get('/new', function(req, res) {
   db.author.findAll()
@@ -32,7 +54,7 @@ router.get('/new', function(req, res) {
 router.get('/:id', function(req, res) {
   db.post.find({
     where: { id: req.params.id },
-    include: [db.author]
+    include: [db.author, db.comment]
   })
   .then(function(post) {
     if (!post) throw Error();
