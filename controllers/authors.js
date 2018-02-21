@@ -48,4 +48,15 @@ router.get('/:id', function(req, res) {
         });
 });
 
+router.get('/:id/:postId/edit', function(req, res) {
+  db.author.find({
+    where: { id: req.params.id },
+    include: [{model: db.post, where:{id:req.params.postId}}]
+  }).then(function(data) {
+    console.log(data);
+    res.render('authors/edit', {author:data});
+  });
+});
+
+
 module.exports = router;

@@ -1,0 +1,11 @@
+<h1><%= author.posts[0].title %> <small>by <%= author.getFullName() %></small></h1>
+
+<p>
+  <strong><%= moment(author.posts[0].createdAt).calendar() %></strong>
+</p>
+
+<p><%= author.posts[0].content %></p>
+
+<hr />
+
+<a href="/">&larr; Back Home</a>
