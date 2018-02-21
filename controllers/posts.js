@@ -62,17 +62,17 @@ router.get('/:id', function(req, res) {
 });
 
 //DELETE comment
-router.delete('/:id', function(req, res) {
-  db.post.find({
-    where: { id: req.body.postId } //find the associated post by id number
-  }).then(function(post) { //using that author, add THIS post to THIS author in the author database
-    //format =  table.createModel()
-      post.comment.destroy({
-        where: {name: req.params.name}
-    }).then(function(comment) { //load child
-      res.redirect('/posts/' + req.params.id); //send comment
-    });
-  });
-});
+// router.delete('/:id', function(req, res) {
+//   db.post.find({
+//     where: { id: req.body.postId } //find the associated post by id number
+//   }).then(function(post) { //using that author, add THIS post to THIS author in the author database
+//     //format =  table.createModel()
+//       post.comment.destroy({
+//         where: {name: req.params.name}
+//     }).then(function(comment) { //load child
+//       res.redirect('/posts/' + req.params.id); //send comment
+//     });
+//   });
+// });
 
 module.exports = router;

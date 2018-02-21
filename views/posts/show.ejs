@@ -20,7 +20,7 @@
 <% post.comments.forEach(function(comment) { %>
   <p class="comment-name"><%= comment.name %></p>
   <p><%= comment.content %></p>
-  <a href="<%= comment.name %>/" class="delete-link">Delete</a>
+  <a href="/comments/<%= comment.id %>/" class="delete-link">Delete</a>
 <%});%>
 
 

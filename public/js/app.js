@@ -12,10 +12,10 @@ $(document).ready(function() {
       console.log(data);
 
       // do stuff when the DELETE action is complete
-      comment.remove();
+      // comment.remove();
 
       // or, you can redirect to another page
-      window.location = '/posts/<%= post.id %>';
+      // location.reload();
     });
   });
 
