@@ -10,7 +10,7 @@ $(document).ready(function() {
     method: 'DELETE',
     url: commentUrl
   }).done(function(comment){
-    window.location = "/posts";
+    window.location = '/';
   });
 });
 
@@ -25,7 +25,7 @@ $(document).ready(function() {
     url: commentUrl,
     data: commentData
   }).done(function(comment){
-    window.location = '/posts';
+    window.location = '/posts/';
   });
 });
 

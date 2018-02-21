@@ -11,16 +11,17 @@
     <% if(post.comments){ %>
       <% post.comments.forEach(function(comment){ %>
         <ul class="list-group">
-          <li class="list-group-item"><%= comment.name %></li>
+          <li class="list-group-item">Comment ID: <%= comment.id %></li>
+          <li class="list-group-item">Comment By: <%= comment.name %></li>
           <li class="list-group-item">
             <!-- <a class="update-item" href="/comments/update/<%= comment.id %>">Oops...!?</a> -->
-            <!-- <a class="update-item" href="/comments/update/">Oops...!?</a> -->
             <p><%= comment.content %></p>
+            <a data-toggle="modal" data-target="#updateModal" class="update-item" href="#">Oops...can't spell - Edit Post?</a>
           </li>
-          <li class="list-group-item"><%= moment(comment.createdAt).calendar() %></li>
-          <!-- <li class="list-group-item">
-            <a class="delete-item" href="/comments/delete/<%= comment.id %>">Destroy.</a>
-          </li> -->
+          <li class="list-group-item">Posted on: <%= moment(comment.createdAt).calendar() %></li>
+          <li class="list-group-item">
+            <a class="delete-item" href="/comments/delete/<%= comment.id %>">Destroy</a>
+          </li>
         </ul>
       <% }); %>
     <% } else { %>
@@ -28,28 +29,34 @@
     <% } %>
 
     <!-- add form section for new comments -->
-    <form class="" action="/comments" method="post">
-      <input type="text" name="name" >
-      <input type="text" name="content">
-      <input type="hidden" name="postId" value="<%= post.id %>">
-      <input type="submit" value="What's Your Opinion">
+    <form class="comment-input" action="/comments" method="post">
+      <input type="text" class="form-control" name="name" placeholder="Enter your Name">
+      <input type="text" class="form-control" name="content" placeholder="What do you think?">
+      <input type="hidden" class="form-control" name="postId" value="<%= post.id %>">
+      <input type="submit" class="btn btn-primary" value="What's Your Opinion">
     </form>
 
-    <div class="modal" tabindex="-1" role="dialog">
+    <!-- add form section for edit comments -->
+    <div class="modal fade" id="updateModal" tabindex="-1" role="dialog">
       <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title">Modal title</h5>
+              <h5 class="modal-title">Edit Your Post</h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
             <div class="modal-body">
-              <p>Modal body text goes here.</p>
+              <form class="comment-input" action="/comments" method="post">
+                <input type="text" name="name" >
+                <input type="text" name="content">
+                <input type="hidden" name="postId" value="<%= post.id %>">
+                <input type="submit" value="What's Your Opinion">
+              </form>
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-primary">Save changes</button>
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
             </div>
           </div>
         </div>

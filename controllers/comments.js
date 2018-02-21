@@ -21,20 +21,22 @@ router.post('/', function(req, res) {
 });
 
 // DELETE
-router.delete('/:id', function(req,res){
-  console.log('in delete/id path');
+router.delete('/delete/:id', function(req,res){
+  // console.log('in delete/id path');
     var deleteComment = {
       id: req.params.id
     }
     db.comment.destroy({
       where: {id:deleteComment.id}
     }).then(function(comment){
-      console.log("successfully deleted..." + deleteComment.id)
+      console.log("successfully deleted..." + deleteComment.id);
+      // res.method = "get";
+      // res.redirect('/post/)
     });
 });
 
 // PUT
-router.put('/update', function(req,res){
+router.put('/update/:id', function(req,res){
   db.comment.findById(req.body.id)
   .then(function(comment){
     db.comment.update({
