@@ -57,13 +57,13 @@ router.get('/:id', function(req, res) {
     where: { id: req.params.id },
     include: [db.post]
   })
-        .then(function(author) {
-          if (!author) throw Error();
-          res.render('authors/show', { author: author });
-        })
-        .catch(function(error) {
-          res.status(400).render('main/404');
-        });
+    .then(function(author) {
+      if (!author) throw Error();
+      res.render('authors/show', { author: author });
+    })
+    .catch(function(error) {
+      res.status(400).render('main/404');
+    });
 });
 
 router.get('/:id/:postId/edit', function(req, res) {
