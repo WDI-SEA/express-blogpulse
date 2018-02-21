@@ -1,0 +1,12 @@
+.comment-box {
+  background: #eee;
+}
+
+.comment-name {
+  font-weight: bold;
+}
+
+#author-modal-link {
+  color: #07f;
+  cursor: pointer;
+}

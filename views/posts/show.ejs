@@ -9,3 +9,25 @@
 <hr />
 
 <a href="/">&larr; Back Home</a>
+
+<h2>Comments</h2>
+
+<% post.comments.forEach(function(comment) { %>
+  <div class="comment-box">
+    <p class="comment-content"><%= comment.content %></p>
+    <p class="comment-name">~<%= comment.name %></p>
+  </div>
+
+  <% console.log('YO'); %>
+<% }) %>
+
+<h3>Comment on this post</h3>
+
+<form method="post" action="/comments">
+  <input type="text" name="name" placeholder="Enter your name...">
+  <input type="text" name="content" placeholder="Enter your comment...">
+  <input type="hidden" name="postId" value="<%= post.id %>">
+  <input type="submit" value="Add Comment">
+</form>
+
+<a href="/">&larr; Back Home</a>
