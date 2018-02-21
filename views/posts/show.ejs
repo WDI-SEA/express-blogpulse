@@ -8,4 +8,21 @@
 
 <hr />
 
+<form method='POST' action='/posts/<%= post.id %>'>
+      <input type='string' name='name' placeholder="Enter your name...">
+      <input type='text' name='content' placeholder="Enter your comment...">
+      <input type='hidden' name='postId' value='<%= post.id %>'>
+      <input type='submit' value='Post Comment'>
+</form>
+
+<h2>Comments</h2>
+
+<% post.comments.forEach(function(comment) { %>
+  <p class="comment-name"><%= comment.name %></p>
+  <p><%= comment.content %></p>
+  <a href="<%= comment.name %>/" class="delete-link">Delete</a>
+<%});%>
+
+
+
 <a href="/">&larr; Back Home</a>
