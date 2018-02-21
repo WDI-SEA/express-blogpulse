@@ -8,4 +8,37 @@
 
 <hr />
 
+<% post.comments.forEach(function(comment) { %>
+<div class='container'>
+  <div class='row'>
+    <div class='col-sm-8'>
+      <div class='panel panel-white post panel-shadow'>
+        <div class='post-heading'>
+          <div class='pull-left image'>
+            <img class='profilepic' src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSfP6HIAiSfq54aQDHuSIdFn6aTeiftWzhQHJuMubsz6L2dUGFD" alt="icon">
+          </div>
+          <div class='pull-left meta'>
+            <div class='title h5'>
+              <br><a href='#'><b><%= comment.name %></b></a> made a post.
+            </div>
+          </div>
+        </div>
+        <div class='post-desciption'>
+          <p><%= comment.content %></p>
+        </div>
+      </div>
+    </div>
+    <% }); %>
+  </div>
+</div>
+
+<div>
+  <form action="/posts/comments" method="post">
+    <input type="text" name="name" placeholder="Your Name">
+    <input type="text" name="content" placeholder="Your Comment">
+    <input type="hidden" name="postid" value="<%= post.id %>">
+    <input type="submit" value="Submit Comment">
+  </form>
+</div>
+
 <a href="/">&larr; Back Home</a>
