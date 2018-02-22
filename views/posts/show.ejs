@@ -6,6 +6,13 @@
 
     <p><%= post.content %></p>
 
+    <strong>Tags:</strong>
+    <% post.tags.forEach(function(t){ %>
+      <a href="/tags/<%= t.id %>">
+        #<%= t.name %>
+      </a>
+    <% }); %>
+
     <hr />
     <!-- add comments section -->
     <% if(post.comments){ %>

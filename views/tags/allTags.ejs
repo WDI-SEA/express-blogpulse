@@ -1,0 +1,11 @@
+<h2>All Tags</h2>
+
+<% tags.forEach(function(t){ %>
+  <h3>
+    <a href="<%= t.id %>">
+      <%= t.name %>
+    </a>
+    <a href="/tags/<%= t.id %>/edit" class="btn btn-warning">Edit</a>
+    <a href="/tags/<%= t.id %>" class="btn btn-danger delete-tag">Delete Tag</a>
+  </h3>
+<% }); %>

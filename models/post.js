@@ -9,6 +9,9 @@ module.exports = function(sequelize, DataTypes) {
       associate: function(models) {
         models.post.belongsTo(models.author);
         models.post.hasMany(models.comment);
+        models.post.belongsToMany(models.tag, {
+          through: models.posts_tags
+        });
       }
     }
   });

@@ -1,0 +1,9 @@
+<h2>Edit Tag</h2>
+
+<form class="edit-tag" action="/tags/<%= tag.id %>" method="post">
+  <div class="">
+    <label for="name">Name</label>
+    <input type="text" name="name" value="<%= tag.name %>">
+    <input type="submit" class="btn btn-success" value="Submit Change">
+  </div>
+</form>
