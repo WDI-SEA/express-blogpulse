@@ -8,6 +8,14 @@
 
 <hr />
 
+<strong>Tags</strong>
+
+<% post.tags.forEach(function(t){ %>
+  <a href="/tags/<%= t.id %>">
+    #<%= t.name %>
+  </a>
+<% }); %>
+
 <form method='POST' action='/posts/<%= post.id %>'>
       <input type='string' name='name' placeholder="Enter your name...">
       <input type='text' name='content' placeholder="Enter your comment...">

@@ -1,17 +1,50 @@
 var express = require('express');
 var db = require('../models');
+var async = require('async');
 var router = express.Router();
+
 
 router.use(express.static(__dirname + '/public/'));
 
 // POST /posts - create a new post
+//ADD IN TAGS
 router.post('/', function(req, res) {
+  //change my comma seperated tags to an array of tags
+  //this would've come from user input for new tags
+  var tags = [];
+  if(req.body.tags) {
+    tags = req.body.tags.split(','); //split up that string into an array
+  }
   db.post.create({
     title: req.body.title,
     content: req.body.content,
     authorId: req.body.authorId
   })
   .then(function(post) {
+    //handle adding the tags if there are any'
+    if(tags.length > 0){
+      //add some tags
+      //make a looop through the tag array:
+                // (array, iterator loop function, function )
+      async.forEach(tags, function(t, callback){
+        //this is the iterator function
+        //add the tag to the tags table (step 1 in loop)
+        db.tag.findOrCreate({
+          where: {name: t.trim()} //trim removes the white space (spaces in hashtag)
+        }).spread(function(newTag, wasCreated){
+          //then add the relationship betweent the post & the tag in t the posts_tags table (step 2 in loop)
+          post.addTag(newTag).then(function(){//model1.addModel2(instanceOfModel2);
+            callback(); //this says that it's done!
+          });
+        });
+      }, function(){
+        //this is the function tht runs when everything is resolved
+        //redirect to post page
+        res.redirect('/');
+      });
+    } else {
+      res.redirect('/');
+    }
     res.redirect('/');
   })
   .catch(function(error) {
@@ -50,7 +83,7 @@ router.get('/new', function(req, res) {
 router.get('/:id', function(req, res) {
   db.post.find({
     where: { id: req.params.id },
-    include: [db.author,db.comment]
+    include: [db.author,db.comment,db.tag]
   })
   .then(function(post) {
     if (!post) throw Error();
