@@ -1,0 +1,13 @@
+<h2>All TAGS MATTER</h2>
+
+
+<% tags.forEach(function(t) { %>
+  <h3>
+    <a href="<%= t.id %>">
+      <%= t.name %>
+    </a>
+    <a href="/tags/<%=t.id%>" class="btn btn-danger delete-tag">
+      DELETE
+    </a>
+  </h3>
+<% }) %>

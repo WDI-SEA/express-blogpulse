@@ -6,12 +6,23 @@
 
 <p><%= post.content %></p>
 
+<strong>Tags:</strong>
+
+<% post.tags.forEach(function(t) { %>
+  <a href="/tags/<%=t.id%>">
+    #<%= t.name %>
+    </a>
+<% }) %>
+
 <h3>Comments</h3>
 <% post.comments.forEach(function (comment) { %>
   <h4><%= comment.name %></h4>
   <p><%= comment.content %></p>
 <% }); %>
-<h6></h6>
+
+
+
+
 <hr />
 
 <h5>Add a Comment</h5>
