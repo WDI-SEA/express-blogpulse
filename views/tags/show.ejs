@@ -1,0 +1,13 @@
+<h2>#<%= tag.name %></h2>
+
+<hr>
+
+<h3>Associated Posts</h3>
+
+<% tag.posts.forEach(function(p) { %>
+	<h4>
+		<a href="/posts/<%= p.id%>">
+		<%= p.title %> by <%= p.authorId%>
+		</a>
+	</h4>
+<% }); %>

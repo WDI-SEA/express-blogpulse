@@ -8,7 +8,7 @@ var app = express();
 
 rowdy.begin(app);
 
-app.set('view engine', 'ejs');
+app.set('view engine', 'ejs');  //ejs is only used wehn we use 'render'
 
 app.use(require('morgan')('dev'));
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -35,6 +35,7 @@ app.get('/', function(req, res) {
 // bring in authors and posts controllers
 app.use('/authors', require('./controllers/authors'));
 app.use('/posts', require('./controllers/posts'));
+app.use('/tags', require('./controllers/tags')); //we have a dot in the front so that it doesn't try to look for a node module
 
 var server = app.listen(process.env.PORT || 3000, function() {
   rowdy.print();

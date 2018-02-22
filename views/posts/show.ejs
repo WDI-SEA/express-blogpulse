@@ -8,6 +8,14 @@
 
 <hr />
 
+<strong>Tags: </strong>
+
+<% post.tags.forEach(function(t){ %>
+  <a href="/tags/<%= t.id%>">
+    #<%= t.name%>
+  </a>
+<% }); %> 
+
 
 <form action="/posts/<%=post.id%>/comments" method="POST">
   <div class="form-group">
