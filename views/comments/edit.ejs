@@ -1,0 +1,16 @@
+
+<form class="put-form" action="/comments/update/<%= comment.id %>" method="post">
+  <ul class="list-group">
+    <li class="list-group-item">Comment ID: <%= comment.id %></li>
+    <li class="list-group-item">Comment By: <%= comment.name %></li>
+    <li class="list-group-item">
+      <input type="text" value="<%= comment.content %>">
+      <!-- <a class="update-item" href="/comments/<%= comment.id %>/edit">Oops...!?</a> -->
+    </li>
+    <li class="list-group-item">Posted on: <%= moment(comment.createdAt).calendar() %></li>
+    <li class="list-group-item">
+      <a class="delete-item" href="/comments/delete/<%= comment.id %>">Destroy</a>
+    </li>
+  </ul>
+  <input type="submit" class="btn btn-primary" value="Change Your Opinion">
+</form>

@@ -20,6 +20,16 @@ router.post('/', function(req, res) {
   });
 });
 
+// GET
+router.get('/:id/edit', function(req, res){
+  db.comment.findOne({
+    where: { id:req.params.id }
+  })
+  .then(function(comment){
+    res.render('comments/edit', {comment:comment});
+  });
+});
+
 // DELETE
 router.delete('/delete/:id', function(req,res){
   // console.log('in delete/id path');
@@ -37,8 +47,10 @@ router.delete('/delete/:id', function(req,res){
 
 // PUT
 router.put('/update/:id', function(req,res){
-  db.comment.findById(req.body.id)
+  // console.log(req.params.id);
+  db.comment.findById(req.params.id)
   .then(function(comment){
+    console.log(comment);
     db.comment.update({
       content:req.body.content
     },{

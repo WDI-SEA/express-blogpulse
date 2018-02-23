@@ -2,7 +2,7 @@
 
 <% tags.forEach(function(t){ %>
   <h3>
-    <a href="<%= t.id %>">
+    <a href="/tags/<%= t.id %>">
       <%= t.name %>
     </a>
     <a href="/tags/<%= t.id %>/edit" class="btn btn-warning">Edit</a>

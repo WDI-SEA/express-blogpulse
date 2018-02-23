@@ -37,6 +37,9 @@ router.put('/:id', function(req,res){
       name: req.body.name
     },{
       where: {id:req.params.id}
+    }).then(function(tag){
+      req.method = 'GET';
+      res.redirect('/tags/'+ req.params.id);
     });
 });
 

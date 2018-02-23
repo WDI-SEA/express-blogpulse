@@ -21,9 +21,8 @@
           <li class="list-group-item">Comment ID: <%= comment.id %></li>
           <li class="list-group-item">Comment By: <%= comment.name %></li>
           <li class="list-group-item">
-            <!-- <a class="update-item" href="/comments/update/<%= comment.id %>">Oops...!?</a> -->
             <p><%= comment.content %></p>
-            <a data-toggle="modal" data-target="#updateModal" class="update-item" href="#">Oops...can't spell - Edit Post?</a>
+            <a class="update-item" href="/comments/<%= comment.id %>/edit">Oops...!?</a>          
           </li>
           <li class="list-group-item">Posted on: <%= moment(comment.createdAt).calendar() %></li>
           <li class="list-group-item">
@@ -43,30 +42,5 @@
       <input type="submit" class="btn btn-primary" value="What's Your Opinion">
     </form>
 
-    <!-- add form section for edit comments -->
-    <div class="modal fade" id="updateModal" tabindex="-1" role="dialog">
-      <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title">Edit Your Post</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              <form class="comment-input" action="/comments" method="post">
-                <input type="text" name="name" >
-                <input type="text" name="content">
-                <input type="hidden" name="postId" value="<%= post.id %>">
-                <input type="submit" value="What's Your Opinion">
-              </form>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-primary">Save changes</button>
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-            </div>
-          </div>
-        </div>
-      </div>
 
     <a href="/">&larr; Back Home</a>

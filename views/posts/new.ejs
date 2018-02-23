@@ -14,6 +14,7 @@
       <% }); %>
     </select>
     <p>If your name doesn't show up, please <a href="/authors/new">sign up to be an author.</a></p>
+    <a data-toggle="modal" data-target="#updateModal" class="update-item" href="#">Create Account (using Modal)</a>
   </div>
 
   <div class="form-group">
@@ -28,3 +29,40 @@
 
   <input type="submit" class="btn btn-primary">
 </form>
+
+<!-- add form section for new account -->
+<div class="modal fade" id="updateModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Sign up for BlogPulse</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form action="/authors" method="POST">
+            <div class="form-group">
+              <label for="firstName">First Name</label>
+              <input type="text" class="form-control" id="firstName" name="firstName" required>
+            </div>
+
+            <div class="form-group">
+              <label for="lastName">Last Name</label>
+              <input type="text" class="form-control" id="lastName" name="lastName" required>
+            </div>
+
+            <div class="form-group">
+              <label for="bio">Bio</label>
+              <textarea type="text" class="form-control" id="bio" name="bio" required></textarea>
+            </div>
+            <input type="submit" class="btn btn-primary">
+          </form>
+        </div>
+        <div class="modal-footer">
+          <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </div>
