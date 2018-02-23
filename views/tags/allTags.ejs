@@ -1,0 +1,17 @@
+<h2>ALL TAGS</h2>
+
+<% if(tags.length < 1) { %>
+  <p class="text-info">No tags yet. View a post to add some tags!</p>
+<% } else { %>
+<% tags.forEach(function(t) { %>
+  <h3>
+    <a href="<%= t.id %>">
+      <%= t.name %>
+    </a>
+    <a href="/tags/<%= t.id %>/edit" class="btn btn-warning">Edit?</a>
+    <a href="/tags/<%= t.id %>" class="btn btn-danger delete-tag">
+      Delete?
+    </a>
+  </h3>
+  <% }) %>
+<% }; %>

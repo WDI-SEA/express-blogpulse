@@ -1,21 +1,19 @@
 <div class="row">
-  <div class="col-sm-8">
+  <div class="col-sm-10">
     <h1>Latest Posts from BlogPulse</h1>
 
     <% posts.forEach(function(post) { %>
       <div class="well">
         <h2>
-          <a href="/posts/<%= post.id %>"><%= post.title %></a>
-          <small>by <%= post.author.getFullName() %></small>
+          <a href="/posts/<%= post.id %>" class="text-success"><%= post.title %></a>
+          <h4>by <%= post.author.getFullName() %></h4>
         </h2>
-        <p>
-          <strong><%= moment(post.createdAt).calendar() %></strong>
-        </p>
+        <p class="text-muted"><%= moment(post.createdAt).calendar() %></p>
       </div>
     <% }); %>
 
   </div>
-  <div class="col-sm-4">
+  <div class="col-sm-2">
     <h2>About</h2>
     <p>BlogPulse is an up-and-coming player in the global media market,
     providing user-generated content across all topics.</p>

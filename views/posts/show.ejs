@@ -8,28 +8,49 @@
 
 <br />
 
+<strong>Tags:</strong>
+<% if(post.tags.length < 1) { %>
+  <p class="text-info">No tags yet. Be the first to add some tags!</p>
+<% } else { %>
+<% post.tags.forEach(function(t) { %>
+  <a href="/tags/<%= t.id %>">
+    #<%= t.name %>
+  </a>
+  <% }) %>
+<% }; %>
+
 <hr />
+
 <h4>Comments:</h4>
 <% if(post.comments.length < 1) { %>
-  <p>Be the first to comment!</p>
+  <p class="text-info">No comments yet. Be the first to comment!</p>
 <% } else { %>
 <% post.comments.forEach(function(comment){ %>
 
 
-<p><span><%= comment.content %></span></p>
-<p><strong>- <%= comment.name %>: </strong></p>
+<p class="text-info"><span><%= comment.content %></span></p>
+<p class="text-info"><strong>- <%= comment.name %></strong></p>
+<p class="text-muted"><%= moment(comment.createdAt).calendar() %></p>
+
 <br />
 <% }); %>
 <% } %>
 
 <hr />
 
-<h5>Add a comment</h5>
-<form method="POST" action="/posts/<%= post.id %>/comments">
-  <input type="text" name="name" placeholder="Enter your name..." />
-  <input type="text" name="content" placeholder="Enter your comment..." />
-  <input type="hidden" name="postId" value="<%= post.id %>">
-  <input type="submit" value="Add" />
+<h4>Add a comment:</h4>
+<br />
+<form method="POST" class="form-horizontal" action="/posts/<%= post.id %>/comments">
+  <div class="form-group">
+    <label for="name">Name</label>
+    <input type="text" id="name" class="form-control" name="name" placeholder="Enter your name..." />
+    <br />
+    <label for="content">Comment</label>
+    <input type="text" id="content" rows="3" class="form-control" name="content" placeholder="Enter your comment..." />
+    <input type="hidden" name="postId" value="<%= post.id %>">
+    <br />
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </div>
 </form>
 
 <hr />
