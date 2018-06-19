@@ -10,12 +10,14 @@
 
 <a href="/">&larr; Back Home</a>
 
-<form method="post" action='/'>
-  <label>Comment
-    <textarea type="text" name="comment"></textarea>
+<form method="post" action='/posts/<%= post.id %>/comments'>
+  <label>Name</label>
+    <input type="text" name="name">
+  <label>Comment</label>
+    <textarea type="text" name="content"></textarea>
   <button type="submit">Submit Comment</button>
 </form>
 
 <% post.comments.forEach(function(comment) { %>
-     <p><%= comment.name %></p>
+     <p><%= comment.name %> <%= comment.content %></p>
 <% }); %>
