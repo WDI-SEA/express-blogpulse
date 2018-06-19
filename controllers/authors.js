@@ -4,11 +4,9 @@ var router = express.Router();
 
 // GET /authors - display all authors
 router.get('/', function(req, res) {
-  db.author.findAll()
-    .then(function(authors) {
+  db.author.findAll().then(function(authors) {
       res.render('authors/index', { authors: authors });
-    })
-    .catch(function(error) {
+    }).catch(function(error) {
       res.status(400).render('main/404');
     });
 });
@@ -19,11 +17,9 @@ router.post('/', function(req, res) {
     firstName: req.body.firstName,
     lastName: req.body.lastName,
     bio: req.body.bio
-  })
-    .then(function(author) {
+  }).then(function(author) {
       res.redirect('/authors');
-    })
-    .catch(function(error) {
+    }).catch(function(error) {
       res.status(400).render('main/404');
     });
 });
@@ -38,12 +34,10 @@ router.get('/:id', function(req, res) {
   db.author.find({
     where: { id: req.params.id },
     include: [db.post]
-  })
-    .then(function(author) {
+  }).then(function(author) {
       if (!author) throw Error();
       res.render('authors/show', { author: author });
-    })
-    .catch(function(error) {
+    }).catch(function(error) {
       res.status(400).render('main/404');
     });
 });

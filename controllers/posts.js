@@ -8,22 +8,18 @@ router.post('/', function(req, res) {
     title: req.body.title,
     content: req.body.content,
     authorId: req.body.authorId
-  })
-  .then(function(post) {
+  }).then(function(post) {
     res.redirect('/');
-  })
-  .catch(function(error) {
+  }).catch(function(error) {
     res.status(400).render('main/404');
   });
 });
 
 // GET /posts/new - display form for creating new posts
 router.get('/new', function(req, res) {
-  db.author.findAll()
-  .then(function(authors) {
+  db.author.findAll().then(function(authors) {
     res.render('posts/new', { authors: authors });
-  })
-  .catch(function(error) {
+  }).catch(function(error) {
     res.status(400).render('main/404');
   });
 });
@@ -33,12 +29,10 @@ router.get('/:id', function(req, res) {
   db.post.find({
     where: { id: req.params.id },
     include: [db.author, db.comment]
-  })
-  .then(function(post) {
+  }).then(function(post) {
     if (!post) throw Error();
     res.render('posts/show', { post: post });
-  })
-  .catch(function(error) {
+  }).catch(function(error) {
     res.status(400).render('main/404');
   });
 });
