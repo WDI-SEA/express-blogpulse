@@ -1,0 +1,28 @@
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+  }
+
+main {
+  flex: 1 0 auto;
+}
+
+.post {
+	padding: 8px;
+	margin: 8px 0;
+	border: 3px solid #9EC5D4;
+	border-radius: 10px;
+}
+
+.comment {
+	padding: 2px 6px;
+	margin: 8px 0;
+	background-color: #E4E8EB;
+	border-radius: 10px;
+}
+
+.comment-content {
+	display: inline-block;
+	margin-right: 10px;
+}

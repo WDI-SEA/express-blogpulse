@@ -10,11 +10,13 @@
 
 <h3>Comments</h3>
 
+<div class="comment">
 <% post.comments.forEach(function(comment){ %> 
   <h5><%= comment.name %></h5>
-  <p><%= comment.content %></p>
-  <a class="delete btn red" href="/comments/<%= comment.id %>" id="<%= post.id %>">Delete</a>
+  <p class="comment-content"><%= comment.content %></p>
+  <a class="comment-content delete btn red" href="/comments/<%= comment.id %>" id="<%= post.id %>"><i class="material-icons">delete</i></a>
 <% }); %>
+</div>
 
 <hr />
 
@@ -27,7 +29,7 @@
   <label>Content<br>
     <input type="text" name="content">
   </label><br>
-  <input class="btn" type="submit">
+  <input class="btn green" type="submit">
 </form>
-
+<br>
 <a href="/">&larr; Back Home</a>
