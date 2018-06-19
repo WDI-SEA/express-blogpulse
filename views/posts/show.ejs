@@ -8,22 +8,18 @@
 
 <hr />
 
-<form action="/posts" method="POST">
+<form action="/comments" method="POST">
+    <input type="hidden" name="postId" value="<%= post.id %>">
     <input type="text" name="name" placeholder="Name?">
     <input type="text" name="content" placeholder="Comment?">
     <input type="submit" value="Add Comment!">
 </form>
-
 <br>
-
-<h2>Comments:</h2>
-<h3>Comment name loop</h3>
-<p>Comment content loop</p>
-<p>These are my abilities:</p>
-      <ul>
-        <% comments.name.forEach(function(comment) { %>
-          <li><%= comment.name %></li>
-        <% }); %>
-      </ul>
+  <% post.comments.forEach(function(comment) { %>
+    <div class="well">
+    <h3><%= comment.content %></h3>
+    <p> - <%= comment.name %> </p>
+    </div>
+  <% }); %>
 
 <a href="/">&larr; Back Home</a>
