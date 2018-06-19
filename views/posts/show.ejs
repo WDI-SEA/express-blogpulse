@@ -7,23 +7,27 @@
 <p><%= post.content %></p>
 
 <hr />
+	<% post.comments.forEach(function(comment, i) { %>
+		<div class="well comment-box">
+			<h3><%= post.comments[i].name %></h3>
+			<hr />
+			<p><%= post.comments[i].content %></p>
+		</div>
+	<% }) %>
 
-<% post.comments.forEach(function(comment, i) { %>
-	<p><%= post.comments[i].name %></p>
-	<p><%= post.comments[i].content %></p>
-<% }) %>
-
-<form method="POST" action="/posts/<%= post.id %>">
-	<label>Name
-		<input type="text" name="name" placeholder="Name...">
-	</label>
+<div class="well">
+	<form method="POST" action="/posts/<%= post.id %>">
+		<label>Name
+			<input type="text" name="name" placeholder="Name...">
+		</label>
+		<br />
+		<label>Content
+			<input type="text" name="content">
+		</label>
+		<br />
+		<input type='hidden' name='postId' value='<%= post.id %>'>
+		<button type="submit">Submit Comment</button>
+	</form>
 	<br />
-	<label>Content
-		<input type="text" name="content">
-	</label>
-	<br />
-	<input type='hidden' name='postId' value='<%= post.id %>'>
-	<button type="submit">Submit Comment</button>
-</form>
-<br />
+</div>
 <a href="/">&larr; Back Home</a>
