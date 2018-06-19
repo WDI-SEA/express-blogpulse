@@ -55,7 +55,7 @@ router.post('/:id/comments/', function(req, res) {
       postId: req.params.id
     })
     .then(function(post) {
-      res.redirect('/');
+      res.redirect('/posts/' + req.params.id);
     })
     .catch(function(error) {
       res.status(400).render('main/404');
