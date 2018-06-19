@@ -1,0 +1,44 @@
+body {
+  background-color: rgb(39, 23, 58);
+}
+
+.navbar-default, .navbar-brand{
+  background-color: rgb(25, 15, 37);
+  color: white !important;
+  border: none;
+  border-radius: 0;
+}
+
+.navbar-nav>li>a {
+  color: rgb(228, 228, 228) !important;
+}
+
+.navbar-nav>li>a:active {
+  color: rebeccapurple !important;
+}
+
+h1, h2, p, a, label {
+  color: rgb(231, 223, 245);
+}
+
+small {
+  color: rgb(210, 196, 248) !important;
+}
+
+a:hover {
+  color: rgb(25, 15, 37);
+}
+
+.well {
+  background-color: rgb(72, 52, 94);
+  border: none;
+}
+
+li {
+  color: rgb(210, 196, 248) !important;
+}
+
+input {
+  margin: 1rem;
+  border-radius: 2px;
+}
