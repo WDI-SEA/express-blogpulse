@@ -50,12 +50,10 @@ router.get('/:id', function(req, res) {
   db.post.find({
     where: { id: req.params.id },
     include: [db.author, db.comment]
-  })
-  .then(function(post) {
+  }).then(function(post) {
     if (!post) throw Error();
     res.render('posts/show', { post: post });
-  })
-  .catch(function(error) {
+  }).catch(function(error) {
     res.status(400).render('main/404');
   });
 });
