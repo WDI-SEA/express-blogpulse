@@ -8,4 +8,23 @@
 
 <hr />
 
+<h4>Comments</h4>
+ <% post.comments.forEach( function(comment) { %>
+  <blockquote>
+    <h4 class="text-primary">
+      <%= comment.name %>
+    </h4>
+    <p class="text-muted"><%= comment.content %></p>
+  </blockquote>
+<% }) %>
+
+<h4>Post a Comment</h4>
+<form action="/comments" method="POST">
+  <div class="form-group">
+    <label for="name">Who are you?</label><input class="form-control" type="text" name="name"><br> 
+    <label for="content">What do you have to say?</label><input class="form-control" type="text" name="content"><br>
+    <input type="submit" class="btn btn-danger" value="Say that thing">
+  </div>
+</form>
+
 <a href="/">&larr; Back Home</a>
