@@ -1,4 +1,9 @@
 $(document).ready(function() {
+
+  $('.sign-up').click(function() {
+    $('#myModal').modal('toggle');
+  });
+
   $('.edit-form').on('submit', function(e) {
     e.preventDefault;
     var newData = $(this).serialize;

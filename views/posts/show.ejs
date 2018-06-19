@@ -5,11 +5,12 @@
 </p>
 
 <p><%= post.content %></p>
-<ul>
   <% post.comments.forEach(function(comment) { %>
-    <li class="comment"><%= comment.content %> - <%= comment.name %></li>
+    <div class="well">
+      <h3><%= comment.content %></h3>
+      <p class="comment"> - <%= comment.name %></p>
+    </div>
   <% }); %>
-</ul>
 <hr />
 <p>Make a comment:</p>
 <form action="/posts/<%= post.id %>/comments" method="POST">
@@ -18,4 +19,4 @@
   <input type="submit" class="btn btn-primary" value="Submit Comment!" />
 </form>
 <hr />
-<a href="/">&larr; Back Home</a>
+<a href="/">&larr; Back Home</a>&nbsp;<span class="glyphicon glyphicon-home" aria-hidden="true"></span>

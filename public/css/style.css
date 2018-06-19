@@ -1,5 +1,6 @@
 body {
   background-color: rgb(39, 23, 58);
+  color: rgb(231, 223, 245) !important;
 }
 
 .navbar-default, .navbar-brand{
@@ -17,7 +18,7 @@ body {
   color: rebeccapurple !important;
 }
 
-h1, h2, p, a, label {
+h1, h2, h3, p, a, label, span {
   color: rgb(231, 223, 245);
 }
 
