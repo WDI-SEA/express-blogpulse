@@ -1,0 +1,14 @@
+<h1>Tag: <%= tag.name %></h1>
+
+<h2>Posts</h2>
+
+<% posts.forEach(function(post) { %>
+  <div class="well">
+    <h3>
+      <a href="/posts/<%= post.id %>"><%= post.title %></a>
+    </h3>
+  </div>
+<% }); %>
+<hr/>
+<a href="/">&larr; Back Home</a>&nbsp;<span class="glyphicon glyphicon-home" aria-hidden="true"></span>
+

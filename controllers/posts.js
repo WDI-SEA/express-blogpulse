@@ -20,7 +20,14 @@ router.post('/', function (req, res) {
     content: req.body.content,
     authorId: req.body.authorId
   }).then(function (post) {
-    res.redirect('/');
+    db.tag.findOrCreate({
+      where: { name: req.body.tagName }
+    }).spread(function (tag, created) {
+      post.addTag(tag).then(function (tag) {
+        console.log(tag + 'added to ' + post);
+        res.redirect('/');
+      });
+    });
   }).catch(function (error) {
     console.log(error)
     res.status(400).render('main/404');
@@ -46,24 +53,24 @@ router.get('/:id/edit', function (req, res) {
 })
 
 // PUT /posts/:id - updates post 
-router.put('/:id', function(req, res) {
+router.put('/:id', function (req, res) {
   db.post.update({
     title: req.body.title,
     content: req.body.content,
     authorId: req.body.authorId
   }, {
-    where: {id: req.params.id}
-  }).then(function(data) {
-    console.log(data);
-    res.sendStatus(200);
-  });
+      where: { id: req.params.id }
+    }).then(function (data) {
+      console.log(data);
+      res.sendStatus(200);
+    });
 });
 
 // GET /posts/:id - display a specific post and its author
 router.get('/:id', function (req, res) {
   db.post.find({
     where: { id: req.params.id },
-    include: [db.author, db.comment]
+    include: [db.author, db.comment, db.tag]
   }).then(function (post) {
     if (!post) throw Error();
     res.render('posts/show', { post: post });

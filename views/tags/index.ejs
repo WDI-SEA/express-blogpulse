@@ -1,0 +1,15 @@
+<h1>Tags</h1>
+
+<% tags.forEach(function(tag) { %>
+  <div class="well">
+    <h2>
+      <a href="/tags/<%= tag.id %>">
+        <%= tag.name %>
+      </a>
+    </h2>
+  </div>
+<% }); %>
+
+<hr />
+<a href="/">&larr; Back Home</a>&nbsp;<span class="glyphicon glyphicon-home" aria-hidden="true"></span>
+

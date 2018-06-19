@@ -5,6 +5,14 @@
 </p>
 
 <p><%= post.content %></p>
+
+<p>Category Tags:</p>
+<ul style="display: inline;">
+  <% post.tags.forEach(function(tag) { %>
+    <li><%= tag.name %></li>
+  <%  }); %>
+</ul>
+
   <% post.comments.forEach(function(comment) { %>
     <div class="well">
       <h3><%= comment.content %></h3>

@@ -43,3 +43,12 @@ input {
   margin: 1rem;
   border-radius: 2px;
 }
+
+.btn-primary {
+  background-color: rgb(25, 15, 37);
+  border-color: rgb(231, 223, 245);
+}
+
+.btn-primary:hover {
+  background-color: rgb(231, 223, 245);
+}
