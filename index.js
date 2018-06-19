@@ -35,6 +35,8 @@ app.get('/', function(req, res) {
 // bring in authors and posts controllers
 app.use('/authors', require('./controllers/authors'));
 app.use('/posts', require('./controllers/posts'));
+// if you added a comments under controllers
+app.use('/comments', require('./controllers/comments'));
 
 var server = app.listen(process.env.PORT || 3000, function() {
   rowdy.print();

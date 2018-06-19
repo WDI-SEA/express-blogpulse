@@ -5,20 +5,39 @@
 </p>
 
 <p><%= post.content %></p>
-<a href="/">&larr; Back Home</a>
 
 <hr />
 
-<form action="/posts/<%= post.id %>/comments" method="post">
+<form method="POST" action="/comments">
+  <input type="hidden" name="postId" value="<%= post.id %>" />
+  <input type="text" name="name" placeholder="Your name..." />
+  <input type="text" name="content"  placeholder="Speak it!" />
+  <input type="submit" value="Comment!" />
+</form>
+
+<br>
+
+<% post.comments.forEach(function(comment) { %>
+<div class="well">
+  <h3><%= comment.content %></h3>
+  <p> - <%= comment.name %></p>
+</div>
+<% }); %>
+
+<a href="/">&larr; Back Home</a>
+
+
+
+<!-- <form action="/posts/<%= post.id %>/comments" method="post">
   <input type="text" name="name" placeholder="name">
   <input type="text" name="content" placeholder="your comment here">
   <button type="submit">Submit your comment</button>
-</form>
+</form> -->
 
-<hr />
+<!-- <hr /> -->
 
-<% post.comments.forEach(function(comment) { %>
+<!-- <% post.comments.forEach(function(comment) { %>
   <p><%= comment.content %></p>
-  <p>Coment by: <%= comment.name %></p>
+  <p>Comment by: <%= comment.name %></p>
   <hr />
-<% }); %>
+<% }); %> -->
