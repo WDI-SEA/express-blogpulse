@@ -26,11 +26,10 @@ router.post('/', (req,res) => {
 })
 
 router.get('/:id', (req,res) => {
-    db.tag.find({
-        where: {id: req.params.id},
-        include: [db.post]   
-    }).then( (tag) => {
-        res.render('tags/show', {tag})
+    db.tag.findById(req.params.id).then( (tag) => {
+        tag.getPosts().then( (posts) => {
+            res.render('tags/show', { tag: tag, posts: posts });
+        })
     })
 })
 
