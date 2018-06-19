@@ -8,15 +8,21 @@
 
 <hr />
 
-<form method="POST" action="/posts/:id">
+<% post.comments.forEach(function(comment, i) { %>
+	<p><%= post.comments[i].name %></p>
+	<p><%= post.comments[i].content %></p>
+<% }) %>
+
+<form method="POST" action="/posts/<%= post.id %>">
 	<label>Name
-		<input type="text" name="name">
+		<input type="text" name="name" placeholder="Name...">
 	</label>
 	<br />
 	<label>Content
 		<input type="text" name="content">
 	</label>
 	<br />
+	<input type='hidden' name='postId' value='<%= post.id %>'>
 	<button type="submit">Submit Comment</button>
 </form>
 <br />
