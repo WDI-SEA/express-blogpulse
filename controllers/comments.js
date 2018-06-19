@@ -2,6 +2,8 @@ var express = require('express');
 var db = require('../models');
 var router = express.Router();
 
+
+// POST -comment to a post
 router.post('/', function(req,res) {
     // determine post.id
     let postId = req.headers.referer.split('/')[4];
@@ -18,6 +20,23 @@ router.post('/', function(req,res) {
         })
     })
 
+})
+
+router.get('/', function(req,res) {
+    db.comment.findAll({
+        include: [db.post]
+    }).then( function(comments){
+        res.render('comments/index', {comments})
+    })
+})
+
+// DELETE - from admin page
+router.delete('/:id', function (req, res) {
+    db.comment.destroy({
+        where: { id: req.params.id }
+    }).then(function (data) {
+        res.sendStatus(200);
+    })
 })
 
 module.exports = router;
