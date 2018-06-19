@@ -4,13 +4,10 @@ module.exports = (sequelize, DataTypes) => {
     name: DataTypes.STRING,
     content: DataTypes.TEXT,
     postId: DataTypes.INTEGER
-  }, {
-    classMethods: {
-      associate: function(models) {
-        // associations can be defined here
-        models.comment.belongsTo(models.post);
-      }
-    }
-  });
+  }, {});
+  comment.associate = function(models) {
+    // associations can be defined here
+    models.comment.belongsTo(models.post);
+  };
   return comment;
 };
