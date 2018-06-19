@@ -32,9 +32,10 @@ app.get('/', function(req, res) {
   });
 });
 
-// bring in authors and posts controllers
+// bring in authors, posts and comment controllers
 app.use('/authors', require('./controllers/authors'));
 app.use('/posts', require('./controllers/posts'));
+app.use('/comments', require('./controllers/comments'));
 
 var server = app.listen(process.env.PORT || 3000, function() {
   rowdy.print();
