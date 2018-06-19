@@ -36,6 +36,29 @@ router.get('/new', function (req, res) {
   });
 });
 
+// GET /posts/:id/edit - display form for editing a post
+router.get('/:id/edit', function (req, res) {
+  db.post.find({
+    where: { id: req.params.id }
+  }).then(function (data) {
+    res.render('posts/edit', { post: data });
+  });
+})
+
+// PUT /posts/:id - updates post 
+router.put('/:id', function(req, res) {
+  db.post.update({
+    title: req.body.title,
+    content: req.body.content,
+    authorId: req.body.authorId
+  }, {
+    where: {id: req.params.id}
+  }).then(function(data) {
+    console.log(data);
+    res.sendStatus(200);
+  });
+});
+
 // GET /posts/:id - display a specific post and its author
 router.get('/:id', function (req, res) {
   db.post.find({
