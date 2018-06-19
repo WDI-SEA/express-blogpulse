@@ -8,8 +8,14 @@
 
 <hr />
 
-<a href="/">&larr; Back Home</a> -->
+<a href="/">&larr; Back Home</a>
 
-<!-- <%= post.comments.forEach(function(comment) { %>
+<form method="post" action='/'>
+  <label>Comment
+    <textarea type="text" name="comment"></textarea>
+  <button type="submit">Submit Comment</button>
+</form>
+
+<% post.comments.forEach(function(comment) { %>
      <p><%= comment.name %></p>
 <% }); %>
