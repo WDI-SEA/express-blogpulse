@@ -1,4 +1,16 @@
-
-<% posts.forEach(function(post) { %>
-  <p><%= post.title %> - <%= post.content %></p>
-<% }); %>
+<div class="row">
+  <div class="col-sm-8">
+    <h1>BlogPulse</h1>
+    <% posts.forEach(function(post) { %>
+      <div class="well">
+        <h2>
+          <a href="/posts/<%= post.id %>"><%= post.title %></a>
+          <small>by <%= post.author.getFullName() %></small>
+        </h2>
+        <p>
+          <strong><%= moment(post.createdAt).calendar() %></strong>
+        </p>
+      </div>
+    <% }); %>
+  </div>
+</div>
