@@ -28,11 +28,28 @@ router.get('/new', function(req, res) {
   });
 });
 
+// POST /posts/comments - add a new comment to a post
+router.post('/:id/comments', function(req, res) {
+   // find the current author
+  db.post.findById(req.params.id).then(function(post) {
+    // create a post specifically for that author
+    post.createComment({
+      name: req.body.name,
+      content: req.body.content,
+      postId: post.id
+    }).then(function(post) {
+      res.redirect('/posts/' + post.postId);
+    }).catch(function(error) {
+      res.status(400).render('main/404');
+    });
+  });
+});
+
 // GET /posts/:id - display a specific post and its author
 router.get('/:id', function(req, res) {
   db.post.find({
     where: { id: req.params.id },
-    include: [db.author]
+    include: [db.author, db.comment]
   })
   .then(function(post) {
     if (!post) throw Error();
