@@ -7,5 +7,32 @@
 <p><%= post.content %></p>
 
 <hr />
-
+<a class="edit-btn btn btn-primary" type="button" href="/posts/<%= post.id %>/edit">Edit This Post</a>
 <a href="/">&larr; Back Home</a>
+
+<h3>Comments</h3>
+<% post.comments.forEach(function(comment) { %>
+  <div class="well">
+  	<h5>User:</h5>
+    <h3><%= comment.name %></h3>
+    <h5>Comment:</h5>
+    <p><%= comment.content %></p>
+  </div>
+<% }); %>
+
+<hr />
+
+<h3>Add A Comment</h3>
+<form method="POST" action="/comments/<%= post.id %>">
+	<div class="form-group">
+	    <label for="title">Name</label>
+	    <input type="text" class="form-control" id="title" name="name" required>
+	  </div>
+
+	  <div class="form-group">
+	    <label for="content">Comment</label>
+	    <textarea type="text" class="form-control" id="content" name="content" required></textarea>
+  </div>
+
+  <input type="submit" class="btn btn-primary">
+</form>

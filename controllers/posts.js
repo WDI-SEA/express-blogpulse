@@ -28,11 +28,35 @@ router.get('/new', function(req, res) {
   });
 });
 
+// GET /posts/:id/edit - display edit post page
+router.get('/:id/edit', function(req, res) {
+  db.post.find({
+    where: {id: req.params.id},
+    include: [db.author]
+  }).then(function(post) {
+    res.render('posts/edit', {post: post})
+  });
+});
+
+// PUT /posts/:id - update post
+router.put('/:id', function(req, res) {
+  console.log('PUT IT ON YA')
+  db.post.update({
+    title: req.body.title,
+    content: req.body.content
+  }, {
+    where: {id: req.params.id}
+  }).then(function(data) {
+    res.send(data);
+  });
+});
+
+
 // GET /posts/:id - display a specific post and its author
 router.get('/:id', function(req, res) {
   db.post.find({
     where: { id: req.params.id },
-    include: [db.author]
+    include: [db.author, db.comment]
   })
   .then(function(post) {
     if (!post) throw Error();
