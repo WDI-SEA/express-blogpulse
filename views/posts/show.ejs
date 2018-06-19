@@ -6,6 +6,11 @@
 
 <p><%= post.content %></p>
 
+<h6>Category Tags</h6>
+  <% post.tags.forEach( function(tag) { %>
+  <p class="text-small"><a href="/tags/<%= tag.id %>"><%= tag.name %> </a></p>
+  <% }) %>
+
 <hr />
 
 <h4>Comments</h4>

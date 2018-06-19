@@ -22,6 +22,7 @@ router.post('/', function(req,res) {
 
 })
 
+// GET - moderator dash
 router.get('/', function(req,res) {
     db.comment.findAll({
         include: [db.post]

@@ -1,0 +1,7 @@
+<h1>TAG: <%= tag.name %> </h1>
+
+<ul>
+    <% tag.posts.forEach( (post) => { %>
+        <li><a href="/posts/<%= post.id %>"> <%= post.title%> </a> </li>
+    <% }) %>
+</ul>
