@@ -4,3 +4,12 @@
 	padding-top: 0;
 	border-radius: 2em;
 }
+
+.comment-box hr {
+	border-color: black;
+}
+
+#comment-field {
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
