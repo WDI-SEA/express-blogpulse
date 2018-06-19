@@ -13,12 +13,14 @@
 <% post.comments.forEach(function(comment){ %> 
   <h5><%= comment.name %></h5>
   <p><%= comment.content %></p>
+  <a class="delete btn red" href="/comments/<%= comment.id %>" id="<%= post.id %>">Delete</a>
 <% }); %>
 
 <hr />
 
 <h4>Comment on this post:</h4>
-<form method="POST" action="/comments/<%= post.id %>">
+<form method="POST" action="/comments/">
+  <input type="hidden" name="postId" value ="<%= post.id %>" >
   <label>Name<br>
     <input type="text" name="name">
   </label><br>
