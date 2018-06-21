@@ -16,10 +16,13 @@ router.post('/', function(req,res) {
             content: req.body.content
         }).then( function(data) {
             console.log(data);
+            if (!data) throw Error(); // ERROR HANDLING - THROW
             res.redirect('posts/' + postId)
+        }).catch ( function(error) { // ERROR CATCH
+            // res.redirect('posts/' + postId)
+            res.send(error.errors[0].message);
         })
     })
-
 })
 
 // GET - moderator dash
