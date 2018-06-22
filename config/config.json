@@ -5,12 +5,14 @@
     "dialect": "postgres"
   },
   "test": {
-    "database": "blogpulse_test",
+
+    "database": "blogpulse_development",
     "host": "127.0.0.1",
     "dialect": "postgres"
   },
   "production": {
-    "database": "blogpulse_production",
+
+    "database": "blogpulse_development",
     "host": "127.0.0.1",
     "dialect": "postgres"
   }

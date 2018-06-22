@@ -6,6 +6,31 @@
 
 <p><%= post.content %></p>
 
+<ul style="display: inline;">
+  <% post.tags.forEach(function(tag){ %>
+    <li><%= tag.name %></li>
+
+  <% }); %>
+</ul>
+
+
 <hr />
+
+
+
+<% post.comments.forEach(function(comment){ %>
+  <div class="well">
+    <h3><%= comment.content %></h3>
+    <p> - <%= comment.name %><p>
+  </div>
+<% }) %>
+
+
+<form method="POST" action="/comments">
+  <input type="hidden" name="postId" value="<%= post.id %>" />
+  <input type="text" name="name" placeholder="your name..."/>
+  <input type="text"  name="content" placeholder="Speack it"/>
+  <input type='submit' value="Comment!" />
+</form>
 
 <a href="/">&larr; Back Home</a>
