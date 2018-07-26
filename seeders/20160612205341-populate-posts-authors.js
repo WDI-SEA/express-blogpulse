@@ -37,7 +37,22 @@ module.exports = {
           createdAt: new Date(),
           updatedAt: new Date()
         }
-      ]);
+      ], {returning: true}).then(function(posts) {
+        return queryInterface.bulkInsert('comments', [
+          { name: 'Reggie',
+            content: 'I like eating nuts.',
+            postId: posts[0].id,
+            createdAt: new Date(),
+            updatedAt: new Date()
+          },
+          { name: 'Brian',
+            content: 'I used to be a teacher, too. Small world.',
+            postId: posts[0].id,
+            createdAt: new Date(),
+            updatedAt: new Date()
+          }
+        ]);
+      });
     });
   },
 
