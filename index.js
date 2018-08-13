@@ -21,8 +21,18 @@ app.use(function(req, res, next) {
   next();
 });
 
+// middleware to log time, url and message to console
+var logger = function(req, res, next) {
+  req.log = function(message) {
+    console.log(new Date(), req.url, message);
+  }
+  next();
+}
+app.use(logger);
+
 // GET / - display all posts and their authors
 app.get('/', function(req, res) {
+  req.log('YAY! WE DID IT!');
   db.post.findAll({
     include: [db.author]
   }).then(function(posts) {
@@ -37,8 +47,10 @@ app.use('/authors', require('./controllers/authors'));
 app.use('/posts', require('./controllers/posts'));
 // if you added a comments under controllers
 app.use('/comments', require('./controllers/comments'));
+app.use('/tags', require('./controllers/tags'));
 
-var server = app.listen(process.env.PORT || 3000, function() {
+
+var server = app.listen(process.env.PORT || 3001, function() {
   rowdy.print();
 });
 

@@ -16,3 +16,6 @@ router.post('/', function(req, res) {
 });
 
 module.exports = router;
+
+
+// make tages to assign to categories

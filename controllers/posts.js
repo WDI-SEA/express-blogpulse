@@ -4,13 +4,22 @@ var router = express.Router();
 
 // POST /posts - create a new post
 router.post('/', function(req, res) {
+  // First, create a new post
   db.post.create({
     title: req.body.title,
     content: req.body.content,
     authorId: req.body.authorId
-  })
-  .then(function(post) {
-    res.redirect('/');
+  }).then(function(post) {
+    // Then, create/find a new tag...
+    db.tag.findOrCreate({
+      where: {name: req.body.tagName}
+    }).spread(function(tag, created) {
+      // Add that tag to the post from above...
+      post.addTag(tag).then(function(tag) {
+        console.log(tag + 'added to ' + post);
+        res.redirect('/');
+      });
+    });
   })
   .catch(function(error) {
     res.status(400).render('main/404');
@@ -32,7 +41,7 @@ router.get('/new', function(req, res) {
 router.get('/:id', function(req, res) {
   db.post.find({
     where: { id: req.params.id },
-    include: [db.author, db.comment]
+    include: [db.author, db.comment, db.tag]
   })
   .then(function(post) {
     if (!post) throw Error();
