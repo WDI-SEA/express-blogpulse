@@ -28,11 +28,11 @@ router.get('/new', function(req, res) {
   });
 });
 
-// GET /posts/:id - display a specific post and its author
+// GET /posts/:id - display a specific post, its author + comments
 router.get('/:id', function(req, res) {
   db.post.find({
     where: { id: req.params.id },
-    include: [db.author]
+    include: [db.author, db.comment] 
   })
   .then(function(post) {
     if (!post) throw Error();
@@ -41,6 +41,20 @@ router.get('/:id', function(req, res) {
   .catch(function(error) {
     res.status(400).render('main/404');
   });
+
 });
+
+router.post('/add', function(req,res) {
+  //res.send(req.body.content);
+  db.comment.findOrCreate({
+    where: { content: req.body.content },
+    defaults: { name: req.body.name, content: req.body.content, postId: req.body.postId }
+  }).spread(function(comment, created) {
+    res.redirect(`/posts/${req.body.postId}`);
+
+  });
+  console.log('posting a comment to the database', req.body);
+});
+
 
 module.exports = router;
