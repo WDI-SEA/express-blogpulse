@@ -7,25 +7,27 @@
 <p><%= post.content %></p>
 
 <hr />
-<h3>Comments</h3>
+<h4>Comments</h4>
 
-<ul>
 	<% post.comments.forEach(function(comment){ %>
-		<li><strong><%= comment.name %></strong><br> 
-			<%= comment.content %>
-		</li>
-		<br>
+	<div class="well">
+		<%= comment.content %><br>
+		<em>—<%= comment.name %></em><br> 
+		</div>
+		
 	<% }) %>
-</ul>
 
-<h3>Comment on this post</h3>
+<h4>Comment on this post</h4>
 <form method="POST" action="/posts/add">
-	<label>Name:</label>
-	<input type="text" name="name"><br>
-	<label>Content:</label>
-	<input type="text" name="content">
-	<input type="hidden" postId="<%= post.id %>" name="postId" value="<%= post.id %>">
-	<button type="submit">add comment</button>
+	<div class="form-group">
+		<label>Name:</label>
+		<input type="text" name="name" class="form-control"><br>
+		<label>Content:</label>
+		<textarea type="text" class="form-control" id="content" name="content" required></textarea>
+		<input type="hidden" postId="<%= post.id %>" name="postId" value="<%= post.id %>">
+	</div>
+
+	<button type="submit" class="btn btn-primary">add comment</button>
 </form>
 
 
