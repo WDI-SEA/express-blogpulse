@@ -7,15 +7,26 @@
 }
 
 .commentFormHeader {
-	margin: 20px, 0, 0 20px;
+	margin: 20px 0 0 0;
 }
 
 #name {
 	border: 1px solid grey;
 	display: block;
+	width: 100%;
 }
 
+label {
+	margin: 25px 0;
+}
 #comment {
 	display: block;
 	height: 100px;
+	margin: auto;
+	border: 1px solid grey;
+	width: 100%;
+}
+
+.submitBtn {
+	margin-top: 20px;
 }
