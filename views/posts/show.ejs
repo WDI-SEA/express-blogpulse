@@ -7,5 +7,32 @@
 <p><%= post.content %></p>
 
 <hr />
+<h3>Comments</h3>
+
+<ul>
+<% comment.forEach((com) => { %>
+	<li class="commentlist"> <%= com.content %>
+		<br><strong>-<%= com.name %></strong>
+	</li>
+<% }) %> 
+
+</ul>
+
+<h5 class="commentFormHeader">Comment on this post:</h5>
+<form method="POST" action="/posts/<%= post.id %>/comments">
+	<div>
+		<label for="name">Name: </label>
+		<input type="text" name="name" id="name">
+	</div>
+	<div>
+		<label for="comment">Comment: </label>
+		<input type="text" name="content" id="comment">
+	</div>
+	<input type="submit" value="Submit your comment!">
+</form>
+
+<hr />
+
+
 
 <a href="/">&larr; Back Home</a>

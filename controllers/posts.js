@@ -28,19 +28,39 @@ router.get('/new', function(req, res) {
   });
 });
 
+// Add new comments to each blog post
+router.post('/:id/comments', (req, res) => {
+  db.comment.create({
+    name: req.body.name,
+    content: req.body.content,
+    postId: req.params.id
+  })
+  .then((comment) => {
+    res.render('show', {comment: comment});
+    res.redirect('/posts/'+req.params.id);
+  })
+  .catch((err) => {
+    res.status(400).render('main/404');
+  });
+});
+
 // GET /posts/:id - display a specific post and its author
 router.get('/:id', function(req, res) {
   db.post.find({
     where: { id: req.params.id },
-    include: [db.author]
+    include: [db.author, db.comment]
   })
   .then(function(post) {
     if (!post) throw Error();
-    res.render('posts/show', { post: post });
+    res.render('posts/show', { post: post, comment: post.comments});
   })
   .catch(function(error) {
     res.status(400).render('main/404');
   });
 });
+
+
+
+
 
 module.exports = router;
