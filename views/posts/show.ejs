@@ -8,4 +8,24 @@
 
 <hr />
 
+<div>
+	<label>Leave a Comment:</label>
+	<form method="POST" action="/comments">
+	<input type="text" name="name" placeholder="Your name">
+	<input type="text" name="content" placeholder="Write a comment">
+	<input type="hidden" name="postId" value="<%= post.id %>">
+	<input type="submit" value="Submit">
+	</form>
+</div>
+<ol>
+	<%post.comments.forEach(function(comment){%>
+	<li>
+		<label><%= comment.name %>:</label>
+		<p><%= comment.content %></p>
+	</li>
+	<%})%>
+</ol>
+
+
+
 <a href="/">&larr; Back Home</a>

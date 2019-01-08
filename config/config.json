@@ -1,16 +1,22 @@
 {
   "development": {
-    "database": "blogpulse_development",
+    "username": "postgres",
+    "password": "postgres",
+    "database": "blogzample",
     "host": "127.0.0.1",
     "dialect": "postgres"
   },
   "test": {
-    "database": "blogpulse_test",
+    "username": "postgres",
+    "password": "postgres",
+    "database": "blogzample",
     "host": "127.0.0.1",
     "dialect": "postgres"
   },
   "production": {
-    "database": "blogpulse_production",
+    "username": "postgres",
+    "password": "postgres",
+    "database": "blogzample",
     "host": "127.0.0.1",
     "dialect": "postgres"
   }
