@@ -6,6 +6,9 @@
     </p>
 
     <p><%= article.content %></p>
+    <a href="/articles/edit/<%= article.id %>" class="btn btn-info">
+      Edit Article
+    </a>
     <hr />
   <div class="container">
     <h3> Comment on this post </h3>
@@ -24,7 +27,7 @@
      <%} else { %>
       <h4>Be the first to review <%= article.title %>!</h4>
       <%  } %>
-  <br>      
+  <br>
    <a href="/">&larr; Back Home</a>
 
   </div>

@@ -1,6 +1,7 @@
 var express = require('express')
 var ejsLayouts = require('express-ejs-layouts')
 var db = require('./models')
+var methodOverride = require('method-override')
 var moment = require('moment')
 var rowdy = require('rowdy-logger')
 var app = express()
@@ -8,7 +9,7 @@ var app = express()
 rowdy.begin(app)
 
 app.set('view engine', 'ejs')
-
+app.use(methodOverride('_method'))
 app.use(require('morgan')('dev'))
 app.use(express.urlencoded({ extended: false }))
 app.use(ejsLayouts)

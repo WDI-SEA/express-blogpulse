@@ -17,6 +17,23 @@ router.post('/', function(req, res) {
   })
 })
 
+// PUT /articles
+router.put('/:id',(req,res)=>{
+  db.article.update(
+    req.body,
+    {
+     where: {id: req.params.id }
+     }
+  )
+  .then((updatedRows)=>{
+    console.log('its working', updatedRows);
+    res.redirect('/articles/' + req.params.id)
+  })
+  .catch((err)=>{
+    res.render('main/404')
+  })
+})
+
 // GET /articles/new - display form for creating new articles
 router.get('/new', function(req, res) {
   db.author.findAll()
@@ -27,6 +44,30 @@ router.get('/new', function(req, res) {
     res.status(400).render('main/404')
   })
 })
+//GET  /articles/edit/:id
+router.get('/edit/:id',(req,res) =>{
+  db.article.findOne({
+    where: { id:req.params.id}
+  })
+  .then((foundArticle) =>{
+    db.author.findAll()
+    .then((authors)=>{
+      res.render('articles/edit',{
+        article: foundArticle,
+        authors:authors
+      })
+    })
+    .catch((err)=>{
+      console.log(err)
+      res.render('main/404')
+    })
+  })
+  .catch((err)=>{
+    console.log('error in aticle/edit/:id',err)
+    res.render('main/404')
+  })
+})
+
 
 // GET /articles/:id - display a specific post and its author
 router.get('/:id', function(req, res) {
