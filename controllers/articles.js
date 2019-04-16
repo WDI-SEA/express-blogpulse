@@ -2,6 +2,7 @@ var express = require('express')
 var db = require('../models')
 var router = express.Router()
 
+
 // POST /articles - create a new post
 router.post('/', function(req, res) {
   db.article.create({
@@ -32,7 +33,7 @@ router.get('/new', function(req, res) {
 router.get('/:id', function(req, res) {
   db.article.findOne({
     where: { id: req.params.id },
-    include: [db.author]
+    include: [db.author, db.comment]
   })
   .then(function(article) {
     if (!article) throw Error()

@@ -13,6 +13,7 @@ app.use(require('morgan')('dev'))
 app.use(express.urlencoded({ extended: false }))
 app.use(ejsLayouts)
 app.use(express.static(__dirname + '/public/'))
+app.use ('/comments', require('./controllers/comments'))
 
 // middleware that allows us to access the 'moment' library in every EJS view
 app.use(function(req, res, next) {
