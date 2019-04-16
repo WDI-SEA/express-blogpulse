@@ -6,6 +6,54 @@
 
 <p><%= article.content %></p>
 
-<hr />
+<hr>
 
+<div>
+	<h4>Comments</h4>
+	<% if (article.comments && article.comments.length) { %>
+		<div>
+			<% article.comments.forEach((c) => { %>
+				<div class="well">
+					<p>&lsquo;<em><%= c.comment %></em>&rsquo;</p>
+					<p>&mdash;<strong><%= c.name%></strong></p>
+				</div>
+			<% }) %>
+		</div>
+		<% } else { %>
+			<h4>Be the first to leave a commment!</h4>
+		<% } %>
+</div>
+
+<div>
+	<h3>Comment on this post</h3>
+	<form method="POST" action="/comments">
+		<input type="hidden" name="articleId" value="<%= article.id %>">
+		<div class="form-group">
+			<label for="name">Your Name</label>
+			<input id="name" name="name" type="text" class="form-control" required>
+		</div>
+		<div class="form-group">
+	    <label for="comment">comment</label>
+	    <textarea type="text" class="form-control" id="comment" name="comment" required></textarea>
+	  </div>
+		<input type="submit" class="btn btn-primary" value="Leave Comment">
+	</form>
+</div>	
+<hr />
 <a href="/">&larr; Back Home</a>
+<hr>
+<hr>
+<hr>
+<div>
+	<h3>See a mistake? Edit this article</h3>
+	<form method="POST" action="/articles/?_method=PUT">
+	  <div class="form-group">
+		  <label for="content">Content</label>
+		  <textarea type="text" name="content" class="form-control" id="content"><%= article.content %></textarea>
+		</div>
+		<div class="form-group">
+		  <input type="hidden" name="id" value="<%= article.id %>">
+		  <input type="submit" class="btn btn-primary" value="Update Article">
+		</div>
+	</form>
+</div>
