@@ -4,5 +4,21 @@
 }
 
 .card{
-  text-align: center;
+  text-align: left;
+  height: 80px;
+  padding: 10px;
+  margin-top: 20px;
+}
+
+.commentCon{
+  border: 2px solid skyblue;
+  margin-top: 15px;
+}
+
+form{
+  padding: 10px;
+}
+
+.general{
+  margin-bottom: 15px;
 }

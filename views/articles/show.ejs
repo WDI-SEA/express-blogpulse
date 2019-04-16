@@ -1,37 +1,35 @@
-<h1><%= article.title %> <small>by <%= article.author.getFullName() %></small></h1>
+<div class="container general">
 
-<p>
-  <strong><%= moment(article.createdAt).calendar() %></strong>
-</p>
+  <h1><%= article.title %> <small>by <%= article.author.getFullName() %></small></h1>
+    <p>
+    <strong><%= moment(article.createdAt).calendar() %></strong>
+    </p>
 
-<p><%= article.content %></p>
+    <p><%= article.content %></p>
+    <hr />
+  <div class="container">
+    <h3> Comment on this post </h3>
 
-<hr />
+    <% if(article.comments && article.comments.length){ %>
+      <% article.comments.forEach((r)=>{ %>
 
-<a href="/">&larr; Back Home</a>
-
-<div class="container">
-  <h3> Comment on this post </h3>
-
-  <% if(article.comments && article.comments.length){ %>
-    <% article.comments.forEach((r)=>{ %>
-
-    <div class="card bg-info" style="width: 18rem;">
+    <div class="card bg-info" style="width: 80rem;">
        <div class="card-body">
           <h5 class="card-title"><%= r.name %></h5>
           <p class="card-text">  <%= r.content %></p>
-          <a href="#" class="card-link">Card link</a>
        </div>
     </div>
 
-    <%}) %>
-  <%} else { %>
-    <h4>Be the first to review <%= article.title %>!</h4>
-<%  } %>
+      <%}) %>
+     <%} else { %>
+      <h4>Be the first to review <%= article.title %>!</h4>
+      <%  } %>
+  <br>      
+   <a href="/">&larr; Back Home</a>
 
+  </div>
 
-</div>
-<div class="container">
+<div class="container commentCon">
   <h4> Add a new review</h4>
   <form  action="/articles" method="post">
     <input type="hidden" name="articleId" value="<%= article.id %>">
@@ -43,10 +41,8 @@
          <label for="content">Your comment</label>
          <textarea class="form-control" id="content" name="content" rows="3" placeholder="Your thoughts"></textarea>
        </div>
-       <div class="form-group row">
-          <div class="col-sm-10">
             <button type="submit" class="btn btn-primary">Submit</button>
-          </div>
-       </div>
   </form>
+</div>
+
 </div>
