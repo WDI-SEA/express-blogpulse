@@ -1,0 +1,18 @@
+
+
+<p><%= comment.content %></p>
+<a href="/comment/new" class="btn btn-primary">What was your opinion?</a>
+
+<hr />
+
+<% if(comment && comment.content) { %>
+  <% name.comment.forEach(function(a) { %>
+    <div class="well">
+      <h3>
+        <a href="/comment/<%= c.articleId %>"><%= c.name %></a>
+      </h3>
+    </div>
+  <% }) %>
+<% } else { %>
+  <h3>No comments yet!</h3>
+<% } %>
