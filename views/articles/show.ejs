@@ -31,9 +31,9 @@
 <% if(article && article.comments) { %>
   <% article.comments.forEach(function(c) { %>
     <div class="well">
-      <h3>
-        <a href="/articles/<%= c.id %>"><%= c.title %></a>
-      </h3>
+      <%= c.contributor %>
+      <br>
+      <%= c.content %>
     </div>
   <% }) %>
 <% } else { %>
