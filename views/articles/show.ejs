@@ -5,18 +5,23 @@
 </p>
 
 <p><%= article.content %></p>
+
+
+<a class="btn btn-info" href="/articles/edit/<%=article.id%>">
+	Edit this article
+</a>
+
 <p><%= article.comments.name %></p>
 <hr />
 	<h3 class="center">Comments:</h3>
 	<% if (article.comments && article.comments.length) { %>
 	<% article.comments.forEach((r) => { %>
 	<hr />
-	<p><em><strong><%=r.name%>:</strong> <%= r.content %></em></p>
+	<div class="well"><p><em><strong><%=r.name%>:</strong> <%= r.content %></em></p></div>
 		<%})%>
 		<%} else {%>
 		<h5>Be the first to comment</h5>
 		<%}%>
-
 <hr />
 <a href="/">&larr; Back Home</a>
 <hr />

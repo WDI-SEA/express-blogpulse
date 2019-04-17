@@ -1,0 +1,28 @@
+<h1>Edit Post</h1>
+
+<form method="POST" action="/articles/<%=article.id%>?_method=PUT">
+	<input type="hidden" name="articleId" value="<%=article.id%>">
+	<div class="form-group">
+		<label for="title">Title</label>
+          <input value="<%=article.title%>" id="name" name="name" type="text" class="form-control">
+    </div>
+    <div class="form-group">
+    	<label for="author">Author</label>
+    	<select name="authorId" id="author" class="form-control" required>
+    		<% authors.forEach(function(author) {%>
+    		<option value="<%= author.id%>" <%author.id===article.authorId ? 'selected' : '' %>>
+    			<%= author.getFullName() %>
+    		</option>
+    		<% })%>
+    	</select>
+    	<p> if your name doesn't show up please <a href="/authors/new"> sign up to be an author</a></p>
+    </div>
+    <div class="form-group">
+    	<label for="content">Content</label>
+         <textarea id="content" class="form-control" name="content"><%= article.content %></textarea>
+    </div>
+    <div class="form-group">
+        <input class="btn btn-success" type="submit" >
+		</button>
+	</div>
+</form>

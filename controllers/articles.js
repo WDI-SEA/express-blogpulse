@@ -18,6 +18,27 @@ router.post('/', function(req, res) {
   })
 })
 
+// PUT /articles
+router.put('/:id', (req,res)=>{
+  console.log('Reached PUT route')
+  db.article.update(
+  {
+    title: req.body.title,
+    content: req.body.content,
+    authorId: req.body.authorId
+  },
+    { where: {id: req.params.id} }
+  )
+  .then((updatedRows)=>{
+    console.log('success', updatedRows)
+    res.redirect('/articles/' + req.params.id)
+  })
+  .catch((err) => {
+      console.log('Error in POST /reviews', err)
+      res.render('main/404')
+    })
+})
+
 // GET /articles/new - display form for creating new articles
 router.get('/new', function(req, res) {
   db.author.findAll()
@@ -28,6 +49,30 @@ router.get('/new', function(req, res) {
     res.status(400).render('main/404')
   })
 })
+
+// GET /articles/edit - display edit form for articles
+router.get('/edit/:id', (req, res)=>{
+db.article.findOne({
+  where: { id: req.params.id },
+})
+  .then((foundArticle)=> {
+    db.author.findAll()
+    .then((authors)=>{
+      res.render('articles/edit', { article: foundArticle, authors: authors})
+    })
+      .catch((err) => {
+         console.log('Error in POST /reviews', err)
+         res.render('main/404')
+      })
+  })
+  .catch((err) => {
+    console.log('Error in POST /reviews', err)
+    res.render('main/404')
+  })
+})
+
+
+
 
 // GET /articles/:id - display a specific post and its author
 router.get('/:id', function(req, res) {

@@ -13,3 +13,7 @@ module.exports = (sequelize, DataTypes) => {
   }
   return article
 }
+
+
+
+
