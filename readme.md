@@ -22,7 +22,9 @@ We'll be using an existing application that includes two models, several routes,
 
 After setup, **STOP**. You're using an existing application, so make sure to read the code and ensure what the application does. Here is some information about the current setup.
 
-#### Routes
+beb - best way to review is to refactor :)
+
+~~#### Routes~~
 
 | Method | Path | Purpose |
 | ------ | -------------- | -------------------------------- |
@@ -35,7 +37,7 @@ After setup, **STOP**. You're using an existing application, so make sure to rea
 | GET | `/articles/new` | page that has a form for creating a new article |
 | GET | `/articles/:id` | page that shows a specific article and the author |
 
-#### Models
+~~#### Models~~
   
   * `author`
     * Attributes: `firstName`, `lastName`, `bio`
@@ -44,7 +46,7 @@ After setup, **STOP**. You're using an existing application, so make sure to rea
     * Attributes: `title`, `content`, `authorId`
     * Associations: Belongs to one author
 
-## User Stories
+~~## User Stories~~
 
 * As a user, I want to comment on an article in order to express my opinions.
 * As a user, I want to view comments on an article in order to see my community's opinions about an article.
@@ -54,6 +56,9 @@ After setup, **STOP**. You're using an existing application, so make sure to rea
 #### Part 1: Create a Comment model
 
 In order to add comments, create a Sequelize model to store comments. It's recommended that you name this model `comment`. It will store three attributes: the name of the person creating the comment (as a string), the content of the comment (as text), and the article that the comment belongs to (as an integer)
+
+
+sequelize model:create --name comment --attributes "name:string, comment:text"
 
 Once this model has been created, **add the associations between comments the articles**. This may look similar to how Authors and Articles are related in the existing code in this app. Note the associate section in the models for both `article` and `author`.
 
@@ -98,10 +103,9 @@ module.exports = (sequelize, DataTypes) => {
 }
 
 ```
-
 Go ahead and associate your new comments model and the existing article model in a similar fashion. This is a one to many relationship. One article can have many comments, but each comment belongs to a single article.
 
-### Create a comment
+~~### Create a comment~~
 
 Now, run the migration for the model and test the model's functionality. This can be done in a separate file. An example:
 
