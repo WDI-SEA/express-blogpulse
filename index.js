@@ -12,7 +12,7 @@ app.set('view engine', 'ejs')
 app.use(require('morgan')('dev'))
 app.use(express.urlencoded({ extended: false }))
 app.use(ejsLayouts)
-app.use(express.static(__dirname + '/public/'))
+app.use(express.static(__dirname + '/static/'))
 
 // middleware that allows us to access the 'moment' library in every EJS view
 app.use(function(req, res, next) {
@@ -36,7 +36,7 @@ app.get('/', function(req, res) {
 app.use('/authors', require('./controllers/authors'))
 app.use('/articles', require('./controllers/articles'))
 
-var server = app.listen(process.env.PORT || 3000, function() {
+var server = app.listen(process.env.PORT || 3001, function() {
   rowdy.print()
 })
 
