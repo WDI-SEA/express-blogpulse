@@ -8,7 +8,7 @@
 <h2>Articles</h2>
 
 <% if(author && author.articles) { %>
-  <% author.articles.forEach(function(a) { %>
+  <% author.articles.forEach((a) => { %>
     <div class="well">
       <h3>
         <a href="/articles/<%= a.id %>"><%= a.title %></a>

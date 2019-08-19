@@ -6,7 +6,7 @@ To practice 1:M associations, we'll be adding comment functionality to an existi
 
 Congrats! You have been hired by BlogPulse, an up-and-coming blog marketed as a local version of [Buzzfeed](https://www.buzzfeed.com/). Through BlogPulse, anyone can sign up to become a contributor, and contributors can create articles relating to issues and events in the Puget Sound area. However, we need you to add comment functionality to this site.
 
-## Getting Started
+~~## Getting Started~~
 
 We'll be using an existing application that includes two models, several routes, and several views.
 
@@ -18,7 +18,7 @@ We'll be using an existing application that includes two models, several routes,
   * Run `sequelize db:seed:all` to populate the database with 2 authors and 2 articles
 * Use `nodemon` to start your application
 
-#### Read the Code
+~~#### Read the Code~~
 
 After setup, **STOP**. You're using an existing application, so make sure to read the code and ensure what the application does. Here is some information about the current setup.
 

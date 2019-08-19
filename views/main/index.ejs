@@ -1,14 +1,17 @@
-<div class="row">
-  <div class="col-sm-8">
+<div class="container">
+  <div>
     <div class="row">
-      <div class="col-xs-12">
-        <img class="hero" src="https://upload.wikimedia.org/wikipedia/commons/e/e3/Seattle_Kerry_Park_Skyline.jpg">
+      <div class="col s12 m4 l8">
+        <img class="col s12 m4 l8" src="https://upload.wikimedia.org/wikipedia/commons/e/e3/Seattle_Kerry_Park_Skyline.jpg">
       </div>
     </div>
+
+
+
     <h1>Latest Posts from BlogPulse</h1>
 
-    <% articles.forEach(function(a) { %>
-      <div class="well">
+    <% articles.forEach((a) => { %>
+      <div>
         <h2>
           <a href="/articles/<%= a.id %>"><%= a.title %></a>
           <small>by <%= a.author.getFullName() %></small>
@@ -20,7 +23,7 @@
     <% }) %>
 
   </div>
-  <div class="col-sm-4">
+  <div>
     <h2>About</h2>
     <p>BlogPulse is an up-and-coming player in the global media market,
     providing user-generated content across all topics.</p>

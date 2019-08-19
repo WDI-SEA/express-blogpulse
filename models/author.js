@@ -1,4 +1,5 @@
 'use strict'
+
 module.exports = (sequelize, DataTypes) => {
   const author = sequelize.define('author', {
     firstName: DataTypes.STRING,
@@ -6,12 +7,12 @@ module.exports = (sequelize, DataTypes) => {
     bio: DataTypes.TEXT
   }, {})
 
-  author.associate = function(models) {
+  author.associate = (models) => {
     // associations can be defined here
     models.author.hasMany(models.article)
   }
 
-  author.prototype.getFullName = function(){
+  author.prototype.getFullName = () => {
     return this.firstName + ' ' + this.lastName
   }
   return author
