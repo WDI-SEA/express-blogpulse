@@ -32,7 +32,7 @@ router.get('/new', function(req, res) {
 router.get('/:id', function(req, res) {
   db.article.findOne({
     where: { id: req.params.id },
-    include: [db.author]
+    include: [db.author, db.comment]
   })
   .then(function(article) {
     if (!article) throw Error()
@@ -40,7 +40,7 @@ router.get('/:id', function(req, res) {
     res.render('articles/show', { article: article })
   })
   .catch(function(error) {
-    console.log(error)
+    // console.log(error)
     res.status(400).render('main/404')
   })
 })

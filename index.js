@@ -27,7 +27,7 @@ app.get('/', function(req, res) {
   }).then(function(articles) {
     res.render('main/index', { articles: articles })
   }).catch(function(error) {
-    console.log(error)
+    // console.log(error)
     res.status(400).render('main/404')
   })
 })
