@@ -8,4 +8,22 @@
 
 <hr />
 
+	<% article.comments.forEach(comment => { %>
+		<p><%= comment.userName%> posted at <%=comment.updatedAt.toDateString()%></p>
+		<p><%= comment.commentText%>
+	<% }) %>
+
+<hr />
+
+	<form method="POST" action="/articles/<%=article.id%>">
+		<label for="userName">UserName:</label>
+		<input type="text" name="userName">
+		<label for="commentText">Comment:</label>
+		<textarea name="commentText"></textarea>
+		<input hidden type="text" name="articleId" value="<%=article.id%>">
+		<input type="submit" value="Submit comment">
+	</form>
+
+<hr />
+
 <a href="/">&larr; Back Home</a>
