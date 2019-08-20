@@ -7,5 +7,24 @@
 <p><%= article.content %></p>
 
 <hr />
+<% if( article.comments) {%>
+  <% article.comments.forEach(comment => {%>
+    <p><%= comment.commentName%> said "<%= comment.content%>"</p>
+    <hr>
+  <% })%>
+<% } %>
+<form action="/articles/:id" method="POST">
+  <div class="form-group">
+    <label for="commentName">Name</label>
+    <input type="text" class="form-control" id="commentName" name="commentName" required>
+  </div>
+  <div class="form-group">
+    <label for="content">Comment</label>
+    <textarea type="text" class="form-control" id="content" name="content" required></textarea>
+  </div>
+  <input type="hidden" name="articleId" value="<%= article.id %>">
+
+  <input type="submit" class="btn btn-primary">
+</form>
 
 <a href="/">&larr; Back Home</a>
