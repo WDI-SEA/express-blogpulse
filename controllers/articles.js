@@ -45,4 +45,15 @@ router.get('/:id', function(req, res) {
   })
 })
 
+router.post('/:id', (req,res) => {
+  db.comment.create(req.body)
+  .then(() => {
+    res.redirect('/')
+  })
+  .catch(err => {
+    console.log('something bad happened')
+    res.send('something bad happened')
+  })
+})
+
 module.exports = router

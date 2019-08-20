@@ -2,3 +2,20 @@
   width: 100%;
   height: auto;
 }
+
+.comment-box {
+	display: block;
+}
+
+.comment-box input {
+	display: block;
+}
+
+#comment-label {
+	padding-right: 10px;
+
+}
+
+#name-field {
+	/*padding-right: 10px;*/
+}

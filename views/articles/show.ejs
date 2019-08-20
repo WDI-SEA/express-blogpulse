@@ -11,11 +11,30 @@
 <h3>Comments:</h3>
 
 <% article.comments.forEach(c => { %>
+	<h5><%= c.name%> says</h5>
+	<p><%= c.content %></p>
 
 <% })%>
+
+<h3>Leave a Comment:</h3>
+
+<form method="POST" action="/articles/:id" id="comment-box">
+	<label for="name-field">Name</label>
+	<input type="text" id="name-field" name="name">
+	<br>
+	<label for="Comment" id="comment-label">Comment</label>
+	<textarea id="comment-field" name="content"></textarea>
+	<br>
+	<input type="text" id="articleId" name="articleId" value="<%= article.id%>">
+	<input type="submit" value="Leave a comment!">
+</form>
 
 	
 
 <hr />
 
 <a href="/">&larr; Back Home</a>
+
+<script>
+	document.getElementById('articleId').style.display = 'none';
+</script>
