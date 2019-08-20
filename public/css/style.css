@@ -1,4 +1,44 @@
+p, form {
+	font-family: sans-serif;
+	font-size: 18px;
+}
+
+form {
+	align-items: top;
+	padding: 4px;
+}
+
 .hero {
   width: 100%;
   height: auto;
+}
+
+.comment-div {
+	background-image: linear-gradient(#EEE, #CCC);
+	padding: 10px;
+	margin: 5px;
+}
+
+.comment-text {
+	font-size: 22px;
+}
+
+#comment-form {
+	transition: height 1s;
+	width: 100%;
+	height: 0px;
+	overflow: hidden;
+	background-color: rgba(228,228,228,0.5);
+}
+
+.labels {
+	float: left;
+}
+
+.comment {
+	float: left;
+}
+
+.textarea {
+	height: 200px;
 }

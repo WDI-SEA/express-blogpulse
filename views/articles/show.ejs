@@ -8,22 +8,31 @@
 
 <hr />
 
+<button id="add-comment">Add a comment</button>
+<div id="comment-form">
+	<form method="POST" action="/articles/<%=article.id%>">
+		<div class="labels">
+			<label for="userName">UserName:</label><br />
+			<label for="commentText">Comment:</label>
+		</div>
+		<div class="comment">
+			<input id="form-username" type="text" name="userName"><br />
+			<textarea id="form-comment" name="commentText" cols="80" class="textarea"></textarea>
+			<input hidden type="text" name="articleId" value="<%=article.id%>"><br />
+			<input id="form-submit" type="submit" value="Submit comment" disabled>
+		</div>
+	</form>
+</div>
+
+	<h2>Comments</h2>
 	<% article.comments.forEach(comment => { %>
-		<p><%= comment.userName%> posted at <%=comment.updatedAt.toDateString()%></p>
-		<p><%= comment.commentText%>
+		<div class="comment-div">
+			<p class="comment-text"><%= comment.commentText%></p>
+			<p class="author"><strong><%= comment.userName%></strong> posted at <%=moment(comment.updatedAt).format("LT [on] MM-DD-YYYY")%></p>
+		</div>
 	<% }) %>
 
 <hr />
 
-	<form method="POST" action="/articles/<%=article.id%>">
-		<label for="userName">UserName:</label>
-		<input type="text" name="userName">
-		<label for="commentText">Comment:</label>
-		<textarea name="commentText"></textarea>
-		<input hidden type="text" name="articleId" value="<%=article.id%>">
-		<input type="submit" value="Submit comment">
-	</form>
-
-<hr />
-
 <a href="/">&larr; Back Home</a>
+
