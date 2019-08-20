@@ -19,10 +19,12 @@
 <h3>Leave a Comment:</h3>
 
 <form method="POST" action="/articles/:id" id="comment-box">
-	<label for="name-field">Name</label>
+	<label for="name-field">Name:</label>
+	<br>
 	<input type="text" id="name-field" name="name">
 	<br>
-	<label for="Comment" id="comment-label">Comment</label>
+	<label for="Comment" id="comment-label">Comment:</label>
+	<br>
 	<textarea id="comment-field" name="content"></textarea>
 	<br>
 	<input type="text" id="articleId" name="articleId" value="<%= article.id%>">
