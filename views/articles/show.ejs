@@ -1,11 +1,45 @@
-<h1><%= article.title %> <small>by <%= article.author.getFullName() %></small></h1>
-
-<p>
-  <strong><%= moment(article.createdAt).calendar() %></strong>
-</p>
-
-<p><%= article.content %></p>
-
-<hr />
-
 <a href="/">&larr; Back Home</a>
+<div class="col s12 m7">
+
+  <div class="card large">
+    <div class="card-image">
+      <img src="https://lorempixel.com/500/150/nature/<%= article.id %>" class="responsive-img">
+      <h4 class="card-title"><%= article.title %></h4>
+    </div>
+    <div class="card-content">
+      <h6>By <%= article.author.getFullName() %></h6>
+      <p>
+        <strong><%= moment(article.createdAt).calendar() %></strong>
+      </p>
+    </div>
+    <div class="card-action">
+      <a class="waves-effect waves-light btn modal-trigger" href="#comments">Comments</a>
+    </div>
+  </div>
+  <div>
+    <p><%= article.content %></p>
+  </div>
+</div>
+
+
+<div id="comments" class="modal bottom-sheet">
+  <div class="modal-content">
+    <h3>Comments</h3>
+    <% article.comments.forEach(c => { %>
+    <p>
+      <%= c.comment %>
+    </p>
+    <p>By <%= c.name %></p>
+    <% }) %>
+
+    <form method="POST" action="/articles/<%= article.id %>">
+      <label for="new-comment-name">Name</label>
+      <input type="text" name="name" id="new-comment-name">
+
+      <label for="new-comment">New Comment</label>
+      <input type="text" name="comment" id="new-comment">
+
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+</div>

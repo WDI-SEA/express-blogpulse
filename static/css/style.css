@@ -1,13 +1,9 @@
-.hero {
-  width: 100%;
-  height: auto;
-}
-
 
 body {
   display: flex;
   min-height: 100vh;
   flex-direction: column;
+  background-image: linear-gradient(to right bottom, #d3d3d3, #cdcdd8, #c6c7dd, #bcc2e2, #afbde8, #97b3df, #7ea9d6, #62a0cb, #3e8ead, #1e7b8d, #06686d, #02544f);
 }
 
 main {

@@ -6,7 +6,6 @@ module.exports = (sequelize, DataTypes) => {
     authorId: DataTypes.INTEGER
   }, {})
   article.associate = (models) => {
-    // associations can be defined here
     models.article.belongsTo(models.author)
     models.article.hasMany(models.comment)
   }

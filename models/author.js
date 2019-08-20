@@ -12,8 +12,9 @@ module.exports = (sequelize, DataTypes) => {
     models.author.hasMany(models.article)
   }
 
-  author.prototype.getFullName = () => {
+  author.prototype.getFullName = function() {
     return this.firstName + ' ' + this.lastName
   }
   return author
 }
+

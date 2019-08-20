@@ -142,14 +142,15 @@ db.article.findOne({
 
 Now that the model has been created, you'll want to add the ability to create and view comments to the rest of the application. Here is an approach that can be taken:
 
-* Add the ability to view comments on `GET /articles/:id`.
-  * See the example above on how to include the comments, then use EJS to render each comment's information on the page. Make sure you have a comment in the database you can use to verify this functionality.
-* On the same page (`GET /articles/:id`), create a form to submit a new comment. Note that we don't *necessarily* need to render a form on a separate page - most sites have a comment form on the same page.
-  * Include the necessary attributes, `name` and `content`. Feel free to look at the forms for authors and articles as examples.
-  * Create a new route to receive this form data. This will be the action for your form. You could either make a separate comments controller at `POST /comments`, (especially good if you plan on having more comments-related routes in the future) or you could define the route in the articles controller since comments are related to articles `POST /articles/:id/comments`. This implementation detail is up to you. Note how we're passing the article id in each case - in the form body in the first example vs a param (part of the URL) in the second one.
-    * Test the route by using your form 
-    * Once you've verified the route is working, redirect back to the article that was commented on for a completely smooth user experience.
-* Verify functionality by creating more authors, articles, and comments. Pay attention to the user experience, and make sure the user can navigate between articles, authors, and comments.
+~~* Add the ability to view comments on `GET /articles/:id`.~~
+  ~~* See the example above on how to include the comments, then use EJS to render each comment's information on the page. Make sure you have a comment in the database you can use to verify this functionality.~~
+~~* On the same page (`GET /articles/:id`), create a form to submit a new comment.~~
+~~*  Note that we don't *necessarily* need to render a form on a separate page - most sites have a comment form on the same page.~~
+~~  * Include the necessary attributes, `name` and `content`. Feel free to look at the forms for authors and articles as examples.~~
+  ~~* Create a new route to receive this form data. This will be the action for your form. You could either make a separate comments controller at `POST /comments`, (especially good if you plan on having more comments-related routes in the future) or you could define the route in the articles controller since comments are related to articles `POST /articles/:id/comments`. This implementation detail is up to you. Note how we're passing the article id in each case - in the form body in the first example vs a param (part of the URL) in the second one.~~
+    ~~* Test the route by using your form ~~
+    ~~* Once you've verified the route is working, redirect back to the article that was commented on for a completely smooth user experience.~~
+~~* Verify functionality by creating more authors, articles, and comments. Pay attention to the user experience, and make sure the user can navigate between articles, authors, and comments.~~
 
 #### Part 3: Styling
 

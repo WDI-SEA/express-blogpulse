@@ -17,11 +17,24 @@ router.post('/', (req, res) => {
   });
 });
 
+
+router.post('/:id', (req, res) => {
+  db.comment.create({
+    name: req.body.name,
+    comment: req.body.comment,
+    articleId: req.params.id
+  })
+  res.redirect(`/articles/${req.params.id}`);
+})
+
+
 // GET /articles/new - display form for creating new articles
 router.get('/new', (req, res) => {
   db.author.findAll()
   .then((authors) => {
-    res.render('articles/new', { authors: authors });
+    res.render('articles/new', {
+      authors: authors 
+    });
   })
   .catch((error) => {
     res.status(400).render('main/404');
@@ -31,13 +44,19 @@ router.get('/new', (req, res) => {
 // GET /articles/:id - display a specific post and its author
 router.get('/:id', (req, res) => {
   db.article.findOne({
-    where: { id: req.params.id },
-    include: [db.author]
+    where: { 
+      id: req.params.id 
+    },
+    include: [db.author, db.comment]
   })
   .then((article) => {
-    if (!article) throw Error();
-    console.log(article.author);
-    res.render('articles/show', { article: article });
+    if (!article) {
+      throw Error();
+    }
+    console.log(`~~~~~~~~~ AUTHOR IS: ${article.author.getFullName()} ~~~~~~~~~~~`);
+    res.render('articles/show', { 
+      article: article 
+    });
   })
   .catch((error) => {
     console.log(error);
@@ -46,3 +65,4 @@ router.get('/:id', (req, res) => {
 });
 
 module.exports = router;
+
