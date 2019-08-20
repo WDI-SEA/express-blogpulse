@@ -36,13 +36,31 @@ router.get('/:id', function(req, res) {
   })
   .then(function(article) {
     if (!article) throw Error()
-    console.log(article.author)
-    res.render('articles/show', { article: article })
+    db.comment.findAll({
+      where: { articleId: article.id }
+    }).then((comments)=>{
+      console.log(article.author)
+      res.render('articles/show', { article: article, comments: comments })
+    })
+    .catch(function(error) {
+      console.log(error)
+      res.status(400).render('main/404')
+    });
   })
   .catch(function(error) {
     console.log(error)
     res.status(400).render('main/404')
-  })
-})
+  });
+});
 
-module.exports = router
+router.post('/:id/comments', function(req,res){
+  db.comment.create({
+    name: req.body.name,
+    content: req.body.content,
+    articleId : req.params.id
+  }).then(()=>{
+    res.redirect(`/articles/${req.params.id}`);
+  });
+});
+
+module.exports = router;

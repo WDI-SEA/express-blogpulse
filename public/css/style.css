@@ -2,3 +2,25 @@
   width: 100%;
   height: auto;
 }
+.comment-form{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.comment{
+  width: 200px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-direction: column;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  box-shadow: 1px 1px 1px black;
+}
+.comments-container{
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  align-content: space-between;
+}
