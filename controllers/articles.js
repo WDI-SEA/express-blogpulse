@@ -28,11 +28,26 @@ router.get('/new', function(req, res) {
   })
 })
 
+// POST /articles/:id/comments
+router.post('/:id', function(req, res) {
+  db.comment.create({
+    commentBy: req.body.commentBy,
+    content: req.body.content,
+    articleId: req.params.id
+  })
+  .then(function(post) {
+    res.redirect(`/articles/${req.params.id}`)
+  })
+  .catch(function(error) {
+    res.status(400).render('main/404')
+  })
+})
+
 // GET /articles/:id - display a specific post and its author
 router.get('/:id', function(req, res) {
   db.article.findOne({
     where: { id: req.params.id },
-    include: [db.author]
+    include: [db.author, db.comment]
   })
   .then(function(article) {
     if (!article) throw Error()
@@ -44,5 +59,7 @@ router.get('/:id', function(req, res) {
     res.status(400).render('main/404')
   })
 })
+
+
 
 module.exports = router

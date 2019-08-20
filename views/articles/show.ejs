@@ -8,4 +8,27 @@
 
 <hr />
 
+<div>
+	<h2 id="commentHeader">Let the author know you stopped by!</h2>
+	<form method="POST" action="/articles/<%= article.id %>">
+		Add a new comment<br>
+		Your Name:<br>
+		<input type="text" name="commentBy"><br>
+		Comment:<br>
+		<textarea type="text" name="content"></textarea> ><br>
+		<input type="submit" name="newComment" value="Submit">
+	</form>
+</div>
+
+
+<h3>Comments:</h3>
+
+<p id="commentsSection">
+	<% article.comments.forEach(c => { %>
+		<p><%= c.content %></p>
+		<p>-<%= c.commentBy %></p>
+		<br>
+	<% }) %>
+</p>
+
 <a href="/">&larr; Back Home</a>
