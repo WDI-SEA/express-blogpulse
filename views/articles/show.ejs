@@ -6,6 +6,20 @@
 
 <p><%= article.content %></p>
 
+<p>Tags:&nbsp;
+	<% article.tags.forEach(tag => { %>
+ 		<a href="/tags/<%=tag.id%>"><%=tag.name%></a>&nbsp;
+ 	<% }) %>
+</p>
+<hr />
+
+<h2>Tag this article:</h2>
+<form method="POST" action="/tags">
+	<input type="hidden" name="articleId" value="<%=article.id%>">
+	<input type="text" name="name" placeholder="Enter the tag"><br />
+	<input type="submit" value="Add Tag">
+</form>
+
 <hr />
 
 <button id="add-comment">Add a comment</button>
