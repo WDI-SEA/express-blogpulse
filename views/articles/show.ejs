@@ -8,4 +8,30 @@
 
 <hr />
 
+<div>
+  <p><em><%= comment.content %></em></p>
+  <p><strong><%= comment.name %></strong> commented at: <%=moment(comment.createdAt).calendar() %></p>
+</div>
+
+<hr />
+
+<div class="row"><strong>Join the conversation below!</strong>
+  <form method="POST" action="/auth/signup" class="col s12">
+    
+    <div class="row">
+      <div class="input-field col s6">
+        <input id="name" type="text" class="validate" name="name">
+        <label for="name">Name</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s6">
+        <input id="content" type="text" class="validate" name="content">
+        <label for="content">Message:</label>
+      </div>
+    </div>
+    
+  </form>
+</div>
+
 <a href="/">&larr; Back Home</a>
