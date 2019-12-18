@@ -7,12 +7,12 @@
 <p><%= article.content %></p>
 
 <hr />
-<div class="container">
+<div class="well">
   <div class="row">
     <h2>Comments</h2>
       <% article.comments.forEach(c => { %>
-        <h3><%= c.name %></h3>
-        <h4><%= c.content %></h4>
+        <p><strong><%= c.name %></strong></p>
+        <p><%= c.content %></p>
       <% }) %>
   </div>
 </div>
@@ -20,7 +20,7 @@
 
 <form action="/comments" method="POST">
   Name: <input name="name">
-  Comment: <input type="text">
+  Comment: <input type="text" class="validate">
   <input type="hidden" name="articleId" value="<%=article.id%>">
   <input type="submit">
 </form>

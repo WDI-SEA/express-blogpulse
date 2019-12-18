@@ -5,7 +5,8 @@ var router = express.Router()
 router.post('/', (req, res) => {
         db.comment.create({
         name: req.body.name,
-        content: req.body.content
+        content: req.body.content, 
+        articleId: req.params.id
     })
     .then(function(comment) {
         res.redirect('/articles/:id')
@@ -15,15 +16,15 @@ router.post('/', (req, res) => {
     })
 })
 
-router.get('/', (req, res) => {
-    db.comment.findAll()
-    .then(function(comment) {
-        res.render('/articles', { comment })
-    })
-    .catch(function(error) {
-        res.status(400).render('main/404')
-    })
-})
+// router.get('/', (req, res) => {
+//     db.comment.findAll()
+//     .then(function(comment) {
+//         res.render('/articles/:id', { comment })
+//     })
+//     .catch(function(error) {
+//         res.status(400).render('main/404')
+//     })
+// })
 
 
 // router.get('article/:id', function(req, res) {
