@@ -3,13 +3,9 @@ var db = require('../models')
 var router = express.Router()
 
 router.post('/', (req, res) => {
-        db.comment.create({
-        name: req.body.name,
-        content: req.body.content, 
-        articleId: req.params.id
-    })
+    db.comment.create(req.body)
     .then(function(newComment) {
-        res.redirect('/')
+        res.redirect('/articles/' + req.params.id)
     })
     .catch(function(error) {
         res.status(400).render('main/404')

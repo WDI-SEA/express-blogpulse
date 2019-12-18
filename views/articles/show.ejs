@@ -20,7 +20,7 @@
 
 <form action="/comments" method="POST">
   Name: <input name="name">
-  Comment: <input type="text" class="validate">
+  Comment: <input name="content">
   <input type="hidden" name="articleId" value="<%=article.id%>">
   <input type="submit">
 </form>
