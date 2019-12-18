@@ -5,7 +5,7 @@ var router = express.Router()
 router.post('/', (req, res) => {
     db.comment.create(req.body)
     .then(function(newComment) {
-        res.redirect('/articles/' + req.params.id)
+        res.redirect('/articles/' + req.body.articleId)
     })
     .catch(function(error) {
         res.status(400).render('main/404')
