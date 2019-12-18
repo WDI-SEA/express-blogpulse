@@ -8,4 +8,26 @@
 
 <hr />
 
+<h3>Comments</h3>
+
+<div class="media-list">
+  <% article.comments.forEach(comment => { %>
+    <div class="media">
+      <div class="media-left">
+        <a href="#">
+          <!-- <img class="media-object" src="#" alt="..."> -->
+          <span class="glyphicon glyphicon-comment" aria-hidden="true"></span>
+        </a>
+      </div>
+      <div class="media-body">
+        <h4 class="media-heading"><%= comment.dataValues.name %></h4>
+        <h5><%= moment(comment.dataValues.createdAt).calendar() %></h5>
+        <p><%= comment.dataValues.content %></p>
+      </div>
+    </div>
+  <% }) %>
+</div>
+
+<hr />
+
 <a href="/">&larr; Back Home</a>
