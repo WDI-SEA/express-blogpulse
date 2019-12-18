@@ -14,22 +14,55 @@
       <h3 class="panel-title">Comments</h3>
     </div>
     <div class="panel-body">
-      <% article.comments.forEach(comment => { %>
-        <div class="media">
-          <div class="media-left">
-            <a href="#">
-              <!-- <img class="media-object" src="#" alt="..."> -->
+      <% if(article.comments && article.comments.length) { %>
+        <% article.comments.forEach(comment => { %>
+          <div class="media">
+            <div class="media-left">
               <span class="glyphicon glyphicon-comment" aria-hidden="true"></span>
-            </a>
+              <!-- <a href="#">
+                <img class="media-object" src="#" alt="...">
+              </a> -->
+            </div>
+            <div class="media-body">
+              <h4 class="media-heading"><%= comment.dataValues.name %></h4>
+              <h5><%= moment(comment.dataValues.createdAt).calendar() %></h5>
+              <p><%= comment.dataValues.content %></p>
+            </div>
           </div>
-          <div class="media-body">
-            <h4 class="media-heading"><%= comment.dataValues.name %></h4>
-            <h5><%= moment(comment.dataValues.createdAt).calendar() %></h5>
-            <p><%= comment.dataValues.content %></p>
-          </div>
-        </div>
-      <% }) %>      
+        <% }) %>
+      <% } %>
     </div>
+  </div>  
+</div>
+
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h3 class="panel-title">Leave a comment</h3>
+  </div>
+  <div class="panel-body">
+    <form class="col-sm-12 method="POST" action="/comments">
+      <input type="hidden" name="articleId" value="<%= article.id %>">
+      <div class="row">
+        <div class="input-field col-sm-12">
+          <label for="name">Name</label>
+          <input placeholder="Name" id="name" name="name" type="text" class="form-control">
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col-xs-12">
+          <label for="content">Leave your comment here!</label>
+          <textarea id="content" name="content" class="form-control"></textarea>
+        </div>
+      </div>
+      <br />
+      <div class="row">
+        <div class="col-sm-12">
+          <button class="btn btn-primary" type="submit">
+            Submit your comment
+          </button>
+        </div>
+      </div>
+    </form>
   </div>
 </div>
 
