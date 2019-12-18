@@ -36,13 +36,31 @@ router.get('/:id', function(req, res) {
   })
   .then(function(article) {
     if (!article) throw Error()
-    console.log(article.author)
-    console.log(article.comments)
+    // console.log(article.author)
+    // console.log(article.comments)
     res.render('articles/show', { article: article, comment: article.comments[req.params.id] })
   })
   .catch(function(error) {
     console.log(error)
     res.status(400).render('main/404')
+  })
+})
+
+//POST /articles/:id - create new comments
+router.post('/:id', (req, res) => {
+  db.comment.create({
+    name: req.body.name,
+    content: req.body.content,
+    articleId: req.params.id
+  })
+  console.log('This is the ID thats returning: ', req.params.id)
+
+  .then((post) => {
+    res.redirect('/:id')
+  })
+  .catch((err) => {
+    console.log('Error =', err)
+    res.send('POST Error')
   })
 })
 
