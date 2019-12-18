@@ -36,8 +36,6 @@ app.get('/', function(req, res) {
 app.use('/authors', require('./controllers/authors'))
 app.use('/articles', require('./controllers/articles'))
 
-var server = app.listen(process.env.PORT || 3000, function() {
-  rowdy.print()
-})
+var server = app.listen(process.env.PORT || 3000)
 
 module.exports = server

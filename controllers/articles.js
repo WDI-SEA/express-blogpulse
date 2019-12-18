@@ -32,17 +32,31 @@ router.get('/new', function(req, res) {
 router.get('/:id', function(req, res) {
   db.article.findOne({
     where: { id: req.params.id },
-    include: [db.author]
+    include: [db.author, db.comment]
   })
+  // db.comment.findOne({
+  //   wbere: { id: req.params.id},
+  //   include: [db.comment]
+  // })
   .then(function(article) {
-    if (!article) throw Error()
     console.log(article.author)
+    console.log(article.comments)
     res.render('articles/show', { article: article })
   })
   .catch(function(error) {
     console.log(error)
     res.status(400).render('main/404')
   })
+})
+
+router.post('/:id/comments', (req, res) => {
+  // res.send(req.body)
+  db.comment.create({
+    name: req.body.name,
+    content: req.body.content,
+    articleId: req.body.articleId
+  })
+  res.redirect('../' + req.params.id)
 })
 
 module.exports = router

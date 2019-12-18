@@ -7,5 +7,18 @@
 <p><%= article.content %></p>
 
 <hr />
+<% for (let i = 0; i < article.comments.length; i++) { %>
+<h4><%=article.comments[i].name%></h4> <p><%=article.comments[i].content%></p>
+
+<% } %>
+<hr>
+
+
+<form action="/articles/<%=article.id%>/comments" method="POST">
+Name: <input name="name">
+Comment: <input name="content">
+<input type="hidden" name="articleId" value="<%=article.id%>">
+<input type="submit">
+</form>
 
 <a href="/">&larr; Back Home</a>
