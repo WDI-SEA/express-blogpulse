@@ -8,8 +8,8 @@ router.post('/', (req, res) => {
         content: req.body.content, 
         articleId: req.params.id
     })
-    .then(function(comment) {
-        res.redirect('/articles/:id')
+    .then(function(newComment) {
+        res.redirect('/')
     })
     .catch(function(error) {
         res.status(400).render('main/404')
