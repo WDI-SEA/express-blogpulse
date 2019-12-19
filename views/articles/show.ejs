@@ -6,6 +6,10 @@
 
 <p><%= article.content %></p>
 
+<% article.tags.forEach ( t => { %>
+  <a href="/tags/<%= t.id %>">#<%= t.content %></a>&nbsp;
+<% }) %>
+
 <hr>
 
 <h2>Comments <span class="badge badge-secondary"><%= article.comments.length %></span></h2>
