@@ -11,7 +11,8 @@
   "devDependencies": {
     "babel-eslint": "^6.0.4",
     "csslint": "^0.10.0",
-    "eslint": "^2.11.1"
+    "eslint": "^2.11.1",
+    "sequelize-cli": "^5.5.1"
   },
   "dependencies": {
     "ejs": "^2.4.2",
