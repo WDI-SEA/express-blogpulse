@@ -50,4 +50,22 @@ router.get('/:id', function(req, res) {
   })
 })
 
+// POST /articles/:id/comments - add comments given in the fields to our db comments
+router.post('/:id/comments', (req, res) => {
+  //grab the text from field name
+  //grab the text from field content
+  //add to db
+  db.comment.create({
+      name: req.body.name,
+      content: req.body.content,
+      articleId: req.params.id
+  }).then(function(comment){
+    console.log(`Successfully created a comment by ${comment.name}`)
+    res.redirect(`/articles/${req.params.id}`)
+  }).catch(err => {
+    console.log(err);
+    res.send("ERROR");
+  })
+});
+
 module.exports = router

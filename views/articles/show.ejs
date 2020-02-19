@@ -7,17 +7,28 @@
 <p><%= article.content %></p>
 
 
-<% if(article.comments) { %>
+<% if(article.comments.length > 0) { %>
   <% article.comments.forEach(function(comment) { %>
     <div class="well">
-      <p><%= comment.name %></p>
-      <p><%= comment.content %></p>
+      <blockquote>
+        <p><%= comment.content %></p>
+      </blockquote>
+      <p>- <%= comment.name %></p>
     </div>
   <% }) %>
 <% } else { %>
   <h3>No comments yet!</h3>
 <% } %>
 
+<form action="/articles/<%= article.id %>/comments" method="POST">
+  <label for="comment-name">Name</label>
+  <input type="text" name="name" id="comment-name">
+  <label for="comment-content">Content</label>
+  <input type="text" name="content" id="comment-content">
+  <input type="submit" value="Add Comment">
+</form>
+
 <hr />
+
 
 <a href="/">&larr; Back Home</a>
