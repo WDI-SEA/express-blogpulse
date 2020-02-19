@@ -6,6 +6,10 @@
 
 <p><%= article.content %></p>
 
+<% article.comments.forEach(comment => { %> 
+  <h6><%= comment.name %> says <%= comment.content %></h6>
+<% }); %>
+
 <hr />
 
 <a href="/">&larr; Back Home</a>
