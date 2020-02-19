@@ -1,11 +1,26 @@
-<h1><%= article.title %> <small>by <%= article.author.getFullName() %></small></h1>
+<h1><%= data.article.title %> <small>by <%= data.article.author.getFullName() %></small></h1>
 
 <p>
-  <strong><%= moment(article.createdAt).calendar() %></strong>
+  <strong><%= moment(data.article.createdAt).calendar() %></strong>
 </p>
 
-<p><%= article.content %></p>
+<p><%= data.article.content %></p>
+<button id="comment-button">Add Comment</button>
+<form id="comment-form-id" class="comment-form do-not-show" method="POST" action="/articles/<%= data.article.id %>/comments">
+	<input type="text" name="name" placeholder="Enter Name">
+	<input type="submit">
+</form>
+<textarea class="comment-form do-not-show" rows="3" cols="40" name="content" form="comment-form-id" placeholder="Content Goes Here"></textarea>
+
 
 <hr />
-
+<h3>Comments:</h3>
+<ul class="comment-list">
+<% data.comments.forEach(function(comment) { %>
+	<li>
+		<%= comment.name %>: <%= comment.content %>
+	</li>
+	<hr>
+<% }) %>
+</ul>
 <a href="/">&larr; Back Home</a>

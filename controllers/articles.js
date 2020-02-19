@@ -2,6 +2,7 @@ var express = require('express')
 var db = require('../models')
 var router = express.Router()
 
+
 // POST /articles - create a new post
 router.post('/', function(req, res) {
   db.article.create({
@@ -37,12 +38,34 @@ router.get('/:id', function(req, res) {
   .then(function(article) {
     if (!article) throw Error()
     console.log(article.author)
-    res.render('articles/show', { article: article })
+    db.comment.findAll({
+      where: { articleId: req.params.id }
+    }).then(function(comments){
+      res.render('articles/show', {data: {article: article, comments: comments}})
+    }).catch(function(error) {
+      res.status(400).render('main/404')
+    })
   })
   .catch(function(error) {
     console.log(error)
     res.status(400).render('main/404')
   })
+})
+
+router.post('/:id/comments', function(req, res) {
+  db.comment.create({
+    name: req.body.name,
+    content: req.body.content,
+    articleId: req.params.id
+  })
+  .then(function(post){
+    res.redirect(`/articles/${req.params.id}/`)
+  })
+  .catch(err => {
+    console.log(err);
+    res.status(400).render('main/404')
+  })
+
 })
 
 module.exports = router

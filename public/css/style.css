@@ -2,3 +2,10 @@
   width: 100%;
   height: auto;
 }
+.do-not-show {
+	display: none;
+}
+.comment-list li{
+	list-style: none;
+}
+
