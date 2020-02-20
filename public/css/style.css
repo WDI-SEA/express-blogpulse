@@ -1,4 +1,14 @@
 .hero {
   width: 100%;
   height: auto;
+  background-size: cover; 
+;
 }
+
+/* body {
+  /* background-color: #252424; */
+/* } */
+
+/* .navbar {
+background: #252424;
+} */ 

@@ -19,12 +19,11 @@
 <% } else { %>
   <h3>No comments yet!</h3>
 <% } %>
-
+<hr />
 <form action="/articles/<%= article.id %>/comments" method="POST">
-  <label for="comment-name">Name</label>
-  <input type="text" name="name" id="comment-name">
-  <label for="comment-content">Content</label>
-  <input type="text" name="content" id="comment-content">
+  <input type="text" name="name" placeholder="name" id="comment-name">
+  <hr />
+  <textarea type="text" name="content" id="comment-content" placeholder="comment" rows="4" cols="50"></textarea>
   <input type="submit" value="Add Comment">
 </form>
 
