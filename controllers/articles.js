@@ -18,6 +18,18 @@ router.post("/", function(req, res) {
     });
 });
 
+router.post('/:id/comments', function(req, res) {
+  db.comment.create({
+    title: req.body.title,
+    content: req.body.content,
+    articleId: req.params.id
+  }).then(function(data) {
+    res.redirect(`/articels/${req.params.id}`)
+  }).catch(function(error) {
+    res.status(400).render("main/404");
+  });
+});
+
 // GET /articles/new - display form for creating new articles
 router.get("/new", function(req, res) {
   db.author
@@ -56,13 +68,5 @@ router.get("/:id", function(req, res) {
     });
 });
 
-router.post('/articles/:id/comments', function(req, resp) {
-  db.comment.create({
-    title: req.body.title,
-    content: req.body.content,
-    articleId: req.params.id
-  }).then(function(post) {
-    res.redirect('/:id')
-  })
-})
+
 module.exports = router;
