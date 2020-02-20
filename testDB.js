@@ -1,7 +1,7 @@
-//  var db = require('./models')
+ var db = require('./models')
 
 //  db.comment.create({
-//    name: 'Paul Allen',
+//    title: 'Paul Allen',
 //    content: 'This is really neat! Thanks for posting.',
 //    articleId: 1
 //  })
