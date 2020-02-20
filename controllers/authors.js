@@ -29,9 +29,9 @@ router.post('/', function(req, res) {
 })
 
 // GET /authors/new - display form for creating a new author
-router.get('/new', function(req, res) {
-  res.render('authors/new')
-})
+// router.get('/new', function(req, res) {
+//   res.render('authors/new')
+// })
 
 // GET /authors/:id - display a specific author and their posts
 router.get('/:id', function(req, res) {

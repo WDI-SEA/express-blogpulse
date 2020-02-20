@@ -1,4 +1,7 @@
 <h1><%= article.title %> <small>by <%= article.author.getFullName() %></small></h1>
+<form method="GET" action="/articles/edit/<%= article.id %>">
+  <button type="submit" class="btn btn-primary rightButton">EDIT POST</button>
+</form>
 
 <p>
   <strong><%= moment(article.createdAt).calendar() %></strong>
@@ -8,4 +11,32 @@
 
 <hr />
 
+<h4>COMMENTS:</h4>
+
+<% article.dataValues.comments.forEach(function(comment) { %>
+  <div class="commentContainer">
+    <h5 class="commentName"><%= comment.dataValues.name %>:</h5> <p><%= comment.dataValues.content %></p>
+  </div>
+<% }) %>
+
+<div class="commentBoxIntro">Leave a comment:</div>
+<form method="POST" action="/articles/<%= article.id %>/comments">
+  <label for="name">Name</label>
+  <div class="emptyDiv"></div>
+  <input type="text" name="name" required>
+  <div class="emptyDiv"></div>
+  <label for="comment">Comment</label>
+  <div class="emptyDiv"></div>
+  <!-- <input type="text" name="comment" class="commentField"> -->
+  <textarea name="comment" id = "myTextArea"
+    rows = "3"
+    cols = "80"></textarea>
+  <div class="emptyDiv"></div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+
 <a href="/">&larr; Back Home</a>
+
+
+
