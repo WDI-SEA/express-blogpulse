@@ -5,7 +5,59 @@
 </p>
 
 <p><%= article.content %></p>
+<form action="/articles/edit/<%= article.id %>" method="GET">
+  <div class="form-group">
+    <label class="col-md-4 control-label" for="submit">Edit article</label>
+    <div class="col-md-4">
+      <button id="submit" class="btn btn-primary">Edit</button>
+    </div>
+  </div>
+</form>
+<ul>
+<% comments.forEach((comment) => { %>
+  <li>
+    <div class="comment">
+      <span class="author"><%= comment.name %></span>
+      <span class="content"><%= comment.content %></span>
+      <span class="timestamp"><%= comment.createdAt %></span>
+    </div>
+    </li>
+<% }) %>
+</ul> 
+<hr />
+<form action="articles/<%= article.id %>/comments" method="post" class="form-horizontal">
+  <fieldset>
+  
+  <!-- Form Name -->
+  <legend>Add comment</legend>
+  
+  <!-- Text input-->
+  <div class="form-group">
+    <label class="col-md-4 control-label" for="author">Your name</label>  
+    <div class="col-md-4">
+    <input id="author" name="author" type="text" placeholder="your name goes here" class="form-control input-md" required="">
+    <span class="help-block">Who are you?</span>  
+    </div>
+  </div>
+  
+  <!-- Textarea -->
+  <div class="form-group">
+    <label class="col-md-4 control-label" for="content">Your comment</label>
+    <div class="col-md-4">                     
+      <textarea class="form-control" id="content" name="content">your comment goes here</textarea>
+    </div>
+  </div>
 
+    <!-- Button -->
+    <div class="form-group">
+      <label class="col-md-4 control-label" for="submit">Send your comment</label>
+      <div class="col-md-4">
+        <button id="submit" name="submit" class="btn btn-primary">Send</button>
+      </div>
+    </div>
+  </fieldset>
+  </form>
+  
 <hr />
 
 <a href="/">&larr; Back Home</a>
