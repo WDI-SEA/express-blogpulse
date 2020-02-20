@@ -1,4 +1,18 @@
+
+body {
+  background-color: #A799B7;
+}
 .hero {
   width: 100%;
   height: auto;
+}
+
+.navbar {
+  font-family: 'Odibee Sans', cursive;
+  color: #294D4A;
+  font-weight: 700;
+}
+
+.well {
+  background-color: #EEE;
 }
