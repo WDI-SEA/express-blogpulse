@@ -8,11 +8,11 @@
 
 <h2>Comments</h2>
 
-<% if(article.comments) { %>
-  <% article.comments.forEach(function(a) { %>
+<% if(comments) { %>
+  <% comments.forEach(function(a) { %>
     <div class="well">
       <h3>
-        <a href="/comments/<%= a.id %>"><%= a.comment %></a>
+        <a href="/comments/<%= a.id %>"><%= a.content %></a>
       </h3>
     </div>
   <% }) %>
@@ -22,7 +22,7 @@
 
 <h3>Comment on this post.</h3>
 
-<form action="/comments/<%= article.id %>" method="POST">
+<form action="/articles/<%= article.id %>/comments" method="POST">
   <div class="form-group">
     <label for="title">Name</label>
     <input type="text" class="form-control" id="title" name="title" required>

@@ -24,7 +24,7 @@ router.post('/:id/comments', function(req, res) {
     content: req.body.content,
     articleId: req.params.id
   }).then(function(data) {
-    res.redirect(`/articels/${req.params.id}`)
+    res.redirect(`/articles/${req.params.id}`)
   }).catch(function(error) {
     res.status(400).render("main/404");
   });
@@ -59,7 +59,8 @@ router.get("/:id", function(req, res) {
           }
         })
         .then(function(data) {
-          res.render("articles/show", { article: article, comment: data });
+          console.log(data)
+          res.render("articles/show", { article: article, comments: data });
         });
     })
     .catch(function(error) {
