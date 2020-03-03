@@ -37,6 +37,11 @@ router.get('/:id', function(req, res) {
   .then(function(article) {
     if (!article) throw Error()
     console.log(article.author)
+
+    //db.article.findAll({
+    //where: { id: req.params.id },
+    //include: [db.comment]
+  })
     res.render('articles/show', { article: article })
   })
   .catch(function(error) {
@@ -44,5 +49,14 @@ router.get('/:id', function(req, res) {
     res.status(400).render('main/404')
   })
 })
-
+router.post('/:id/comments', (req, res) => {
+  db.comment.create({
+    name: req.body.name || 'Anonymous',
+    content: req.body.content,
+    articleId: req.params.id
+  })
+  .then(comment => {
+    res.redirect('/articles/' + req.params.id)
+  })
+})
 module.exports = router
