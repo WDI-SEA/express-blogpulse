@@ -1,11 +1,40 @@
 <h1><%= article.title %> <small>by <%= article.author.getFullName() %></small></h1>
 
+<div>
 <p>
   <strong><%= moment(article.createdAt).calendar() %></strong>
 </p>
 
 <p><%= article.content %></p>
+</div>
 
+
+
+
+<div>
+  <% if (article.comments.length > 0) { %>
+  <% article.comments.forEach(function(c) { %>
+    <div>
+     <strong><%= c.name %></strong>
+     <p><%= c.content %></p>
+    </div>
+  <% }) %>
+  <% } else { %>
+    <h2>No comments</h2>
+  <% } %>
+</div>
+
+
+<form method="POST" action="/comments/articles">
+  <div class="form-group">
+    <label for="name">Comment</label>
+    <input type="text" name="name" id="name" class="form-control" required placeholder="Your Name" style="width: 100px; display: inline;">
+    <input type="hidden" name="articleId" value="<%= article.id %>">
+    <textarea type="text" class="form-control" id="content" name="content" required placeholder="Write a comment..." style="display: inline;"></textarea>
+  
+  </div>
+    <input type="submit" class="btn btn-primary" value="Post">
+</form>
 <hr />
 
 <a href="/">&larr; Back Home</a>
