@@ -1,3 +1,7 @@
+
+
+
+
 <h1><%= article.title %> <small>by <%= article.author.getFullName() %></small></h1>
 
 <p>
@@ -6,6 +10,23 @@
 
 <p><%= article.content %></p>
 
+<h1>Comments</h1>
+
+
+<h3>Commment on this post</h3>
+
+<form method="POST" action="/articles">
+  <div>
+    Name:
+    <input type="text" name="name">
+  </div>
+  <div>
+    Content
+    <input type="text" name="content">
+  </div>
+
+  <input type="submit" value="submit">
+</form>
 <hr />
 
 <a href="/">&larr; Back Home</a>
