@@ -1,11 +1,37 @@
-<h1><%= article.title %> <small>by <%= article.author.getFullName() %></small></h1>
-
-<p>
-  <strong><%= moment(article.createdAt).calendar() %></strong>
-</p>
-
-<p><%= article.content %></p>
-
-<hr />
-
+<div>
+  <h1><%= article.title %> <small>by <%= article.author.getFullName() %></small></h1>
+  <p><strong><%= moment(article.createdAt).calendar() %></strong></p>
+  <p><%= article.content %></p>
+</div>
+<hr/>
 <a href="/">&larr; Back Home</a>
+<hr/>
+<section>
+  <h2> Comments </h2>
+  <% if(article.comments != undefined) {%>
+    <% article.comments.forEach(c => { %>
+      <div class="comment">
+        <h2><small><%= c.name %></small></h2>
+        <p><%= c.content %></p>
+        <hr/>
+      </div>
+    <% }) %>
+  <% } else { %>
+    <% console.log(article.comments) %>
+  <% } %>
+</section>
+<div>
+  <h2>Post a comment!</h2>
+  <form method="POST" action="/comments">
+    <div>
+      <p>Name:</p>
+      <input type="text" name="name">
+    </div>
+    <div>
+      <p>Comment:</p>
+      <textarea name="content"></textarea>
+    </div>
+    <input type="hidden" name="articleId" value="<%=article.id%>">
+    <input type="submit" name="Submit">
+  </form>
+</div>

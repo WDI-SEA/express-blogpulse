@@ -21,9 +21,36 @@ router.post('/', function(req, res) {
 router.get('/new', function(req, res) {
   db.author.findAll()
   .then(function(authors) {
-    res.render('articles/new', { authors: authors })
+    res.render('articles/new', { authors: authors, a:undefined })
   })
   .catch(function(error) {
+    res.status(400).render('main/404')
+  })
+})
+// GET /articles/new and set default author via param
+router.get('/new/:id', function(req, res) {
+  db.author.findAll()
+  .then(function(authors) {
+    res.render('articles/new', { authors: authors, author:req.params.id })
+  })
+  .catch(function(error) {
+    res.status(400).render('main/404')
+  })
+})
+
+// GET /articles/edit - display form for editing articles
+router.get('/edit/:id', (req,res) => {
+  console.log("It is trying to bring up the edit view...")
+  db.author.findAll() 
+  .then((authors) => {
+    db.article.findOne({
+      where: {id: req.params.id},
+      include: [db.author]
+    })
+    .then(article => {res.render('articles/edit', {authors:authors, article:article})})
+  })
+  .catch(function(error) {
+    console.log(error)
     res.status(400).render('main/404')
   })
 })
@@ -32,7 +59,7 @@ router.get('/new', function(req, res) {
 router.get('/:id', function(req, res) {
   db.article.findOne({
     where: { id: req.params.id },
-    include: [db.author]
+    include: [db.author,db.comment]
   })
   .then(function(article) {
     if (!article) throw Error()
