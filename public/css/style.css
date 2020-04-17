@@ -2,3 +2,13 @@
   width: 100%;
   height: auto;
 }
+
+#com{
+  border: 1px solid rgb(209, 209, 209);
+  background-color: rgb(240, 240, 240);
+  border-radius: 3px;
+}
+
+#boxText {
+  margin: 10px 0px 10px 20px;
+}

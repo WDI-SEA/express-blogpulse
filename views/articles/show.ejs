@@ -7,5 +7,35 @@
 <p><%= article.content %></p>
 
 <hr />
+  <h2>Comments:</h2>
 
+  <% article.users.forEach(function(c) { %>
+<div id="com">
+   <div id="boxText">
+     <p ><%= c.content%></p>
+     <strong >-<%= c.name %></strong>
+   </div> 
+  </div>
+  <BR>
+  <% }) %>
+<hr>
+  
+
+
+
+
+<h2>Comment on this post</ h2>
+<div>
+  <form method="POST" action="/comments/articles">
+    <h4>Name</h4>
+    <input type="text" name="name">
+    <h4>Content</h4>
+    <input type="text" name="content">
+    <input type="hidden" name="articleId" value="<%= article.id %>">
+    <input type="submit" value="Submit">
+  </form>
+</div>
+
+
+<hr>
 <a href="/">&larr; Back Home</a>
