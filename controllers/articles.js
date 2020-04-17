@@ -53,7 +53,7 @@ router.post('/:id/comments', function(req, res) {
   })
   .then(function(post) {
     console.log('working?')
-    res.redirect('/')
+    res.redirect('/articles/' + req.body.articleId)
   })
   .catch(function(error) {
     res.status(400).render('main/404')
