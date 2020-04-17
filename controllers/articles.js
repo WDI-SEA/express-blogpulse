@@ -32,12 +32,12 @@ router.get('/new', function(req, res) {
 router.get('/:id', function(req, res) {
   db.article.findOne({
     where: { id: req.params.id },
-    include: [db.author]
+    include: [db.author, db.comment]
   })
   .then(function(article) {
     if (!article) throw Error()
     console.log(article.author)
-    res.render('articles/show', { article: article })
+    res.render('articles/show', { article: article})
   })
   .catch(function(error) {
     console.log(error)
@@ -45,33 +45,33 @@ router.get('/:id', function(req, res) {
   })
 })
 
-//display the comments but redirect it to the same page with comments added
-router.post('/show', (req, res) => {
-  db.comment.create({
-    name: req.body.name,
-    content: req.body.content,
-    articleId: req.body.articleId
-  })
-  .then(function(comment) {
-    console.log(comment.name)
-    res.redirect('/articles/:id')
-  })
-  .catch(function(error) {
-    console.log(error)
-    res.status(400).render('main/404')
-  })
-})
+// //display the comments but redirect it to the same page with comments added
+// router.post('/', (req, res) => {
+//   db.comment.create({
+//     name: req.body.name,
+//     content: req.body.content,
+//     articleId: req.body.articleId
+//   })
+//   .then(function(comment) {
+//     console.log(comment.name)
+//     res.redirect('/articles/:id')
+//   })
+//   .catch(function(error) {
+//     console.log(error)
+//     res.status(400).render('main/404')
+//   })
+// })
 
-//display the comments and redirect it to the same page 
-router.get('/articles', (req, res) => {
-  db.comment.findAll()
-  .then(comment => {
-    res.redirect('article/:id')
-  })
-  .catch(function(error) {
-    console.log(error)
-    res.status(400).render('main/404')
-  })
-})
+// //display the comments and redirect it to the same page 
+// router.get('/articles', (req, res) => {
+//   db.comment.findAll()
+//   .then(comment => {
+//     res.redirect('article/:id')
+//   })
+//   .catch(function(error) {
+//     console.log(error)
+//     res.status(400).render('main/404')
+//   })
+// })
 
 module.exports = router

@@ -25,7 +25,9 @@ app.get('/', function(req, res) {
   db.article.findAll({
     include: [db.author]
   }).then(function(articles) {
-    res.render('main/index', { articles: articles })
+    res.render('main/index', { articles: articles.filter(a => { 
+      return !! a.author})  
+    })
   }).catch(function(error) {
     console.log(error)
     res.status(400).render('main/404')
@@ -35,6 +37,7 @@ app.get('/', function(req, res) {
 // bring in authors and articles controllers
 app.use('/authors', require('./controllers/authors'))
 app.use('/articles', require('./controllers/articles'))
+app.use('/comments', require('./controllers/comments'))
 
 var server = app.listen(process.env.PORT || 3000, function() {
   rowdy.print()
