@@ -2,3 +2,70 @@
   width: 100%;
   height: auto;
 }
+
+a:hover {
+  text-decoration: none;
+}
+
+body {
+  background-image: linear-gradient(rgb(251, 203, 255), #ffe5c4);
+}
+
+form {
+  margin: 10px auto 40px auto;
+}
+
+p {
+  font-size: 20px;
+}
+
+label {
+  font-size: 20px;
+  color: rgba(26, 35, 126, 1);
+}
+
+.commentbox {
+  background-color: rgba(235, 232, 232, 0.548);
+  padding: 10px;
+  width: 80%;
+  box-shadow: 0px 0px 5px black;
+  border-radius: 5px;
+  margin: 20px auto;
+}
+
+.commentbox strong {
+  color: rgba(26, 35, 126, 1);
+  font-size: 16px;
+}
+
+.commentform {
+  margin: 50px auto;
+}
+
+.well {
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px black;
+  background: rgba(26, 35, 126, 0.952);
+  border: none;
+}
+
+.well h2 a, h3 a {
+  color:rgb(235, 235, 235);
+}
+
+.well h2 small {
+  color: rgb(216, 192, 112);
+}
+
+.well h2 a:hover, h3 a:hover {
+  color: rgb(216, 192, 112);
+}
+
+.well p {
+  color: rgb(173, 173, 173);
+}
+
+.credits {
+  color: rgba(26, 35, 126, 1);
+}
+
