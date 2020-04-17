@@ -2,3 +2,13 @@
   width: 100%;
   height: auto;
 }
+.form-group{
+  width: 50%
+}
+h5{
+  color: lightblue;
+  border: 20px;
+}
+#comments {
+
+}

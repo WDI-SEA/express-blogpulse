@@ -9,3 +9,30 @@
 <hr />
 
 <a href="/">&larr; Back Home</a>
+
+<h2>Comments</h2>
+
+<form action="/comments/articles" method="POST">
+
+  <div class="form-group">
+    <label for="name">Name</label>
+    <input type="text" name="name" value="name">
+
+    <input type="hidden" name="articleId" value="<%= article.id%>">
+
+  <div class="form-group">
+    <label for="content">Content</label>
+    <textarea type="text" class="form-control" id="content" name="content" required></textarea>
+  </div>
+
+  <input type="submit" class="btn btn-primary">
+</form>
+
+<div class="form-group">
+  <div id = 'comments'>
+  <% article.comments.forEach(c => { %>
+    <h5><%= c.name %></h5>
+    <p><%= c.content %></p>
+  <% }) %>
+  </div>
+</div>
