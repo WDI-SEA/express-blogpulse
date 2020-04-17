@@ -6,6 +6,46 @@
 
 <p><%= article.content %></p>
 
+<hr> 
+
+<h2>COMMENTS</h2>
+
+<hr>
+
+<% if (article.comments.length > 0) { %>
+<% article.comments.forEach(e => { %>
+<div id="commentbox">
+  <div>
+    Comments:
+    <div>
+      <p>
+        <%= e.comment %> 
+      </p>
+    </div>
+  </div>
+  <div id="namebox"> 
+    <p>
+      Name: <%= e.name %> 
+     </p>
+  </div>
+</div>
+<hr>
+<% }) } else { %> 
+    <p>NO COMMENTS</p>
+  <% } %>
 <hr />
+
+<form method="POST" action="/comments" id="comments">
+  <div>
+    <label for="name"> Name </label>
+  <input type="text" name="name">
+  <input type="hidden" name="articleId" value="<%= article.id %>">
+  </div>
+  <textarea name="comment">
+  </textarea>
+  <div>
+    <input type="submit" class="btn btn-primary">
+  </div>
+</form>
 
 <a href="/">&larr; Back Home</a>

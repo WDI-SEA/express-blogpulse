@@ -2,3 +2,24 @@
   width: 100%;
   height: auto;
 }
+
+textarea {
+  width: 400px;
+  height: 100px;
+}
+
+#comments {
+margin: 10px;
+}
+
+#commentbox {
+  background-color: #eceff1;
+  box-shadow: 5px 5px 10px #90a4ae;
+  padding: 5px;
+  width: 400px;
+}
+
+#namebox {
+  background-color: #cfd8dc;
+  padding: 2px;
+}
