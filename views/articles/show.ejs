@@ -7,10 +7,15 @@
 <p><%= article.content %></p>
 
 <hr />
-<% article.comments.forEach(c => { %>
-<p><%= c.name %></p>
-<p><%= c.comment %></p>
-<% }) %>
+<div>
+	<h1 id="comments">Comments</h1>
+	<% article.comments.forEach(c => { %>
+	<div class="commentBox">
+		<h3><p class="name"><%= c.name %></p></h3>
+		<p><%= c.comment %></p>
+	</div>
+	<% }) %>
+</div>
 <form method="POST" action="/comments">
 	<input type="text" name="name">Name</input>
 	<input type="textarea" name="comment">Comment</input>

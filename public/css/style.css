@@ -2,3 +2,18 @@
   width: 100%;
   height: auto;
 }
+
+.name {
+	text-decoration: underline;
+}
+
+#comments {
+	text-align: center;
+}
+
+.commentBox {
+	background-color: lightgrey;
+	padding: 10px;
+	margin: 10px;
+}
+
