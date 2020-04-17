@@ -8,4 +8,29 @@
 
 <hr />
 
+<% article.comments.forEach(c => { %>
+<h4> <%= c.name%> </h3>
+<p class = "text-muted"> <%= c.content %> </p>
+<% }) %>
+
+<h2>Submit a comment</h2>
+<form action=":id/comments" method="POST">
+	<div class="input-group">
+	  <div class="input-group-prepend">
+	    <span class="input-group-text">Name</span>
+	  </div>
+	  <input type="text" aria-label="name" class="form-control" name="name">
+	  Content
+	  <input type="text" aria-label="content" class="form-control" name="content">
+	  <input type="hidden" value ="<%=article.id%>" name="articleId">
+	  <div>
+	  <input type="submit" aria-label="Submit" class="btn-primary">
+	</div>
+	</div>
+
+	
+</form>
+
+
+
 <a href="/">&larr; Back Home</a>
