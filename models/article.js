@@ -5,8 +5,10 @@ module.exports = (sequelize, DataTypes) => {
     content: DataTypes.TEXT,
     authorId: DataTypes.INTEGER
   }, {})
-  article.associate = function(models) {
-    // associations can be defined here
+  //association from article TO comments
+  article.associate = function (models) {
+    //associations can be defined here
+    models.article.hasMany(models.comment)
     models.article.belongsTo(models.author)
   }
   return article
