@@ -6,6 +6,13 @@
 
 <p><%= article.content %></p>
 
+<strong>Tags</strong>
+
+<% article.tags.forEach(t => { %>
+  #<%= t.name %>
+<% }) %>
+
+
 <h3>Commment on this post</h3>
 <form method="POST" action="/comments/show">
   <div>
