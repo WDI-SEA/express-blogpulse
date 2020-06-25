@@ -44,18 +44,18 @@ router.get('/:id', (req, res) => {
     res.status(400).render('main/404')
   })
 })
-router.post('/articles/:id/comments'), (req, res) => {
-  db.comment.create({
-  name: req.body.name,
-  content: req.body.content,
-  articleId: req.body.authorId
-}).then(function(comment) {
-  console.log(comment.get())
-  res.send(comment)
-}).catch(error => {
-  console.log("ERROR 🎈🎈🎈🎈")
-})
-}
+// router.post('/articles/:id/comments'), (req, res) => {
+//   db.comment.create({
+//   name: req.body.name,
+//   content: req.body.content,
+//   articleId: req.body.authorId
+// }).then(function(comment) {
+//   console.log(comment.get())
+//   res.send(comment)
+// }).catch(error => {
+//   console.log("ERROR 🎈🎈🎈🎈")
+// })
+// }
 
 
 module.exports = router
