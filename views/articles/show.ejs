@@ -8,10 +8,23 @@
 
 <hr />
 
-<ul>Comments: 
-  <% comments.forEach(function(comment) { %>
-  <li><%= comment %> </li>
+<ul>Comments:
+  <% allComments.forEach((comment) => { %>
+  <li><%= comment.name %> says: <%=comment.content %> </li>
 <% }) %>
 </ul> 
+
+<h2>Comment on this post</h2>
+<div class="form-group">
+  <form method="POST" action="/article/:id">
+  <label for="name">Name</label>
+  <input type="text" name="name">
+
+  <label for="comment">Comment</label>
+  <input type="text" name="content">
+
+  <input type="submit">
+  </form>
+</div>
 
 <a href="/">&larr; Back Home</a>
