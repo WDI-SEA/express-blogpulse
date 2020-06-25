@@ -9,7 +9,7 @@
   <div class="form-group">
     <label for="author">Author</label>
     <select name="authorId" id="author" class="form-control" required>
-      <% authors.forEach(function(author) { %>
+      <% author.forEach(function(author) { %>
         <option value="<%= author.id %>"><%= author.getFullName() %></option>
       <% }) %>
     </select>
