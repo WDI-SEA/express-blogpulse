@@ -6,5 +6,5 @@ db.comment.create({
   articleId: 1
 })
 .then(function(comment) {
-  console.log(comment.get())
+  // console.log(comment.get())
 })
