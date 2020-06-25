@@ -2,3 +2,24 @@
   width: 100%;
   height: auto;
 }
+
+label {
+  width: 70px;
+}
+
+input {
+  width: 500px;
+}
+
+.sub-button {
+  display: block;
+  width: 100px;
+  margin-top: 10px; 
+  margin-left: 74px;
+  padding: 0;
+}
+
+#userComment {
+  height: 200px;
+  vertical-align: top;
+}
