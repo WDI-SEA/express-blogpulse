@@ -21,7 +21,7 @@ router.post('/', (req, res) => {
 router.get('/new', (req, res) => {
   db.author.findAll()
   .then((authors) => {
-    res.render('articles/new', { authors: authors })
+    res.render('articles/new', { author: authors })
   })
   .catch((error) => {
     res.status(400).render('main/404')
@@ -45,5 +45,20 @@ router.get('/:id', (req, res) => {
     res.status(400).render('main/404')
   })
 })
+
+router.post('/:id/comment', (req, res) => {
+  db.comment.create({
+    name: req.body.name,
+    content: req.body.content,
+    articleId: req.params.id
+  }).then(function(post) {
+    // console.log(`🎆`)
+    // console.log(updated)
+    res.redirect(`/articles/${req.params.id}`)
+  }).catch((error) => {
+    console.log(error)
+  })
+})
+
 
 module.exports = router
