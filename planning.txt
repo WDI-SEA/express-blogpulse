@@ -1,0 +1,15 @@
+article
+
+title:string,
+content:text,
+authorId:integer
+
+sequelize model:create --name article --attributes title:string,content:text,authorId:integer
+
+comments
+
+name:string,
+content:string,
+articleId:integer
+
+sequelize model:create --name comment --attributes name:string,content:string,articleId:integer

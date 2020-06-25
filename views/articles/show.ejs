@@ -4,8 +4,27 @@
   <strong><%= moment(article.createdAt).calendar() %></strong>
 </p>
 
-<p><%= article.content %></p>
+<p><<%= article.content %></p>
 
-<hr />
+<hr>
+
+<% article.comments.forEach ((comment) => { %>
+  <h5>Commenter: <%= comment.dataValues.name %></h5>
+  <p><%= comment.dataValues.content %></p>
+  <hr>
+<% }) %>
+
+<hr/>
+
+<form action="/articles/<%= id %>/comments" method ="POST">
+  <div class = 'form-group'>
+    <label for="comment-name">Name</label>
+    <input type="text" name = "comment-name" for = "comment-name">
+  </div>
+  <div>
+    <label for="comment-content">Comment</label>
+    <input type="text" name = "comment-content" for = "comment-content">
+  </div>
+</form>
 
 <a href="/">&larr; Back Home</a>
