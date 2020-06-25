@@ -1,0 +1,10 @@
+sequelize model:
+
+
+Comment
+---------
+Name: string, 
+Content: text, 
+Article: integer
+
+sequelize model:create --name comment --attributes name:string,content:text,articleId:integer

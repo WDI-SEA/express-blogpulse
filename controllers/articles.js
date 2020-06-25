@@ -28,7 +28,7 @@ router.get('/new', (req, res) => {
   })
 })
 
-// GET /articles/:id - display a specific post and its author
+// GET /articles/:id - display a specific post and its author && display the comments
 router.get('/:id', (req, res) => {
   db.article.findOne({
     where: { id: req.params.id },
@@ -42,6 +42,17 @@ router.get('/:id', (req, res) => {
   .catch((error) => {
     console.log(error)
     res.status(400).render('main/404')
+  })
+})
+
+// //GET/ --- view comments on article page 
+router.get('/:id', (req, res) => {
+  db.article.findOne({
+    where: {id: req.params.id}, 
+    include: [db.comment]
+  }).then((article) => {
+    console.log(db.comment)
+    res.render('./articles/show', { comments: db.comment})
   })
 })
 
