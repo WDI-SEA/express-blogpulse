@@ -1,0 +1,8 @@
+comment
+-------
+name: string,
+content: string,
+authorId: integer
+
+sequelize model:create --name comment --attributes name:string,content:string,articleId:integer
+sequelize db:migrate 
