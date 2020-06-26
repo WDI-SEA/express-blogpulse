@@ -55,6 +55,7 @@ After setup, **STOP**. You're using an existing application, so make sure to rea
 
 In order to add comments, create a Sequelize model to store comments. It's recommended that you name this model `comment`. It will store three attributes: the name of the person creating the comment (as a string), the content of the comment (as text), and the article that the comment belongs to (as an integer)
 
+
 Once this model has been created, **add the associations between comments the articles**. This may look similar to how Authors and Articles are related in the existing code in this app. Note the associate section in the models for both `article` and `author`.
 
 **models/article.js**
