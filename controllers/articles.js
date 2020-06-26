@@ -21,7 +21,9 @@ router.post('/:id', (req, res) => {
 
 // POST /articles - create a new post
 router.post('/', (req, res) => {
+  console.log("now you hit this one")
   db.comment.create({
+    
     title: req.body.title,
     content: req.body.content,
     authorId: req.body.authorId
