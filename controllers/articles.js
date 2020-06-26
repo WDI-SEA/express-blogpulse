@@ -44,6 +44,21 @@ router.get('/:id', (req, res) => {
     console.log(error)
     res.status(400).render('main/404')
   })
+});
+
+//POST /articles/:id/comments -- receive the data from the form & render it on article's page
+router.post('/:id/comments', (req, res) => {
+  db.comment.create({
+    name: req.body.name, 
+    content: req.body.content,
+    articleId: req.params.id
+  }).then((comment) => {
+    console.log("SEMKO")
+    console.log(comment)
+    res.redirect(`/articles/${req.params.id}`)
+  }).catch((error) => {
+    res.status(400).render('main/404')
+  })
 })
 
 module.exports = router

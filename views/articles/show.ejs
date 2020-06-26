@@ -1,30 +1,36 @@
-<h1><%= article.title %> <small>by <%= article.author.getFullName() %></small></h1>
+<div id="articlePage">
+  <h1><%= article.title %> <small>by <%= article.author.getFullName() %></small></h1>
 
-<p>
-  <strong><%= moment(article.createdAt).calendar() %></strong>
-</p>
+  <p>
+    <strong><%= moment(article.createdAt).calendar() %></strong>
+  </p>
 
-<p><%= article.content %></p>
+  <p id="article"><%= article.content %></p>
 
-<hr />
+  <hr />
 
-<ul>Comments:
-  <% allComments.forEach((comment) => { %>
-  <li><%= comment.name %> says: <%=comment.content %> </li>
-<% }) %>
-</ul> 
+  <h4>Comments:</h4>
+    <% allComments.forEach((comment) => { %>
+    <div id ="individualComments"
+      <p> <%=comment.content %> </p>
+    <p id="name"> - <%= comment.name %> </p>
+    </div>
+  <% }) %>
 
-<h2>Comment on this post</h2>
-<div class="form-group">
-  <form method="POST" action="/article/:id">
-  <label for="name">Name</label>
-  <input type="text" name="name">
 
-  <label for="comment">Comment</label>
-  <input type="text" name="content">
+  <h2>Comment on this post</h2>
+    <form method="POST" action="/articles/<%= article.id %>/comments">
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" class="form-control" name="name">
+      </div>
+      <div class="form-group">
+        <label for="comment">Comment</label>
+        <textarea type="text" class="form-control" id="content" name="content" required></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
 
-  <input type="submit">
-  </form>
+
+  <a href="/">&larr; Back Home</a>
 </div>
-
-<a href="/">&larr; Back Home</a>

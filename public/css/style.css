@@ -2,3 +2,19 @@
   width: 100%;
   height: auto;
 }
+
+#article {
+  font-size: 18px;
+}
+
+#individualComments {
+  background-color:#F5F5F5;
+}
+
+#articlePage {
+ justify-content: center;
+}
+
+#name {
+  font-weight: bold;
+}
