@@ -5,7 +5,23 @@
 </p>
 
 <p><%= article.content %></p>
+<hr />
+<h3>Comments:</h3>
+<br>
 
+<% article.comments.forEach(comment => { %>
+  <p> <%= `Comment from ${comment.name}: ${comment.content}` %> </p>
+<% }) %>
+
+<form action="/" method="POST">
+<div class="form-group">
+  <label for="postComment">Submit a comment</label>
+  Name:
+  <input type="text" class="form-control" value="" id="name" name="name">
+  Comment:
+  <input type="text" class="form-control" value="" id="content" name="content" required>
+  <input type="submit" class="form-control" value="Submit" id="submit">
+</div>
 <hr />
 
 <a href="/">&larr; Back Home</a>

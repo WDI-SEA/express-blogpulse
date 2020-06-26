@@ -16,3 +16,10 @@ module.exports = (sequelize, DataTypes) => {
   }
   return author
 }
+
+/*
+output
+input
+constraints
+edgecases
+*/

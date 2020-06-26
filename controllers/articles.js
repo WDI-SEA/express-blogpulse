@@ -1,5 +1,6 @@
 let express = require('express')
 let db = require('../models')
+
 let router = express.Router()
 
 // POST /articles - create a new post
@@ -30,19 +31,26 @@ router.get('/new', (req, res) => {
 
 // GET /articles/:id - display a specific post and its author
 router.get('/:id', (req, res) => {
+
   db.article.findOne({
-    where: { id: req.params.id },
-    include: [db.author]
+    where: { id : req.params.id },
+    include: [db.author, db.comment]
   })
-  .then((article) => {
+  .then(article => {
     if (!article) throw Error()
-    console.log(article.author)
-    res.render('articles/show', { article: article })
+    
+    res.render('articles/show', { 
+      article: article
+    })
   })
   .catch((error) => {
     console.log(error)
     res.status(400).render('main/404')
   })
+  
 })
+
+
+
 
 module.exports = router
