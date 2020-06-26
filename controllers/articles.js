@@ -17,6 +17,18 @@ router.post('/', (req, res) => {
   })
 })
 
+// POST /article/:id/comments -adds a comment to the article idin the params
+router.post('/:id/comments', (req, res) => {
+  db.comment.create({
+    name: req.body.name,
+    content: req.body.content,
+    articleId: req.params.id
+  })
+  .then((comment) => {
+    res.redirect(`/articles/${req.params.id}`)
+  })
+})
+
 // GET /articles/new - display form for creating new articles
 router.get('/new', (req, res) => {
   db.author.findAll()
@@ -37,6 +49,7 @@ router.get('/:id', (req, res) => {
   .then((article) => {
     if (!article) throw Error()
     console.log(article.author)
+    // console.log(article.comment[0])
     res.render('articles/show', { article: article })
   })
   .catch((error) => {
@@ -44,18 +57,5 @@ router.get('/:id', (req, res) => {
     res.status(400).render('main/404')
   })
 })
-// router.post('/articles/:id/comments'), (req, res) => {
-//   db.comment.create({
-//   name: req.body.name,
-//   content: req.body.content,
-//   articleId: req.body.authorId
-// }).then(function(comment) {
-//   console.log(comment.get())
-//   res.send(comment)
-// }).catch(error => {
-//   console.log("ERROR 🎈🎈🎈🎈")
-// })
-// }
-
 
 module.exports = router
