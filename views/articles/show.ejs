@@ -14,13 +14,23 @@
 
 <hr />
 <h4>Leave a comment</h4>
-<form action="/articles/<%=article.id%>" method="POST">
-  <label for="name">Name:</label>
-  <input type="text" name="name" id="name">
-  <label for="content">Comment:</label>
-  <input type="text" name="content" id="content">
-  <input type="submit">
-</form>
+  <form action="/articles/<%=article.id%>/comments" method="POST">
+    
+    <div class="form-group">
+      <label for="name">Name:</label>
+      <input type="text" name="name" id="name" class="form-control">
+    </div>
+
+    <div class="form-group">
+      <label for="content">Comment:</label>
+      <input type="text" name="content" id="content" class="form-control">
+    </div>
+
+    <div class="form-group">
+      <input type="submit" class="btn btn-primary">
+    </div>
+
+  </form>
 <hr />
 
 <a href="/">&larr; Back Home</a>

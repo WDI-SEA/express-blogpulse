@@ -36,8 +36,6 @@ router.get('/:id', (req, res) => {
   })
   .then((article) => {
     if (!article) throw Error()
-    console.log(article.author.dataValues)
-    console.log(article.comments)
     res.render('articles/show', { 
       article: article
     })
@@ -48,15 +46,13 @@ router.get('/:id', (req, res) => {
   })
 })
 
-router.post('/:id', (req, res) => {
+router.post('/:id/comments', (req, res) => {
     db.comment.create({
     name: req.body.name,
     content: req.body.content,
     articleId: req.params.id
   })
-  .then((post) => {
-    res.redirect(`/articles/${req.params.id}`)
-  })
+  .then(res.redirect(`/articles/${req.params.id}`))
   .catch((error) => {
     res.status(400).render('main/404')
   })
