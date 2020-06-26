@@ -8,13 +8,13 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
+      name: {
+        type: Sequelize.STRING
+      },
       content: {
         type: Sequelize.TEXT
       },
-      poster: {
-        type: Sequelize.TEXT
-      },
-      articleid: {
+      articleId: {
         type: Sequelize.INTEGER
       },
       createdAt: {
