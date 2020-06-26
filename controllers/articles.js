@@ -3,9 +3,24 @@ let db = require('../models')
 
 let router = express.Router()
 
+router.post('/:id', (req, res) => {
+  db.comment.create({
+    name: req.body.name,
+    content: req.body.content,
+    articleId: req.params.id,
+  })
+  .then((author) => {
+    res.redirect('articles/show')
+  })
+  .catch((error) => {
+    res.status(400).render('main/404')
+  })
+})
+
+
 // POST /articles - create a new post
 router.post('/', (req, res) => {
-  db.article.create({
+  db.comment.create({
     title: req.body.title,
     content: req.body.content,
     authorId: req.body.authorId

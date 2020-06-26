@@ -10,16 +10,16 @@
 <br>
 
 <% article.comments.forEach(comment => { %>
-  <p> <%= `Comment from ${comment.name}: ${comment.content}` %> </p>
+  <p> <%= `Comment from ${comment.name}: ${comment.content}`  %> </p>
 <% }) %>
 
-<form action="/" method="POST">
+<form action="/:id" method="POST">
 <div class="form-group">
-  <label for="postComment">Submit a comment</label>
+  <label for="name">Submit a comment</label>
   Name:
-  <input type="text" class="form-control" value="" id="name" name="name">
+  <input type="text" class="form-control" id="name" name="name" required>
   Comment:
-  <input type="text" class="form-control" value="" id="content" name="content" required>
+  <input type="text" class="form-control" id="content" name="content" required>
   <input type="submit" class="form-control" value="Submit" id="submit">
 </div>
 <hr />
