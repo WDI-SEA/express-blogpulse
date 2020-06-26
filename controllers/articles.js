@@ -4,13 +4,14 @@ let db = require('../models')
 let router = express.Router()
 
 router.post('/:id', (req, res) => {
+  console.log("YOU HIT THIS ROUTE")
   db.comment.create({
     name: req.body.name,
     content: req.body.content,
-    articleId: req.params.id,
+    articleId: req.params.id
   })
   .then((author) => {
-    res.redirect('articles/show')
+    res.redirect(req.params.id)
   })
   .catch((error) => {
     res.status(400).render('main/404')
