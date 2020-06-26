@@ -2,3 +2,13 @@
   width: 100%;
   height: auto;
 }
+
+body {
+  background-color: aqua;
+  text-align: center;
+}
+
+.well {
+  background-color: lightgreen;
+ 
+}

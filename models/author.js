@@ -16,3 +16,7 @@ module.exports = (sequelize, DataTypes) => {
   }
   return author
 }
+
+
+
+// 1 to Many //

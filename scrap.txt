@@ -1,0 +1,33 @@
+
+Comment Model 
+-------------
+{
+
+name: string,
+content: text,
+article: integer
+
+}
+
+sequelize model:create --name comment --attributes name:string,content:text,articleId:integer
+
+
+
+--------------------------------------
+//////////////////////////////////         Setting Up MANY to MANY   Step 1)--------
+--------------------------------------
+
+sequelize model:create --name tag --attributes content:string             <<<<< Tags Model
+
+sequelize model:create --name articlesTags --attributes articleId:integer,tagId:integer
+
+// Step 2 = Create assoseations ------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+

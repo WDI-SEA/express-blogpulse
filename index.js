@@ -10,7 +10,7 @@ rowdy.begin(app)
 app.set('view engine', 'ejs')
 
 app.use(require('morgan')('dev'))
-app.use(express.urlencoded({ extended: false }))
+app.use(express.urlencoded({ extended: false }))   // body parser  takes ALL form data and puts into rec.body
 app.use(ejsLayouts)
 app.use(express.static(__dirname + '/public/'))
 
@@ -36,7 +36,7 @@ app.get('/', (req, res) => {
 app.use('/authors', require('./controllers/authors'))
 app.use('/articles', require('./controllers/articles'))
 
-var server = app.listen(process.env.PORT || 3000, () => {
+var server = app.listen(process.env.PORT || 4000, () => {
   rowdy.print()
 })
 
