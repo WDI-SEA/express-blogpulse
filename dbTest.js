@@ -3,7 +3,7 @@ const db = require('./models')
 db.comment.create({
   commentator: 'Paul Allen',
   commentContent: 'This is really neat! Thanks for posting.',
-  commentedOn: 1
+  articleId: 1
 })
 .then(function(comment) {
   console.log(comment.get())
