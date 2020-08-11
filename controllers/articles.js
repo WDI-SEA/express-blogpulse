@@ -36,13 +36,55 @@ router.get('/:id', (req, res) => {
   })
   .then((article) => {
     if (!article) throw Error()
-    console.log(article.author)
-    res.render('articles/show', { article: article })
+    console.log(article.author);
+    
+    article.getComments().then(articleComments =>
+    {
+      let manyComments = [];
+      articleComments.forEach(comment =>
+      {
+        //console.log(comment.get());
+        let oneComment = comment.get();
+        manyComments.push(oneComment);
+      });
+      console.log(manyComments);
+      res.render('articles/show', { article: article, comments: manyComments });
+    });
   })
   .catch((error) => {
     console.log(error)
     res.status(400).render('main/404')
   })
 })
+
+router.post("/:id/comments", (req, res) =>
+{
+  let articleID = req.params.id;
+  console.log(req.body);
+
+  db.article.findOne({
+    where: { id: articleID }
+  })
+  .then((article) => 
+  {
+    if (!article) throw Error()
+
+    article.createComment(
+    {
+      name: req.body.name,
+      content: req.body.content,
+      articleId: articleID
+    })
+    .then(() =>
+    {
+      res.redirect(`/articles/${articleID}`)
+    });
+  })
+  .catch((error) => {
+    console.log(error)
+    res.status(400).render('main/404')
+  })
+
+});
 
 module.exports = router

@@ -1,16 +1,22 @@
 {
   "development": {
+    "username": "imjchiang",
+    "password": 5375,
     "database": "blogpulse_dev",
     "host": "127.0.0.1",
     "dialect": "postgres"
   },
   "test": {
-    "database": "blogpulse_test",
+    "username": "imjchiang",
+    "password": 5375,
+    "database": "blogpulse_dev",
     "host": "127.0.0.1",
     "dialect": "postgres"
   },
   "production": {
-    "database": "blogpulse_production",
+    "username": "imjchiang",
+    "password": 5375,
+    "database": "blogpulse_dev",
     "host": "127.0.0.1",
     "dialect": "postgres"
   }

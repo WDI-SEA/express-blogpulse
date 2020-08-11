@@ -1,3 +1,4 @@
-$(document).ready(() => {
-  console.log("Hello front end JS!")
+$(document).ready(() => 
+{
+  console.log("Hello front end JS!");
 });
