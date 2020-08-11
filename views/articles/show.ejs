@@ -18,10 +18,11 @@
 <br>
   <h3>Post our comment here</h3>
   <form method="POST" action="/articles/<%= article.id %>">
-    <label for="content">Content</label>
-    <textarea type="text" class="form-control" id="content" name="content" required></textarea>
     <label for="name">Name</label>
     <input name="name" id="name" class="form-control" required><br>
+    <label for="content">Content</label>
+    <textarea type="text" class="form-control" id="content" name="content" required></textarea>
+    
     <input type="submit" class="btn btn-primary">
 </form>
 
