@@ -49,10 +49,10 @@ router.post('/:id', (req, res) => {
   db.comment.create({
     name: req.body.name,
     content: req.body.content,
-    articleId: req.params.articleId
+    articleId: req.params.id
   })
   .then((data) => {
-    res.redirect('/:id' + req.params.id)
+    res.render('/articles/' + `${req.params.id}`)
   })
   .catch((error) => {
     res.status(400).render('main/404')
