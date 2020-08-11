@@ -111,9 +111,9 @@ Now, run the migration for the model and test the model's functionality. This ca
 var db = require('./models')
 
 db.comment.create({
-  name: 'Paul Allen',
-  content: 'This is really neat! Thanks for posting.',
-  articleId: 1
+  name: 'Nick Phillips',
+  content: 'I love Coding! Nah Sayin!.',
+  articleId: 2
 })
 .then(function(comment) {
   console.log(comment.get())
