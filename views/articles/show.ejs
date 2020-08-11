@@ -1,4 +1,6 @@
-<h1><%= article.title %> <small>by <%= article.author.getFullName() %></small></h1>
+<h1>
+  <%= article.title %> <small>by <%= article.author.getFullName() %></small>
+</h1>
 
 <p>
   <strong><%= moment(article.createdAt).calendar() %></strong>
@@ -7,5 +9,18 @@
 <p><%= article.content %></p>
 
 <hr />
+
+<% article.comments.forEach(c => { %>
+<div class="comments">
+  <p><%= c.name %></p>
+  <p><%= c.dataValues.content %></p>
+</div>
+<% }) %>
+
+<!-- <form action="/articles" method="POST">
+  <label for="comments">New Comment</label>
+  <input type="text" class="form-control" id="comments" name="comments" required>
+  <button type="submit">Submit</button>
+</form> -->
 
 <a href="/">&larr; Back Home</a>
