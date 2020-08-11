@@ -10,11 +10,26 @@ const db = require('./models')
 //     console.log(comment.get())
 //   })
 
-db.article.findOne({
-    where: { id: 1 },
-    include: [db.comment]
-  }).then(function(article) {
-    // by using eager loading, the article model should have a comments key
-    console.log(article.comments)
-  })
+// db.article.findOne({
+//     where: { id: 1 },
+//     include: [db.comment]
+//   }).then(function(article) {
+//     // by using eager loading, the article model should have a comments key
+//     console.log(article.comments)
+//   })
 
+
+
+  db.article.findAll({
+    include: [db.comment],
+    include: [db.article]
+})
+.then(article=>{
+    article.forEach(article=>{
+        console.log(`${article.title}'s comments:`)
+        article.comments.forEach(comment=>{
+            console.log(comment.content)
+        })
+        console.log('-----------')
+    })
+})
