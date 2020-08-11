@@ -25,16 +25,23 @@ const db = require('./models')
 //     })
 // })
 
+// db.article.findOne({
+//     where: {id: 1}
+// })
+// .then(article=>{
+//     article.createComment({
+//         author: 'aiden bryce taylor',
+//         content: 'today is my dads birday!:)',
+//         articleId: article.id
+//     })
+//     .then(comment=>{
+//         console.log(`created the comment : ${comment.content}`)
+//     })
+// })
+
 db.article.findOne({
-    where: {id: 1}
-})
-.then(article=>{
-    article.createComment({
-        author: 'aiden bryce taylor',
-        content: 'today is my dads birday!:)',
-        articleId: article.id
-    })
-    .then(comment=>{
-        console.log(`created the comment : ${comment.content}`)
-    })
+    where: {id:1},
+    include: [db.comment]
+}).then(article=>{
+    console.log(article.comments)
 })
