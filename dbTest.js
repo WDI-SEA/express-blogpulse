@@ -8,19 +8,19 @@ const db = require('./models')
 //     console.log(comment.get());
 // })
 
-db.article.findOne({
-    where: {id: 1},
-    include: [db.comment]
-}).then(article => {
-    console.log(article.comments.get)
-})
-
-// db.article.findOne().then(article => {
-//     article.createComment({
-//         author: 'Some lady',
-//         content: 'i agree actually',
-//         articleId: 3
-//     }).then(comment => {
-//         console.log(comment.content)
-//     })
+// db.article.findOne({
+//     where: {id: 1},
+//     include: [db.comment]
+// }).then(article => {
+//     console.log(article.comments)
 // })
+
+db.article.findOne().then(article => {
+    article.createComment({
+        author: 'Some dog',
+        content: 'bark bark bark',
+        articleId: 2
+    }).then(comment => {
+        console.log(comment.content)
+    })
+})
