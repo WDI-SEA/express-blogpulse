@@ -51,8 +51,8 @@ router.post('/:id', (req, res) => {
     content: req.body.content,
     articleId: req.params.id
   })
-  .then((data) => {
-    res.render('/articles/' + `${req.params.id}`)
+  .then((comment) => {
+    res.redirect(`/articles/${req.params.id}`);
   })
   .catch((error) => {
     res.status(400).render('main/404')
