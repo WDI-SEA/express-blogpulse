@@ -16,25 +16,16 @@
 </div>
 <br>
 <br>
-<!-- <form action="/article" method="POST">
-  <div class="form-group">
-    <label for="Comments">Add your comment</label>
-    <input type="text" class="form-control" id="comments" name="comments" required>
-    <input type="submit" name="submit">
-  </div> -->
-  <h3>Post your comment here</h3>
-    <div class="form-group">
-      <label for="name">Name</label>
-      <input name="articleId" id="article" class="form-control" required>
-    </div>
-  
-    <div class="form-group">
-      <label for="content">Content</label>
-      <textarea type="text" class="form-control" id="content" name="content" required></textarea>
-    </div>
-  
+  <h3>Post our comment here</h3>
+  <form method="POST" action="/:id<%= article.id %>">
+    <label for="content">Content</label>
+    <textarea type="text" class="form-control" id="content" name="content" required></textarea>
+    <label for="name">Name</label>
+    <input name="articleId" id="article" class="form-control" required><br>
     <input type="submit" class="btn btn-primary">
-  </form>
+</form>
+
+ 
 
 <hr />
 
