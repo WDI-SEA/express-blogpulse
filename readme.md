@@ -171,4 +171,3 @@ Here's an example screenshot of the article page, complete with comments. Your f
 1. All content is licensed under a CC-BY-NC-SA 4.0 license.
 2. All software code is licensed under GNU GPLv3. For commercial use or alternative licensing, please contact legal@ga.co.
 
-fdsbfsdkfnsfk
