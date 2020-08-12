@@ -1,0 +1,16 @@
+<h1>Tag - <%= tag.name %></h1>
+<% if(tag.articles.length > 0) { %>
+    <h3>Articles</h3>
+    <% tag.articles.forEach(a => {%>
+        <div class="well">
+            <h2>
+                <a href="/articles/<%= a.id %>"><%= a.title %></a>
+            </h2>
+            <p>
+                <strong><%= moment(a.createdAt).calendar() %></strong>
+            </p>
+        </div>
+    <% }) %>
+<% } %>
+
+<a href="/">&larr; Back Home</a>
