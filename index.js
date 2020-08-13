@@ -4,6 +4,7 @@ let db = require('./models')
 let moment = require('moment')
 let rowdy = require('rowdy-logger')
 let app = express()
+let async = require('async')
 
 rowdy.begin(app)
 
@@ -23,8 +24,9 @@ app.use((req, res, next) => {
 // GET / - display all articles and their authors
 app.get('/', (req, res) => {
   db.article.findAll({
-    include: [db.author]
+   include: [db.author]
   }).then((articles) => {
+    console.log(articles)
     res.render('main/index', { articles: articles })
   }).catch((error) => {
     console.log(error)
@@ -36,7 +38,7 @@ app.get('/', (req, res) => {
 app.use('/authors', require('./controllers/authors'))
 app.use('/articles', require('./controllers/articles'))
 
-var server = app.listen(process.env.PORT || 3000, () => {
+var server = app.listen(process.env.PORT || 8000, () => {
   rowdy.print()
 })
 

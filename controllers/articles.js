@@ -1,5 +1,6 @@
 let express = require('express')
 let db = require('../models')
+// const { regexp } = require('sequelize/types/lib/operators')
 let router = express.Router()
 
 // POST /articles - create a new post
@@ -32,16 +33,28 @@ router.get('/new', (req, res) => {
 router.get('/:id', (req, res) => {
   db.article.findOne({
     where: { id: req.params.id },
-    include: [db.author]
+    include: [db.author, db.comment]
   })
   .then((article) => {
     if (!article) throw Error()
     console.log(article.author)
+    console.log(article.comments)
     res.render('articles/show', { article: article })
   })
   .catch((error) => {
     console.log(error)
     res.status(400).render('main/404')
+  })
+})
+
+router.post('/:id', (req, res) => {
+  db.comment.create({
+    name: req.body.name,
+    content: req.body.content,
+    articleId: req.params.id
+  })
+  .then((comment) => {
+    res.redirect(`/articles/${req.params.id}`)
   })
 })
 
