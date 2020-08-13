@@ -46,15 +46,43 @@ router.get('/new', (req, res) => {
 //   })
 // })
 
+
+router.post('/:id', (req, res) => {
+  db.comment.create({
+    title: req.body.title,
+    content: req.body.content,
+    authorId: req.body.authorId
+  })
+  .then()
+    res.redirect('/articles/' + req.params.id)
+  
+})
+
 router.get('/:id', (req, res) => {
   db.article.findOne({
-    where: { id: 1 },
+    where: { id: req.params.id },
     include: [db.comment]
-  }).then(function(article) {
+  }).then(article => {
     // by using eager loading, the article model should have a comments key
-    console.log(article.comments)
+    // console.log(article.comments)
     res.render('articles/show', {article: article, comments: article.comments})
+  })
 })
-})
+
+// // POST /articles - create a new post
+// router.post('/', (req, res) => {
+//   db.article.create({
+//     title: req.body.title,
+//     content: req.body.content,
+//     authorId: req.body.authorId
+//   })
+//   .then((post) => {
+//     res.redirect('/')
+//   })
+//   .catch((error) => {
+//     res.status(400).render('main/404')
+//   })
+// })
+
 
 module.exports = router
