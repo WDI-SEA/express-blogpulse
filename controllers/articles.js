@@ -54,7 +54,7 @@ router.post('/:id', (req, res) => {
     articleId: articleId
   })
   .then(() => {
-    res.redirect('show')// Somthing wrong with the path, here or in show.ejs form action
+    res.redirect(`/articles/${articleId}`)// Need to redirect to actual path
   })
   .catch((error) => {
     res.status(400).render('main/404')

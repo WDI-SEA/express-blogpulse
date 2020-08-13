@@ -19,8 +19,10 @@
 <% } %> 
 
 <hr />
+
 <h4>Add New Comment:</h4>
-<form method="POST" action="/articles/<%= article.id %> ">
+
+<form method="POST" action="/articles/<%= article.id %>">
   <label for="name">Name: </label>
   <input type="text" name="name" id="name" required>
   <label for="comment">Comment: </label>
