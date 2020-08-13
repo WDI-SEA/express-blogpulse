@@ -29,20 +29,32 @@ router.get('/new', (req, res) => {
 })
 
 // GET /articles/:id - display a specific post and its author
+// router.get('/:id', (req, res) => {
+//   db.article.findAll({
+//     where: { id: req.params.id },
+//     include: [db.comments]
+//   })
+//   .then((article) => {
+//     console.log(db.comments)
+//     if (!article) throw Error()
+//     // console.log(article.comments)
+//     // res.render('articles/show', { article: article, comment: comment})
+//   })
+//   .catch((error) => {
+//     console.log(error)
+//     res.status(400).render('main/404')
+//   })
+// })
+
 router.get('/:id', (req, res) => {
   db.article.findOne({
-    where: { id: req.params.id },
-    include: [db.author]
-  })
-  .then((article) => {
-    if (!article) throw Error()
-    console.log(article.author)
-    res.render('articles/show', { article: article })
-  })
-  .catch((error) => {
-    console.log(error)
-    res.status(400).render('main/404')
-  })
+    where: { id: 1 },
+    include: [db.comment]
+  }).then(function(article) {
+    // by using eager loading, the article model should have a comments key
+    console.log(article.comments)
+    res.render('articles/show', {article: article, comments: article.comments})
+})
 })
 
 module.exports = router
