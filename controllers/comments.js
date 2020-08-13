@@ -2,18 +2,17 @@ let express = require('express')
 let db = require('../models')
 let router = express.Router()
 
-//post comment and the redirect to article comment page
+//post comment and the redirect to article comment page using articleID
 router.post("/", (req, res) => {
-    let data = req.body;
-    db.comment.create(data)
+    let commentData = req.body;
+    db.comment.create(commentData)
     .then(() => {
-        res.redirect(`/articles/${data.articleId}`);
+        res.redirect(`/articles/${commentData.articleId}`);
     })
     .catch((error) => {
         res.status(400).render("main/404");
       });
   });
-
 
  // can also do the above this way
 //   router.post("/", async (req, res) => {
@@ -25,6 +24,5 @@ router.post("/", (req, res) => {
 //       res.send("Error");
 //     }
 //   });
-
   
   module.exports = router;

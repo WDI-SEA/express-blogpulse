@@ -2,11 +2,14 @@
   <%= article.title %> by <%= article.author.getFullName() %>
 </h1>
 
+<!-- timestamps article was created at -->
 <p>
   <strong><%= moment(article.createdAt).calendar() %></strong>
 </p>
+<!-- article description/summary -->
 <p><%= article.content %></p>
 
+<!-- if there are comments, display name and comment-->
 <hr />
 <% if(article.comments.length > 0) { %> 
 <% article.comments.forEach(comment => { %>
@@ -17,10 +20,12 @@
     <%= comment.content %>
   </p>
 </div>
-<% }) %> <% } else { %>
+<% }) %> <% } else { %> <!-- if there are no comments -->
 <h3>No comments yet! Add some! </h3>
 <% } %>
 
+
+<!-- form to add a comment-->
 <div>
   <h4>Add a Comment:</h4>
   <form method="POST" action="/comments">

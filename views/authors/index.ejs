@@ -1,9 +1,10 @@
 <h1>Authors</h1>
 
-<% authors.forEach(function(author) { %>
+<!-- authors page -->
+<% authors.forEach(function(author) { %> 
   <div class="well">
     <h2>
-      <a href="/authors/<%= author.id %>">
+      <a href="/authors/<%= author.id %>"> <!-- click on name of author to go to the articles they've written-->
         <%= author.getFullName() %>
       </a>
     </h2>
