@@ -8,4 +8,20 @@
 
 <hr />
 
+<div>
+  <% if(article.comments.length > 0) { %> <% article.comments.forEach(comment => {
+    %>
+    <div class="well">
+      <p>
+        <%= comment.commentator %> commented:<br />
+        <%= comment.commentContent %>
+      </p>
+    </div>
+    <% }) %> <% } else { %>
+    <h3>No comments yet!</h3>
+    <% } %>
+</div>
+
+<hr />
+
 <a href="/">&larr; Back Home</a>
