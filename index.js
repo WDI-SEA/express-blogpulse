@@ -32,9 +32,24 @@ app.get('/', (req, res) => {
   })
 })
 
+app.get('/articles/:id', (req, res) => {
+  db.article.findOne({
+    where: {
+      id: req.params.id
+    },
+    include: [db.comment, db.author]
+  })
+  .then(article => {
+    console.log(article.dataValues)
+    res.render('articles/show', { article: article.dataValues })
+  })
+})
+
+
 // bring in authors and articles controllers
 app.use('/authors', require('./controllers/authors'))
 app.use('/articles', require('./controllers/articles'))
+app.use('/comments', require('./controllers/comments'))
 
 var server = app.listen(process.env.PORT || 3000, () => {
   rowdy.print()

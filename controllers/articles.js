@@ -13,6 +13,7 @@ router.post('/', (req, res) => {
     res.redirect('/')
   })
   .catch((error) => {
+    console.log(error)
     res.status(400).render('main/404')
   })
 })
@@ -24,6 +25,7 @@ router.get('/new', (req, res) => {
     res.render('articles/new', { authors: authors })
   })
   .catch((error) => {
+    console.log(error)
     res.status(400).render('main/404')
   })
 })
@@ -45,20 +47,7 @@ router.get('/:id', (req, res) => {
   })
 })
 
-// GET /articles/:id/comments
-// router.get('/:id/comments',  (req, res)=>{
-//   db.comment.findAll({
-//     where: { id: req.params.id },
-//     include: [db.comment]
-//   })
-//   .then((comment) => {
-//     if (!comment) throw Error()
-//     console.log(comment)
-//     res.render('articles/show', { comment: comment })
-//   })
-//   .catch((error) => {
-//     console.log(error)
-//     res.status(400).render('main/404')
-//   })
-// })
+
+
+
 module.exports = router
