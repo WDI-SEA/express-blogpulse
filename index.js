@@ -1,3 +1,4 @@
+
 let express = require('express')
 let ejsLayouts = require('express-ejs-layouts')
 let db = require('./models')
@@ -32,11 +33,14 @@ app.get('/', (req, res) => {
   })
 })
 
+
+
 // bring in authors and articles controllers
 app.use('/authors', require('./controllers/authors'))
 app.use('/articles', require('./controllers/articles'))
+app.use('/comments', require('./controllers/comments'))
 
-var server = app.listen(process.env.PORT || 3000, () => {
+var server = app.listen(process.env.PORT || 4000, () => {
   rowdy.print()
 })
 

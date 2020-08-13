@@ -6,6 +6,30 @@
 
 <p><%= article.content %></p>
 
+<%// console.log(article) %> 
+<div>
+
+  <% article.comments.forEach(c => { %>
+    <div class="well">
+      <p><b><%= c.name %> </b></p>
+      <p><%= c.content %> </p>
+    </div>
+  <% }) %> 
+
+</div>
+
+
+
+
+<form action="/comments" method="POST">
+  <label for="name">Name:</label>
+  <input type="text" name="name" >
+  <label for="content">Comment:</label>
+  <input type="text"name="content" >
+  <input type="hidden" name="articleId" value="<%= article.id %> ">
+  <button type="submit">Submit</button>
+</form>
+
 <hr />
 
 <a href="/">&larr; Back Home</a>
