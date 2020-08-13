@@ -27,12 +27,13 @@
 <form action="/comments" method="POST">
   <div class="form-group">
     <label for="commentator">Name</label>
-    <input type="text" class="form-control" id="commentator" name="commentator" placeholder="Your name" required>
+    <input type="text" class="form-control" name="commentator" placeholder="Your name" required>
   </div>
   <div class="form-group">
     <label for="commentContent">Add comment here</label>
-    <input type="text" class="form-control" id="commentContent" name="commentContent" placeholder="Your comment" required>
+    <input type="text" class="form-control" name="commentContent" placeholder="Your comment" required>
   </div>
+  <input hidden type="text" name="articleId" value="<%= article.id%>">
   <input type="submit" class="btn btn-primary">
 </form>
 <hr />
