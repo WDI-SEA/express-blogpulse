@@ -5,7 +5,21 @@
 </p>
 
 <p><%= article.content %></p>
-
 <hr />
-
+<h3>Comments</h3>
+<% comments.forEach(function(comment) { %>
+  <div class="well">
+    <div><%= comment.content %></div>
+    <h5>- <%= comment.name %></h5>
+  </div>
+<% }) %>
+    <form method="POST" action="/articles/comment">
+      <input type="hidden" name="articleId" value="<%= article.id %>">
+      <label for="name">Name</label>
+      <input class="form-control" type="text" name="name" id="name">
+      <label for="content">Content</label>
+      <textarea class="form-control" type="text" name="content" id="content"></textarea> 
+      <button class="btn btn-primary" type="submit">Submit</button>
+    </form>
+    <hr>
 <a href="/">&larr; Back Home</a>

@@ -1,19 +1,18 @@
 // const db = require('./models')
 
 // db.comment.create({
-//   name: 'Paul Allen',
-//   content: 'This is really neat! Thanks for posting.',
-//   articleId: 1
+//   name: 'Levin Batallones',
+//   content: 'Zero to Software Engineer.',
+//   articleId: 2
 // })
 // .then(function(comment) {
 //   console.log(comment.get())
 // })
-var db = require('./models')
 
-db.article.findOne({
-  where: { id: 1 },
-  include: [db.comment]
-}).then(function(article) {
-  // by using eager loading, the article model should have a comments key
-  console.log(article.comments)
-})
+// db.article.findOne({
+//   where: { id: 2 },
+//   include: [db.comment]
+// }).then(function(article) {
+//   // by using eager loading, the article model should have a comments key
+//   console.log(article.comments)
+// })
