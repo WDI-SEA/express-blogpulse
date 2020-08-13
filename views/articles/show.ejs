@@ -9,17 +9,18 @@
 <hr />
 
 <div>
-  <% if(article.comments.length > 0) { %> <% article.comments.forEach(comment => {
-    %>
-    <div class="well">
-      <p>
-        <%= comment.commentator %> commented:<br />
-        <%= comment.commentContent %>
-      </p>
-    </div>
-    <% }) %> <% } else { %>
-    <h3>No comments yet!</h3>
-    <% } %>
+  <% if(article.comments.length > 0) { %>
+    <% article.comments.forEach(comment => { %>
+      <div class="well">
+        <p>
+          <%= comment.commentator %> commented:<br />
+          <%= comment.commentContent %>
+        </p>
+      </div>
+  <% }) %>
+  <% } else { %>
+    <h3>Sorry, no comments yet! &#129335;</h3>
+  <% } %>
 </div>
 
 <hr />
