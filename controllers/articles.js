@@ -33,7 +33,7 @@ router.get('/new', (req, res) => {
 router.get('/:id', (req, res) => {
   db.article.findOne({
     where: { id: req.params.id },
-    include: [db.author]
+    include: [db.author, db.comment],
   })
   .then((article) => {
     if (!article) throw Error()
@@ -46,22 +46,19 @@ router.get('/:id', (req, res) => {
   })
 })
 
-router.get('/:id', (req, res)=>{
-  db.comment.findOne({
-    where: {id: req.params.id}
-    // include: [db.article]
-  })
- .then(comment =>{
-   console.log(comment.project)
-   res.redirect('articles')
- })
- .catch(err =>{
-   console.log('ERRrrrrrrRRRRRRRRRRORRRRRRRRR', err)
- })
-})
-
-
-
+// router.get('/:id', (req, res)=>{
+//   db.comment.findOne({
+//     where: {id: req.params.id}
+//     // include: [db.article]
+//   })
+//  .then(comment =>{
+//    console.log(comment.project)
+//    res.redirect('articles')
+//  })
+//  .catch(err =>{
+//    console.log('ERRrrrrrrRRRRRRRRRRORRRRRRRRR', err)
+//  })
+// })
 
 
 
@@ -71,57 +68,5 @@ router.get('/:id', (req, res)=>{
 //   .then(categories =>{
 //       res.render('categories/index', {categories:categories})
 //   }).catch(err =>{console.log(err)})
-// })
-
-
-
-// router.get('/:id', (req, res) =>{
-  //purpose choose a category and find all the projects that assocaied withthat cataogry
-  //find with req.params.id from the url
-  // db.category.findOne({
-  //     where: {id: req.params.id},
-  //     include: [db.project]
-  // })
-//   .then(category =>{
-//       //rpove page with category object
-//       console.log(category.projects)
-//       res.render('categories/show', {category})
-//   }).catch(err =>{console.log('error', err)})
-// })
-
-// router.post('/', (req, res) =>{
-
-// })
-
-
-
-
-
-// db.artist.findOrCreate({
-//   where: {name: '2pac'},
-//   defaults: {city: 'West Coast California', description: 'Poet' }
-// })
-// .then(([artist, created])=>{
-//   console.log(created)
-//   db.album.findOrCreate({
-//       where: {title: 'All Eyez On Me'},
-//       defaults: {year: '1996', genre: 'hip-hop'}
-//   })
-//   .then(([album, created])=>{
-//       console.log(created)
-//       artist.addAlbum(album)
-//       .then(relationshipInfo =>{
-//           console.log(relationshipInfo)
-//       })
-//       .catch(err =>{
-//           console.log('Error', err)
-//       })
-//   })
-//   .catch(err =>{
-//       console.log('Error', err)
-//   })
-// })
-// .catch(err =>{
-//   console.log('Error', err)
 // })
 module.exports = router
