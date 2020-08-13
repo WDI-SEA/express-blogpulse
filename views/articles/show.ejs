@@ -12,7 +12,22 @@
 <% article.comments.forEach(c => { %>
   <p> <%= c.name %>: </p>
     <h6 style="text-indent: 40px"><%= c.dataValues.content %></h6>
+    <hr>
   
 <% }) %> 
+
+<hr>
+
+<form action="/articles/<%= article.id %>" method="POST">
+  <label for="name">Comment:</label>
+  <br>
+  <input type="text" name="name" required placeholder="Name:">
+  <br>
+  <input type="text" name="content" required style="width: 300px; height: 100px" placeholder="Text Here">
+  <br>
+  <hr>
+  <button type="submit">Submit</button>
+</form>
+
 
 <a href="/">&larr; Back Home</a>
