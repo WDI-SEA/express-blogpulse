@@ -7,7 +7,7 @@ router.post('/', (req, res) => {
     db.comment.create({
       commentator: req.body.commentator,
       commentContent: req.body.commentContent,
-      articleId: req.body.articleId
+      articleId: req.params.id
     })
     .then((post) => {
       res.redirect('/')
