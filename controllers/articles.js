@@ -49,9 +49,9 @@ router.get('/new', (req, res) => {
 
 router.post('/:id', (req, res) => {
   db.comment.create({
-    title: req.body.title,
-    content: req.body.content,
-    authorId: req.body.authorId
+    author: req.body.newCommentName,
+    content: req.body.newCommentContent,
+    articleId: req.params.id
   })
   .then()
     res.redirect('/articles/' + req.params.id)
@@ -69,20 +69,20 @@ router.get('/:id', (req, res) => {
   })
 })
 
-// // POST /articles - create a new post
-// router.post('/', (req, res) => {
-//   db.article.create({
-//     title: req.body.title,
-//     content: req.body.content,
-//     authorId: req.body.authorId
-//   })
-//   .then((post) => {
-//     res.redirect('/')
-//   })
-//   .catch((error) => {
-//     res.status(400).render('main/404')
-//   })
-// })
+// POST /articles - create a new post
+router.post('/', (req, res) => {
+  db.article.create({
+    title: req.body.title,
+    content: req.body.content,
+    authorId: req.body.authorId
+  })
+  .then((post) => {
+    res.redirect('/')
+  })
+  .catch((error) => {
+    res.status(400).render('main/404')
+  })
+})
 
 
 module.exports = router
