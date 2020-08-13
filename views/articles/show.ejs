@@ -8,4 +8,19 @@
 
 <hr />
 
+<h1>Comments</h1>
+<%article.comments.forEach(c=>{%>
+<h3><%=c.name%></h3>
+<p><%=c.content%></p>
+
+<%})%>
+<form action="/comments" method="post">
+ Name: <input type="text" name="name">
+Comment: <input type="text" name="content">
+<input type="text" name="articleId" value="<%=article.id%>" hidden>
+<button type="submit">Submit</button>
+</form>
 <a href="/">&larr; Back Home</a>
+
+
+
