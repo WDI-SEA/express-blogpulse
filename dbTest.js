@@ -38,3 +38,23 @@ db.article.findOne()
     })
 })
 
+db.article.findOne()
+.then(foundArticle=>{
+    foundArticle.createComment({
+        name: 'Ken',
+        content: 'You are suck'
+    })
+    .then(createdComment=>{
+        console.log(createdComment.get())
+    })
+})
+
+db.article.findOne({
+    where: {id:1},
+    include: [db.commet]
+})
+.then(article=>{
+    article.commet.forEach(comment=>{
+        console.log(comment.get())
+    })
+})

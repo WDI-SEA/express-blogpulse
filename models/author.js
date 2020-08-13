@@ -14,5 +14,5 @@ module.exports = (sequelize, DataTypes) => {
   author.prototype.getFullName = function(){
     return this.firstName + ' ' + this.lastName
   }
-  return author
+  return author 
 }
