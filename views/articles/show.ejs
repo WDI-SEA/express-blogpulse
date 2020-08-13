@@ -18,4 +18,14 @@
   <p>No comment yet.</p>
 <% } %> 
 
+<hr />
+<h4>Add New Comment:</h4>
+<form method="POST" action="/articles/<%= article.id %> ">
+  <label for="name">Name: </label>
+  <input type="text" name="name" id="name" required>
+  <label for="comment">Comment: </label>
+  <input type="text" name="comment" id="comment" required>
+  <button type="submit">submit</button>
+</form>
+
 <a href="/">&larr; Back Home</a>

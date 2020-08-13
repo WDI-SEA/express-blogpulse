@@ -44,4 +44,22 @@ router.get('/:id', (req, res) => {
   })
 })
 
+router.post('/:id', (req, res) => {
+  let articleId = req.params.id
+  let name = req.body.name
+  let comment = req.body.comment
+  db.comment.create({
+    name: name,
+    content: comment,
+    articleId: articleId
+  })
+  .then(() => {
+    res.redirect('show')// Somthing wrong with the path, here or in show.ejs form action
+  })
+  .catch((error) => {
+    res.status(400).render('main/404')
+  })
+  
+})
+
 module.exports = router
