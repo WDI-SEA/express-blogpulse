@@ -1,11 +1,33 @@
-<h1><%= article.title %> <small>by <%= article.author.getFullName() %></small></h1>
+<h1><%= article.title %></h1>
 
 <p>
   <strong><%= moment(article.createdAt).calendar() %></strong>
 </p>
 
-<p><%= article.content %></p>
+
+
+<hr />
+<p><%= article.content %> </p>
 
 <hr />
 
-<a href="/">&larr; Back Home</a>
+
+<h4>Thoughts about this</h4>
+<% comments.forEach(com => { %>
+  <h3><%= com.name %></h3>
+  <p><%= com.content %> </p>
+  
+  <% }) %>
+  
+  <h4>Your Thoughts</h4>
+  
+  <form method="POST" action="/articles/<%= article.id %> ">
+      <!-- <label for="content">name</label> -->
+      name: <input type="text" name="comName">
+      comment: <input type="text" name="comContent">
+      <!-- <input type="text" hidden value=" "> -->
+      <input type="submit" class="btn btn-primary">
+    </form>
+  
+  
+  <a href="/">&larr; Back Home</a>
