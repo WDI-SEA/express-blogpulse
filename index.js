@@ -32,18 +32,18 @@ app.get('/', (req, res) => {
   })
 })
 
-app.get('/articles/:id', (req, res) => {
-  db.article.findOne({
-    where: {
-      id: req.params.id
-    },
-    include: [db.comment, db.author]
-  })
-  .then(article => {
-    console.log(article.dataValues)
-    res.render('articles/show', { article: article.dataValues })
-  })
-})
+// app.get('/articles/:id', (req, res) => {
+//   db.article.findOne({
+//     where: {
+//       id: req.params.id
+//     },
+//     include: [db.comment, db.author]
+//   })
+//   .then(article => {
+//     console.log(article.dataValues)
+//     res.render('articles/show', { article: article.dataValues })
+//   })
+// })
 
 
 // bring in authors and articles controllers
