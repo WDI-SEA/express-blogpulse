@@ -5,7 +5,7 @@
 </p>
 
 <p><%= article.content %></p>
-
+<!-- showing the comments in the data base -->
 <h2>Comments</h2>
 <% article.comments.forEach(comment => { %>
   <div class="well">
@@ -15,7 +15,14 @@
     </p>
   </div>
   <% }) %>
+<!-- making comment section so people can comment with name -->
+  <form method="POST" action="/articles/<%= article.id %>">
+    <label for="name">Name</label>
+    <input name="name" id="name" class="form-control" required><br>
+    <label for="content">Comment</label>
+    <textarea type="text" class="form-control" id="content" name="content" required></textarea>
+    <input type="submit" class="btn btn-primary">
+</form>
 
-  
 
 <a href="/">&larr; Back Home</a>
