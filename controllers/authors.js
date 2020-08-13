@@ -40,7 +40,8 @@ router.get('/:id', (req, res) => {
     where: {id: req.params.id}
   }).then((author) => {
     res.render('authors/show', { author: author })
-  }).catch((error) => {
+  })
+  .catch((error) => {
     console.log(error)
     res.status(400).render('main/404')
   })

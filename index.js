@@ -5,6 +5,7 @@ let db = require('./models')
 let moment = require('moment')
 let rowdy = require('rowdy-logger')
 let app = express()
+let methodOverride = require('method-override');
 
 rowdy.begin(app)
 
@@ -14,6 +15,7 @@ app.use(require('morgan')('dev'))
 app.use(express.urlencoded({ extended: false }))
 app.use(ejsLayouts)
 app.use(express.static(__dirname + '/public/'))
+app.use(methodOverride('_method'))
 
 // middleware that allows us to access the 'moment' library in every EJS view
 app.use((req, res, next) => {

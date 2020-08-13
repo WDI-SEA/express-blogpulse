@@ -26,6 +26,7 @@ router.get('/new', (req, res) => {
   .catch((error) => {
     res.status(400).render('main/404')
   })
+  
 })
 
 // // GET /articles/:id - display a specific post and its author
@@ -58,6 +59,10 @@ router.get('/:id', (req, res)=>{
   .then((article)=>{
     console.log(article.dataValues)
     res.render('articles/show',  { article: article.dataValues})
+  })
+  .catch((error) => {
+    console.log(error)
+    res.status(400).render('main/404')
   })
 
 })
