@@ -8,11 +8,10 @@
 
 <%// console.log(article) %> 
 <div>
-
+  <h2>Comments: </h2>
   <% article.comments.forEach(c => { %>
     <div class="well">
-      <p><%= c.id %> </p>
-      <p><b><%= c.name %> </b></p>
+      <p><b><%= c.name %> </b></>
       <p><%= c.content %> </p>
       <form action="/comments/<%= c.id %>?_method=DELETE" method="post">
         <input type="hidden" name="articleId" value="<%= article.id %> ">
