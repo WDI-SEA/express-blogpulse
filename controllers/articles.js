@@ -2,6 +2,7 @@ let express = require('express')
 let db = require('../models')
 let router = express.Router()
 
+
 // POST /articles - create a new post
 router.post('/', (req, res) => {
   db.article.create({
@@ -32,12 +33,12 @@ router.get('/new', (req, res) => {
 router.get('/:id', (req, res) => {
   db.article.findOne({
     where: { id: req.params.id },
-    include: [db.author]
+    include: [db.author, db.comment] //show author and comment as per p2 request
   })
   .then((article) => {
     if (!article) throw Error()
-    console.log(article.author)
-    res.render('articles/show', { article: article })
+    console.log(article.comments)
+    res.render('articles/show', { article })
   })
   .catch((error) => {
     console.log(error)
