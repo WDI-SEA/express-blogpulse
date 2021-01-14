@@ -7,5 +7,15 @@
 <p><%= article.content %></p>
 
 <hr />
+<!-- result of submitting comment place here -->
+<hr />
+<form action="/articles" method="GET">
+  Name: <input type="text" name="name" value="<%= comment.name %>">
+  Comment: <input type="text" name="content" value="<%= comment.content %>">
+  <input type="hidden" name="articleId" value="<%= comment.articleId %>">
+  <input type="submit" value="Submit"
+</form>
+
+<hr />
 
 <a href="/">&larr; Back Home</a>

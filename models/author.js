@@ -9,7 +9,15 @@ module.exports = (sequelize, DataTypes) => {
   author.associate = function(models) {
     // associations can be defined here
     models.author.hasMany(models.article)
-  }
+  };
+  author.init({
+    firstName: DataTypes.STRING,
+    lastName: DataTypes.STRING,
+    bio: DataTypes.TEXT
+  }, {
+    sequelize,
+    modelName: 'author',
+  });
 
   author.prototype.getFullName = function(){
     return this.firstName + ' ' + this.lastName
