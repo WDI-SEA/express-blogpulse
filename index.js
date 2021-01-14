@@ -19,6 +19,10 @@ app.use((req, res, next) => {
   next()
 })
 
+// bring in authors and articles controllers
+app.use('/authors', require('./controllers/authors'))
+app.use('/articles', require('./controllers/articles'))
+
 // GET / - display all articles and their authors
 app.get('/', (req, res) => {
   db.article.findAll({
@@ -31,12 +35,9 @@ app.get('/', (req, res) => {
   })
 })
 
-// bring in authors and articles controllers
-app.use('/authors', require('./controllers/authors'))
-app.use('/articles', require('./controllers/articles'))
 
 var server = app.listen(process.env.PORT || 3000, () => {
-  rowdy.print()
+  // rowdy.print()
 })
 
 module.exports = server
