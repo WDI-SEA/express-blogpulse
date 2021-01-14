@@ -1,16 +1,22 @@
 {
   "development": {
+    "username": "Elyssa",
+    "password": "password",
     "database": "blogpulse_dev",
     "host": "127.0.0.1",
     "dialect": "postgres"
   },
   "test": {
     "database": "blogpulse_test",
+    "username": "Elyssa",
+    "password": "password",
     "host": "127.0.0.1",
     "dialect": "postgres"
   },
   "production": {
     "database": "blogpulse_production",
+    "username": "Elyssa",
+    "password": "password",
     "host": "127.0.0.1",
     "dialect": "postgres"
   }

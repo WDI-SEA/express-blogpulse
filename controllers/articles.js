@@ -37,7 +37,13 @@ router.get('/:id', (req, res) => {
   .then((article) => {
     if (!article) throw Error()
     console.log(article.author)
-    res.render('articles/show', { article: article })
+
+    db.article.findOne({
+      where: { id: req.params.id },
+      include: [db.comment]
+    }).then(returnedArticle => {
+      res.render('articles/show', { article: article , comments: returnedArticle.comments})
+    })
   })
   .catch((error) => {
     console.log(error)

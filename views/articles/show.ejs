@@ -9,3 +9,12 @@
 <hr />
 
 <a href="/">&larr; Back Home</a>
+
+<ul>
+  <% comments.forEach(comment => { %>
+    <li>
+      <h4><%= comment.name %></h4>
+      <p><%= comment.body %></p>
+    </li>
+  <% }) %>
+</ul>
