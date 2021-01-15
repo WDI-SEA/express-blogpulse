@@ -7,10 +7,12 @@
 <p><%= article.content %></p>
 
 <hr/>
+<div class="commentBox">
 <% article.comments.forEach((comment) => { %>
 <p><strong><%= comment.name %></strong></p>
 <p><%= comment.content %></p>
 <% }); %>
+</div>
 
 <form method="POST" action="/articles/<%= article.id %>">
   Name: <input type="text" name="name">
