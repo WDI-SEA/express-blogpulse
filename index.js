@@ -24,6 +24,9 @@ app.get('/', (req, res) => {
   db.article.findAll({
     include: [db.author]
   }).then((articles) => {
+    articles.forEach(article => {
+      console.log(article.author.getFullName())
+    });
     res.render('main/index', { articles: articles })
   }).catch((error) => {
     console.log(error)
