@@ -36,7 +36,7 @@ router.get('/new', (req, res) => {
 // GET /authors/:id - display a specific author and their posts
 router.get('/:id', (req, res) => {
   db.author.findOne({
-    include: [db.article],
+    include: [db.author, db.comment],
     where: {id: req.params.id}
   }).then((author) => {
     res.render('authors/show', { author: author })
