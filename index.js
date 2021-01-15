@@ -24,6 +24,7 @@ app.get('/', (req, res) => {
   db.article.findAll({
     include: [db.author]
   }).then((articles) => {
+    console.log(articles)
     res.render('main/index', { articles: articles })
   }).catch((error) => {
     console.log(error)
@@ -36,7 +37,10 @@ app.use('/authors', require('./controllers/authors'))
 app.use('/articles', require('./controllers/articles'))
 
 var server = app.listen(process.env.PORT || 3000, () => {
-  rowdy.print()
+  console.log("3000 is go go go!")
+  // rowdy.print()
 })
 
 module.exports = server
+
+

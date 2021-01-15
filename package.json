@@ -1,24 +1,28 @@
 {
   "name": "express-blogpulse",
   "version": "1.0.0",
+  "description": "To practice 1:M associations, we'll be adding comment functionality to an existing blog application.",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
-    "lint:js": "node_modules/eslint/bin/eslint.js ./ ./**/*.js --fix; exit 0",
-    "lint:css": "node_modules/csslint/cli.js public/css/; exit 0"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JeremiahDaviddev/express-blogpulse.git"
+  },
+  "keywords": [],
+  "author": "",
   "license": "ISC",
-  "devDependencies": {
-    "babel-eslint": "^6.0.4",
-    "csslint": "^0.10.0",
+  "bugs": {
+    "url": "https://github.com/JeremiahDaviddev/express-blogpulse/issues"
   },
+  "homepage": "https://github.com/JeremiahDaviddev/express-blogpulse#readme",
   "dependencies": {
-    "ejs": "^2.4.2",
-    "express": "^4.13.4",
-    "express-ejs-layouts": "^2.1.0",
-    "moment": "^2.13.0",
+    "express": "^4.17.1",
+    "express-ejs-layouts": "^2.5.0",
     "pg": "^8.5.1",
-    "rowdy-logger": "0.0.2",
+    "rowdy": "^0.5.0",
+    "rowdy-logger": "^1.0.2",
     "sequelize": "^6.3.5"
   }
 }
