@@ -29,6 +29,22 @@ router.get('/new', (req, res) => {
 })
 
 // GET /articles/:id - display a specific post and its author
+router.get('/edit/:id', (req, res) => {
+  db.article.findOne({
+    where: { id: req.params.id },
+    include: [db.author]
+  })
+  .then((article) => {
+    if (!article) throw Error()
+    res.render('articles/edit', { article: article })
+  })
+  .catch((error) => {
+    console.log(error)
+    res.status(400).render('main/404')
+  })
+})
+
+// GET /articles/:id - display a specific post and its author
 router.get('/:id', (req, res) => {
   db.article.findOne({
     where: { id: req.params.id },
@@ -41,6 +57,7 @@ router.get('/:id', (req, res) => {
       where: { id: req.params.id },
       include: [db.comment]
     }).then(returnedArticle => {
+      console.log(article)
       res.render('articles/show', { article: article , comments: returnedArticle.comments})
     })
   })
@@ -50,6 +67,7 @@ router.get('/:id', (req, res) => {
   })
 })
 
+// Post comment
 router.put('/comment/:id', (req, res) => {
   console.log('route hit')
   console.log('Girll look at that body: ' + req.body.name)
@@ -60,6 +78,23 @@ router.put('/comment/:id', (req, res) => {
     articleId: req.params.id
   }).then(comment => {
     res.redirect(`/articles/${req.params.id}`)
+  })
+})
+
+// Post edited article
+router.put('/put/:id', (req, res) => {
+  db.article.update({
+      // Value to change
+      content: req.body.content,
+      title: req.body.title
+  }, {
+      // Value to identify by
+      where: {
+          id: req.params.id
+      }
+  }).then(numRowsChanged=> {
+      console.log(numRowsChanged)
+      res.redirect(`/articles/${req.params.id}`)
   })
 })
 

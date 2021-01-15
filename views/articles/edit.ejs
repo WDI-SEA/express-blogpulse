@@ -1,0 +1,11 @@
+<h2><%= article.title %></h2>
+
+<form  action="/articles/put/<%= article.id %>?_method=PUT" method="POST">
+    <label for="title">Edit:</label>
+    <input type="text" value="<%= article.title %>" name="title">
+
+    <label for="content">Edit:</label>
+    <input type="text" value="<%= article.content %>" name="content">
+
+    <input type="submit">
+</form>
