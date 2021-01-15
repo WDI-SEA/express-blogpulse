@@ -5,7 +5,23 @@
 </p>
 
 <p><%= article.content %></p>
+<p><%= article.id %></p>
+<form action="/articles/comment/<%= article.id %>" method="POST">
+  <input type="text" placeholder="comment" name="content">
+  <input type="text" placeholder="name" name="name">
+  <input type="submit">
+</form>
 
 <hr />
+  <% article.comments.forEach(comment => { %>
+    <p><%= comment.content %> </p>
+  <% }) %>
 
 <a href="/">&larr; Back Home</a>
+
+
+
+<!-- <% article.comments.forEach(comment => { %>
+   <%= comment.name %>
+   <%= comment.content %>
+  <% }) %> -->
