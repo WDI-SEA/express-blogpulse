@@ -4,7 +4,10 @@ let router = express.Router()
 
 // GET /authors - display all authors
 router.get('/', (req, res) => {
-  db.author.findAll()
+  db.author.findAll({
+    include: [db.article],
+    where: {id: req.params.id}
+  })
   .then((authors) => {
     res.render('authors/index', { authors: authors })
   })

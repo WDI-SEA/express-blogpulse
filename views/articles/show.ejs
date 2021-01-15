@@ -17,11 +17,12 @@
   <input type="submit">
 </form>
 
+<h3>What do you think about the article?</h3>
 <p>
 <% article.comments.forEach((comment) => { %>
   <p>
-  <%= comment.commenter %>
-  <%= comment.content %>
+  <strong><%= comment.commenter %></strong>
+  <em><%= comment.content %></em>
   </p>
 <% }) %>
 </p>
