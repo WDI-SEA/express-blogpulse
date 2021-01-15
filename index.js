@@ -4,10 +4,14 @@ let db = require('./models')
 let moment = require('moment')
 let rowdy = require('rowdy-logger')
 let app = express()
+const methodOverride = require('method-override')
 
 rowdy.begin(app)
 
 app.set('view engine', 'ejs')
+
+// method-override middleware
+app.use(methodOverride('_method'))
 
 app.use(express.urlencoded({ extended: false }))
 app.use(ejsLayouts)

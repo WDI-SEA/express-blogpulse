@@ -10,11 +10,14 @@
 
 <a href="/">&larr; Back Home</a>
 
-<ul>
+
   <% comments.forEach(comment => { %>
-    <li>
-      <h4><%= comment.name %></h4>
+      <h4> - <%= comment.name %> </h4> said <%= moment(comment.createdAt).calendar() %>
       <p><%= comment.body %></p>
-    </li>
   <% }) %>
-</ul>
+
+  <form action="/articles/comment/<%= article.id %>?_method=PUT" method="POST">
+    <input type="text" placeholder="Your name..." name="name">
+    <input type="text" placeholder="Text..." name="body">
+    <input type="submit">
+  </form>

@@ -36,7 +36,6 @@ router.get('/:id', (req, res) => {
   })
   .then((article) => {
     if (!article) throw Error()
-    console.log(article.author)
 
     db.article.findOne({
       where: { id: req.params.id },
@@ -48,6 +47,19 @@ router.get('/:id', (req, res) => {
   .catch((error) => {
     console.log(error)
     res.status(400).render('main/404')
+  })
+})
+
+router.put('/comment/:id', (req, res) => {
+  console.log('route hit')
+  console.log('Girll look at that body: ' + req.body.name)
+
+  db.comment.create({
+    name: req.body.name,
+    body: req.body.body,
+    articleId: req.params.id
+  }).then(comment => {
+    res.redirect(`/articles/${req.params.id}`)
   })
 })
 
