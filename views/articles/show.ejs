@@ -9,3 +9,19 @@
 <hr />
 
 <a href="/">&larr; Back Home</a>
+
+<form action="/articles/comments" method="POST">
+  Name: <input type="string" name="commenter" >
+  Comment: <input type="text" name="content">
+  <input type="hidden" name="articleId" value="<%= article.id %>">
+  <input type="submit">
+</form>
+
+<p>
+<% article.comments.forEach((comment) => { %>
+  <p>
+  <%= comment.commenter %>
+  <%= comment.content %>
+  </p>
+<% }) %>
+</p>

@@ -1,10 +1,9 @@
-<h1>Authors</h1>
-
-<% authors.forEach(function(author) { %>
+<h1>Authors</h1> 
+<% articles.forEach(function(a) { %>
   <div class="well">
     <h2>
       <a href="/authors/<%= author.id %>">
-        <%= author.getFullName() %>
+        <%= a.author.getFullName() %>
       </a>
     </h2>
   </div>
@@ -12,6 +11,6 @@
 
 <a href="/authors/new">Sign Up</a>
 
-<hr />
+<hr /> 
 
 <a href="/">&larr; Back Home</a>
