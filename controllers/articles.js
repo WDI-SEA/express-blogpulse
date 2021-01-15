@@ -46,12 +46,13 @@ router.get('/:id', (req, res) => {
 })
 
 router.post('/:id', (req, res) => {
+  console.log(` ---------- 🤡 ${req.body.content}`)
   db.comment.create({
     name: req.body.name,
-    comment: req.body.content
+    content: req.body.content,
+    articleId: req.params.id
     }).then(comment => {
       console.log(`Comment by ${comment.name} was created!🏵`);
-      console.log(` ---------- 🤡 ${req.params.id}`)
       //redirect to the new index for the article
       res.redirect(`/articles/${req.params.id}`);
     }).catch(err => {
