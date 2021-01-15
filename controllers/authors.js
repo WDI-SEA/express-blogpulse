@@ -4,15 +4,17 @@ let router = express.Router()
 
 // GET /authors - display all authors
 router.get('/', (req, res) => {
-  db.author.findAll({
-    include: [db.article],
-    where: {id: req.params.id}
-  })
+  console.log('author-----------')
+  db.author.findAll(
+
+  )
   .then((authors) => {
     res.render('authors/index', { authors: authors })
+    // console.log(err);
   })
   .catch((error) => {
     res.status(400).render('main/404')
+    console.log(error);
   })
 })
 
