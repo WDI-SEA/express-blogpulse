@@ -1,5 +1,6 @@
 let express = require('express')
 let db = require('../models')
+const comment = require('../models/comment')
 let router = express.Router()
 
 // POST /articles - create a new post
@@ -32,7 +33,7 @@ router.get('/new', (req, res) => {
 router.get('/:id', (req, res) => {
   db.article.findOne({
     where: { id: req.params.id },
-    include: [db.author]
+    include: [db.author, db.comment]
   })
   .then((article) => {
     if (!article) throw Error()
@@ -42,6 +43,14 @@ router.get('/:id', (req, res) => {
   .catch((error) => {
     console.log(error)
     res.status(400).render('main/404')
+  })
+})
+
+router.post('/comment', (req, res) =>{
+  console.log(req.body)
+  db.comment.create(req.body).then((comments) =>{
+    console.log()
+    res.redirect('/articles/'+req.body.articleId) 
   })
 })
 

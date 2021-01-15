@@ -9,3 +9,21 @@
 <hr />
 
 <a href="/">&larr; Back Home</a>
+<form action="/articles/comment" method="POST">
+  <label for="userName">Who are you?</label>
+  <input id="userName" type="text" name="name">
+
+  <label for="userComment">What do you think?</label>
+  <input id="userComment" type="text" name="comment">
+  <input name='articleId' id="articleIdNo" type="hidden" value="<%= article.id %>">
+
+  <input type="Submit">
+</form>
+<label for="submittedComments">Here's what others around the Puget had to say</label>
+<ol>
+  <% if(article.comments) { %>
+  <% article.comments.forEach(comment =>{ %>
+    <li><%= comment.name %> - <%= comment.comment %></li>
+  <% }) }%>
+</ol>
+
