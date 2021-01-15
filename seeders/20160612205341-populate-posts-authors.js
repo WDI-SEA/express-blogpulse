@@ -3,6 +3,12 @@
 module.exports = {
   up: function (queryInterface, Sequelize) {
     return queryInterface.bulkInsert('authors', [
+      { firstName: 'Anon',
+      lastName: 'Emus',
+      bio: 'Mysterious profile for cool writers.',
+      createdAt: new Date(),
+      updatedAt: new Date()
+      },
       { firstName: 'Keith',
         lastName: 'Fuller',
         bio: 'Key contributor to various newspapers in the Greater Puget Sound area. Father. Bike enthusiast.',

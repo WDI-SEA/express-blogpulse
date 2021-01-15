@@ -1,11 +1,11 @@
 <h2><%= article.title %></h2>
 
 <form  action="/articles/put/<%= article.id %>?_method=PUT" method="POST">
-    <label for="title">Edit:</label>
-    <input type="text" value="<%= article.title %>" name="title">
+    <label for="title">Edit Title:</label>
+    <input type="text" class="form-control" value="<%= article.title %>" name="title">
 
-    <label for="content">Edit:</label>
-    <input type="text" value="<%= article.content %>" name="content">
+    <label for="content">Edit Content:</label>
+    <input type="text" class="form-control" value="<%= article.content %>" name="content">
 
-    <input type="submit">
+    <input type="submit" class="btn btn-primary">
 </form>
