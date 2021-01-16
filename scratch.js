@@ -7,3 +7,5 @@ db.comment.create({
 }).then((commentDB) => {
     console.log(`${commentDB.name} has comment of ${commentDB.content}`)
     }).catch(err => console.log(err));
+
+    

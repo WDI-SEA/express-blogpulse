@@ -7,15 +7,67 @@
 <p><%= article.content %></p>
 
 <hr />
-<!-- result of submitting comment place here -->
+
+<style>
+
+  .dateCreated {
+    font-style: italic;
+    color: lightslategray;
+  }
+
+  #commentName {
+    text-align: right;
+    margin-bottom: 2em;
+  }
+
+  #commentbox {
+    padding: 0.5em;
+    padding-left: 2em;
+  }
+  #commentbox2 {
+    padding-left: 2em;
+    padding-top: 2em;
+    padding-bottom: 2em;
+    padding-right: 2em;
+    background-color: gainsboro;
+    border-radius: 5px;
+  }
+
+  .inputbox {
+    display:block;
+    border-radius: 5px;
+    border: 1px solid gray;
+    width: 100%;
+    height: 3.5rem;
+  }
+  #commentbox3 {
+    height: 6rem;
+    width: ;
+  }
+  #submitbtn {
+    border: none;
+    width: 10rem;
+    height: 5rem;
+    border-radius: 5px;
+    font-weight: bold;
+  }
+</style>
+<h3>Comments</h3>
+<div id="commentbox">
+  <% article.comments.forEach(commentRendering => { %>
+    <div id="commentbox2"><p id="commentContent"><%= commentRendering.content %></p></div>
+    <p id="commentName">from <strong><%= commentRendering.name %></strong> <span class="dateCreated"><%= commentRendering.updatedAt %></span></p>
+  <% }); %>
+</div>
+
 <hr />
-<form action="/articles" method="GET">
-  Name: <input type="text" name="name" value="<%= comment.name %>">
-  Comment: <input type="text" name="content" value="<%= comment.content %>">
-  <input type="hidden" name="articleId" value="<%= comment.articleId %>">
-  <input type="submit" value="Submit"
+<h3>Comment on this post</h3>
+<form action="/comments/<%= article.id %>" method="POST">
+  <strong>Name</strong><br> <input class="inputbox" type="text" name="name"> <br><!--  value="comment.name ">  -->
+  <strong>Comment</strong><br> <input id="commentbox3" class="inputbox" type="text" name="content"><br> <!-- value="comment.content"> -->
+  <input type="hidden" name="articleId"> <!-- value="comment.articleId"> -->
+  <input id="submitbtn" type="submit" value="Submit" onClick="window.location.reload()">
 </form>
 
 <hr />
-
 <a href="/">&larr; Back Home</a>
