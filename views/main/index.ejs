@@ -16,6 +16,14 @@
         <p>
           <strong><%= moment(a.createdAt).calendar() %></strong>
         </p>
+        <div class="buttonFrontPage">
+          <form action="/articles/edit/<%= a.id %>" method="GET">
+            <input type="submit" value="Edit">
+          </form>
+          <form action="/articles/<%= a.id %>/?_method=DELETE" method="POST">
+            <input type="submit" value="Delete">
+          </form>
+        </div>
       </div>
     <% }) %>
 
@@ -26,3 +34,4 @@
     providing user-generated content across all topics.</p>
   </div>
 </div>
+

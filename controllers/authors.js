@@ -15,6 +15,7 @@ router.get('/', (req, res) => {
 
 // POST /authors - create a new author
 router.post('/', (req, res) => {
+  console.log("entrou")
   db.author.create({
     firstName: req.body.firstName,
     lastName: req.body.lastName,
@@ -27,6 +28,15 @@ router.post('/', (req, res) => {
     res.status(400).render('main/404')
   })
 })
+
+// To delete a specific author
+router.delete("/:id", (req,res)=>{
+  db.author.destroy({
+    where: {id: req.params.id}
+  }).then(articleDeleted =>{
+    res.redirect('/authors')
+  })
+ })
 
 // GET /authors/new - display form for creating a new author
 router.get('/new', (req, res) => {
