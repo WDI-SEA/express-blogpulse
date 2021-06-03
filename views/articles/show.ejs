@@ -8,4 +8,19 @@
 
 <hr />
 
+<h2>Comments</h2>
+
+<% if(article && article.comments) { %>
+  <% article.comments.forEach(function(a) { %>
+    <h5><%= a.name %></h5>
+    <h5><%= a.content %></h5>
+  <% }) %>
+<% } else { %>
+  <h3>No comments yet!</h3>
+<% } %>
+
+<a href="/comments/new">Leave a Comment</a>
+
+<hr />
+
 <a href="/">&larr; Back Home</a>
