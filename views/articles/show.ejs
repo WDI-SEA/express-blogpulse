@@ -8,4 +8,29 @@
 
 <hr />
 
+<h3>Comments</h3>
+<% if(article.comments.length) { %>
+<% article.comments.forEach(comment => { %>
+  <div class='comment'>
+    <p class='comment-content'><%= comment.content %> </p>
+    <p class='comment-name'> - <%= comment.name %></p>
+  </div>
+<% }) %>
+<% } else { %>
+  <p>No comments yet.</p>
+<% } %>
+
+<form method="POST" action="/articles/<%= article.id %>/comments">
+  <h4>Comment on this post</h4>
+  <div class="form-group">
+    <label for='name'>Name</label>
+    <input class='form-control' type='text' id='name' name='name'>
+  </div>
+  <div class="form-group">
+    <label for='content'>Content</label>
+    <input class='form-control' type='text' id='content' name='content'>
+  </div>
+  <input class='btn btn-primary' type='submit'>
+</form>
+<hr>
 <a href="/">&larr; Back Home</a>
