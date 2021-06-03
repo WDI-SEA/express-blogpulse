@@ -1,0 +1,10 @@
+<p><%= comment.content %></p>
+
+<h4><%= comment.title %> <small>by <%= comment.name %></small></h4>
+
+<p>
+  <strong><%= moment(comment.createdAt).calendar() %></strong>
+</p>
+
+<hr />
+
