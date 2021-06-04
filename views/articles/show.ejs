@@ -15,15 +15,15 @@
   <% article.comments.forEach(function(comment){ %>
     
     <%- include('../comments/show', {comment: comment}) %>
- 
+
     <% }); %>
 
-  </ul>
+</ul>
 
-  <div class="form-div">
-    
-    <%- include('../comments/new', {articleId : article.id}) %>
+<div class="form-div">
   
-  </div>
+  <%- include('../comments/new', {articleId : article.id}) %>
+
+</div>
 
   <a href="/">&larr; Back Home</a>
