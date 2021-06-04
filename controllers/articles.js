@@ -30,20 +30,35 @@ router.get('/new', (req, res) => {
 
 // GET /articles/:id - display a specific post and its author
 router.get('/:id', (req, res) => {
-  // NEED TO PASS COMMENTS HERE
-
   db.article.findOne({
     where: { id: req.params.id },
-    include: [db.author]
+    include: [db.author, db.comment]
   })
   .then((article) => {
     if (!article) throw Error()
-    console.log(article.author)
+    console.log(article.comments)
     res.render('articles/show', { article: article })
   })
   .catch((error) => {
     console.log(error)
     res.status(400).render('main/404')
+  })
+})
+
+// POST /articles/:id/comments
+router.post('/:id/comments', (req, res) => {
+  console.log(req.params) // display article id
+  console.log(req.body.name) // commentor name
+  console.log(req.body.comment) // commentor comment
+
+  db.comment.create({
+    name: req.body.name,
+    content: req.body.comment,
+    articleId: req.params
+  })
+  .then(comment => {
+    console.log(comment.get())
+    res.render(`/${req.params}`)
   })
 })
 

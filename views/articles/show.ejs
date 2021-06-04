@@ -8,4 +8,21 @@
 
 <hr />
 
+<form method="POST" action="./<%= article.id %>/comments">
+  <label for="name">Name:</label>
+  <input type="text" class="form-control" name="name" id="formCommentName" required />
+  <label for="comment">Comment:</label>
+  <input type="text" class="form-control" name="comment" id="formCommentBody" required />
+  <input type="submit" class="btn btn-primary">
+</form>
+
+<hr />
+
+<ul>
+<% article.comments.forEach(comment => { %>
+  <li><%= comment.name %></li>
+  <li><%= comment.content %></li>
+<% }) %>
+</ul>
+
 <a href="/">&larr; Back Home</a>
