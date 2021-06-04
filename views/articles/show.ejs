@@ -6,17 +6,20 @@
 
 <p><%= article.content %></p>
 
-<hr />
+<form action="/articles/edit/<%= article.id %>">
+    <input type="submit" class="btn btn-primary" value="Edit">
+</form>
+
+<hr>
 
 <h4>Comments</h4>
 
 <% if(article && article.comments) { %>
-    <% article.comments.forEach(function(a) { %>
+    <% article.comments.forEach((comm) => { %>
         <hr>
-        <h5><%= a.name %></h5>
-        <h6><%= moment(a.createdAt).calendar() %></h6>
-        <p><%= a.content %></p>
-
+        <h5><%= comm.name %></h5>
+        <h6><%= moment(comm.createdAt).calendar() %></h6>
+        <p><%= comm.content %></p>
     <% }) %>
     <% } else { %>
         <h3>No comments yet!</h3>
@@ -34,7 +37,7 @@
         <input type="text" class="form-control" id="content" name="content" required>
     </div>
     <input type="hidden" name="articleId" value="<%= article.id %>">
-    <input type="submit" class="btn btn-primary">
+    <input type="submit" class="btn btn-primary" value="Reply">
 </form>
 
 <hr />

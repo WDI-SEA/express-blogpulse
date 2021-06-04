@@ -44,4 +44,15 @@ router.get('/:id', (req, res) => {
   })
 })
 
+// GET /articles/:id - display form for editing specific post
+router.get('/edit/:id', (req, res) => {
+  db.author.findAll()
+  .then((authors) => {
+    res.render('articles/edit', {authors: authors})
+  })
+  .catch((error) => {
+    res.status(400).render('main/404')
+  })
+})
+
 module.exports = router
