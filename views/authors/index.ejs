@@ -4,7 +4,7 @@
   <div class="well">
     <h2>
       <a href="/authors/<%= author.id %>">
-        <%= author.getFullName() %>
+        <%= `${author.firstName} ${author.lastName}` %>
       </a>
     </h2>
   </div>

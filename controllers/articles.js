@@ -36,13 +36,18 @@ router.get('/:id', (req, res) => {
   })
   .then((article) => {
     if (!article) throw Error()
-    console.log(article.author)
-    res.render('articles/show', { article: article })
-  })
-  .catch((error) => {
+    article.getComments().then(comments => {
+      console.log(comments)
+      comments.forEach(comment => {
+        console.log(`${comment.name} wrote, "${comment.content}"`)
+      })
+      res.render('articles/show', { article: article, comments: comments })
+    })
+  }).catch(error => {
     console.log(error)
     res.status(400).render('main/404')
   })
 })
+
 
 module.exports = router
