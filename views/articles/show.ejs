@@ -11,6 +11,28 @@
       <h2> <%= userComment.dataValues.content %> </h2>
  <% }) %>
 
+ <!-- <form method='GET' action='/:id'>
+  <label>New Comment</label>
+  <input id='newComment' type='text' name='Search' />
+
+  <input type='submit' />
+</form> -->
+<hr />
+
+<form action="/:id" method="POST">
+  <div class="form-group">
+    <label for="name">Your Name</label>
+    <input type="text" class="form-control" id="name" required>
+  </div>
+
+
+  <div class="form-group">
+    <label for="content">Put your comment here!</label>
+    <textarea type="text" class="form-control" id="content" name="content" required></textarea>
+  </div>
+
+  <input type="submit" class="btn btn-primary">
+</form>
 
 <hr />
 
