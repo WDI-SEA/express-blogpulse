@@ -18,10 +18,12 @@
 
 <hr />
 
+<h3>Comments:</h3>
 <ul>
 <% article.comments.forEach(comment => { %>
-  <li><%= comment.name %></li>
-  <li><%= comment.content %></li>
+  <li>Name: <%= comment.name %></li>
+  <li>Comment: <%= comment.content %></li>
+  <hr />
 <% }) %>
 </ul>
 

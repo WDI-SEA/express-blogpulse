@@ -47,18 +47,14 @@ router.get('/:id', (req, res) => {
 
 // POST /articles/:id/comments
 router.post('/:id/comments', (req, res) => {
-  console.log(req.params) // display article id
-  console.log(req.body.name) // commentor name
-  console.log(req.body.comment) // commentor comment
-
   db.comment.create({
     name: req.body.name,
     content: req.body.comment,
-    articleId: req.params
+    articleId: req.params.id
   })
   .then(comment => {
     console.log(comment.get())
-    res.render(`/${req.params}`)
+    res.redirect(`/articles/${req.params.id}`)
   })
 })
 
