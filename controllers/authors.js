@@ -30,7 +30,7 @@ router.post('/', (req, res) => {
 
 // GET /authors/new - display form for creating a new author
 router.get('/new', (req, res) => {
-  res.render('authors/new.ejs')
+  res.render('authors/new')
 })
 
 // GET /authors/:id - display a specific author and their posts
@@ -39,7 +39,7 @@ router.get('/:id', (req, res) => {
     include: [db.article],
     where: {id: req.params.id}
   }).then((author) => {
-    res.render('authors/show.ejs', { author: author })
+    res.render('authors/show', { author: author })
   }).catch((error) => {
     console.log(error)
     res.status(400).render('main/404')
