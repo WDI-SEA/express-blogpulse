@@ -11,7 +11,7 @@ app.set('view engine', 'ejs')
 
 app.use(express.urlencoded({ extended: false }))
 app.use(ejsLayouts)
-app.use(express.static(__dirname + '/public/'))
+app.use(express.static(__dirname + '/public/')) //every time im referencing static files, know that im doing it from public folder. doesnt know to go to public folder when you write ../public/css/styles.css because its dumb
 
 // middleware that allows us to access the 'moment' library in every EJS view
 app.use((req, res, next) => {

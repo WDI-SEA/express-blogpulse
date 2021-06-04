@@ -24,3 +24,21 @@ module.exports = (sequelize, DataTypes) => {
   });
   return comment;
 };
+
+// CAN ALSO BE::
+// 'use strict';
+// module.exports = (sequelize, DataTypes) => {
+//   const comment = sequelize.define('comment', {
+//     name: DataTypes.STRING,
+//     content: DataTypes.TEXT,
+//     article_id: DataTypes.INTEGER
+//   },{});
+
+//   comment.associate = function(models) {
+//     //defining 1:M relationship for article and comments
+//     models.comment.belongsTo(models.article)
+//     models.article.hasMany(models.comment)
+//   }
+
+//   return comment;
+// };

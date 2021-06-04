@@ -16,3 +16,4 @@ const db = require('./models')
 //   // by using eager loading, the article model should have a comments key
 //   console.log(article.comments)
 // })
+
