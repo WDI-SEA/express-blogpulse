@@ -5,6 +5,37 @@
 </p>
 
 <p><%= article.content %></p>
+<hr />
+<div class='comments'>
+
+  <%article.comments.forEach((comment)  => { %>
+    
+    <p><u><%= comment.name %> </u> </p>
+    <p><%= comment.content %> </p>
+    <hr />
+    
+    <% }) %>
+  </div>
+<br>
+<form action="/articles/<%=article.id%>/comments" method="POST" >
+ 
+  <input type="text" required name="com_name" placeholder="Name"><br>
+  <input type="text" required name="content" placeholder="Leave a comment"><br><br>
+  
+  <input type="submit">
+</form>
+  
+
+  <br>
+  
+  <hr>
+  
+
+
+
+
+ <p><%=//article.comments[0].content %></p>
+<p><%=//article.comments[0].name %></p>
 
 <hr />
 
