@@ -45,4 +45,21 @@ router.get('/:id', (req, res) => {
   })
 })
 
+// GET /articles/:id - display a specific post and its author
+router.post('/:id/comments', (req, res) => {
+  db.comment.create({
+    commentName: req.body.name,
+    content: req.body.comment,
+    articleId: req.params.id
+  })
+  .then((comment) => {
+    console.log(`My comment is ${comment}`)
+    res.redirect(`/articles/${req.params.id}`)
+  })
+  .catch((error) => {
+    console.log(error)
+    res.status(400).render('main/404')
+  })
+})
+
 module.exports = router
