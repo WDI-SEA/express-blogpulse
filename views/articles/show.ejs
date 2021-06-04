@@ -9,7 +9,30 @@
 <hr />
 
 <h3>Comments Zone</h3>
-<form action="/articles/<%=article.id%>/comments" method="POST">
 
+<!-- // if we have comments for article
+// loop through all comments associated with current
+// display comment content formatted a bit
+// else if not Comments
+// render a link for a user to add a comment to article -->
+
+<% if (article.comments && article.comments.length) { %>
+  <% article.comments.forEach((comm) => { %>
+    <p>
+      <%= comm.content %>
+      <br>
+      <%= comm.name %>
+    </p>
+  <% }) %>
+  <% } %>
+
+  <h3>Add a new comment:</h3>
+  <form method="POST" action="/articles/<%= article.id %>/comments">
+    <label>Your Name:</label>
+    <input type="text" name="name">
+    <label>Comment:</label>
+    <input type="text" name="content">
+    <input type="submit">
+  </form>
 <a href="/">&larr; Back Home</a>
 
