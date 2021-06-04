@@ -56,6 +56,9 @@ router.post('/:id/comments', (req, res) => {
     console.log(comment.get())
     res.redirect(`/articles/${req.params.id}`)
   })
+  .catch((error) => {
+    console.log(error)
+  })
 })
 
 // PUT /articles/:id
