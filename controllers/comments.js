@@ -4,17 +4,17 @@ let router = express.Router()
 
 // POST /comments - create a new comment
 router.post('/', (req, res) => {
-    db.comment.create({
-      name: req.body.name,
-      content: req.body.content,
-      articleId: req.body.articleId
-    })
+db.comment.create({
+    name: req.body.name,
+    content: req.body.content,
+    articleId: req.body.articleId
+})
     .then((post) => {
-      res.redirect("/authors")
+        res.redirect(`/articles/${req.body.articleId}`)
     })
     .catch((error) => {
-      res.status(400).render('main/404')
+        res.status(400).render('main/404')
     })
-  })
+})
 
 module.exports = router
