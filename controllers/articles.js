@@ -44,11 +44,28 @@ router.get('/:id', (req, res) => {
   })
 })
 
-// GET /articles/:id - display form for editing specific post
+// GET /articles/edit/:id - display form for editing specific post
 router.get('/edit/:id', (req, res) => {
   db.author.findAll()
   .then((authors) => {
+    if (!authors) throw Error()
     res.render('articles/edit', {authors: authors})
+  })
+  .catch((error) => {
+    console.log(error)
+    res.status(400).render('main/404')
+  })
+})
+
+// PUT /articles/:id
+router.put('/:id', (req, res) => {
+  db.article.update({
+    title: req.body.title,
+    content: req.body.content,
+    authorId: req.body.authorId
+  })
+  .then((post) => {
+    res.redirect(`/articles/${req.body.articleId}`)
   })
   .catch((error) => {
     res.status(400).render('main/404')

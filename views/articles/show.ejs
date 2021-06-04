@@ -1,19 +1,12 @@
 <h1><%= article.title %> <small>by <%= article.author.getFullName() %></small></h1>
-
-<p>
-    <strong><%= moment(article.createdAt).calendar() %></strong>
-</p>
-
+<p><strong><%= moment(article.createdAt).calendar() %></strong></p>
 <p><%= article.content %></p>
 
 <form action="/articles/edit/<%= article.id %>">
     <input type="submit" class="btn btn-primary" value="Edit">
 </form>
-
 <hr>
-
 <h4>Comments</h4>
-
 <% if(article && article.comments) { %>
     <% article.comments.forEach((comm) => { %>
         <hr>
@@ -24,9 +17,7 @@
     <% } else { %>
         <h3>No comments yet!</h3>
 <% } %>
-
 <hr>
-
 <form action="/comments" method="POST">
     <div class="form-group">
         <label for="name">Name</label>
@@ -39,7 +30,5 @@
     <input type="hidden" name="articleId" value="<%= article.id %>">
     <input type="submit" class="btn btn-primary" value="Reply">
 </form>
-
-<hr />
-
+<hr>
 <a href="/">&larr; Back Home</a>
