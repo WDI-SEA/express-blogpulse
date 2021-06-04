@@ -9,22 +9,25 @@
 <hr />
 
 <form method="POST" action="./<%= article.id %>/comments">
-  <label for="name">Name:</label>
-  <input type="text" class="form-control" name="name" id="formCommentName" required />
-  <label for="comment">Comment:</label>
-  <input type="text" class="form-control" name="comment" id="formCommentBody" required />
+  <div class="form-group">
+    <label for="name">Name:</label>
+    <input type="text" class="form-control" name="name" id="formCommentName" required />
+  </div>
+  <div class="form-group">
+    <label for="comment">Comment:</label>
+    <textarea class="form-control" name="comment" id="formCommentBody"rows="3" required></textarea>
+  </div>
   <input type="submit" class="btn btn-primary">
 </form>
 
 <hr />
 
 <h3>Comments:</h3>
-<ul>
 <% article.comments.forEach(comment => { %>
-  <li>Name: <%= comment.name %></li>
-  <li>Comment: <%= comment.content %></li>
-  <hr />
+  <div class="commContainer">
+    <p><%= comment.content %></p>
+    <p><span class="commBy">- <%= comment.name %></span></p>
+  </div>
 <% }) %>
-</ul>
 
 <a href="/">&larr; Back Home</a>
