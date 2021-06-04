@@ -8,14 +8,14 @@
 
 <hr />
 
-<ul>
-  <% article.comments.forEach(comment => { %>
-    <li><%= comment.firstName%></li>
-    <li><%= comment.content %></li>
-  <% }) %>
-</ul>
 
-<form action="/:id/comments" method="POST">
+  <% article.comments.forEach(comment => { %>
+    <p><%= comment.content %></p>
+    <p><%= comment.firstName%></p>
+    <hr>
+  <% }) %>
+
+<form action="/articles/<%= article.id %>/comments"  method="POST">
   <div class="form-group">
     <label for="name">Name</label>
     <input type="text" class="form-control" id="name" name="name" required>

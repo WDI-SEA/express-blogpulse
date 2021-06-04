@@ -63,22 +63,22 @@ router.get('/:id', (req, res) => {
   })
 })
 
-// GET /articles/:id - display a specific post and its author
-// router.post('/:id/comments', (req, res) => {
-//   // db.article.findOne({
-//   //   where: { id: req.params.id },
-//   //   include: [db.author, db.comment]
-//   // })
-//   .then((article) => {
-//     if (!article) throw Error()
-//     console.log(article.author, '✅')
-//     res.render('articles/show', { article: article })
-//   })
-//   .catch((error) => {
-//     console.log(error, '👩‍🎤')
-//     res.status(400).render('main/404')
-//   })
-// })
-
+//GET /articles/:id - display a specific post and its author
+router.post('/:id/comments', (req, res) => {
+  db.comment.create({
+    firstName: req.body.name,
+    content: req.body.comment,
+    articleId: req.params.id
+  })
+  .then((comment) => {
+    console.log(`${comment} ✅`)
+    res.redirect(`/articles/${req.params.id}`)
+  })
+  .catch((error) => {
+    console.log(error, '👩‍🎤')
+    res.status(400).render('main/404')
+  })
+})
+ 
 
 module.exports = router
