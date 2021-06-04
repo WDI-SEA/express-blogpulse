@@ -58,4 +58,23 @@ router.post('/:id/comments', (req, res) => {
   })
 })
 
+// PUT /articles/:id
+router.put('/:id', (req, res) => {
+  // update article's title and content, but not author
+  db.article.update(
+    { title: req.body.title,
+      content: req.body.content
+    },
+    { where: { id: req.params.id } }
+    )
+  .then((post) => {
+    console.log(post)
+    // refresh article's page
+    res.redirect(`/articles/${req.params.id}`)
+  })
+  .catch((error) => {
+    res.status(400).render('main/404')
+  })
+})
+
 module.exports = router
