@@ -2,3 +2,18 @@
   width: 100%;
   height: auto;
 }
+
+h3 {
+  text-decoration: underline;
+}
+
+#commentSection {
+  background: lightgray;
+  padding: 10px;
+}
+
+#commentName {
+  text-indent: 25px;
+  font-weight: bolder;
+  
+}

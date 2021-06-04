@@ -6,23 +6,26 @@
 
 <p><%= article.content %></p>
 
-
-  <% article.comments.forEach((userComment) => { %>
-      <h2> <%= userComment.dataValues.content %> </h2>
- <% }) %>
-
- <!-- <form method='GET' action='/:id'>
-  <label>New Comment</label>
-  <input id='newComment' type='text' name='Search' />
-
-  <input type='submit' />
-</form> -->
+ 
 <hr />
+
+<h3>Comments</h3>
+
+<div id=commentSection>
+  <% article.comments.forEach((userComment) => { %>
+      <p class=commentClass> <%= userComment.dataValues.content %> </p>
+      <p class=commentClass id=commentName> - <%= userComment.dataValues.name %> </p>
+ <% }) %>
+</div>
+ 
+<hr />
+
+<h4>Comment on the post</h4>
 
 <form action="/articles/<%=article.id%>/comments" method="POST">
   <div class="form-group">
     <label for="name">Your Name</label>
-    <input type="text" class="form-control" id="name" required>
+    <input type="text" class="form-control" id="name" name='name' required>
   </div>
 
 
