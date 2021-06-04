@@ -8,11 +8,11 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      title: {
+      commentName: {
         type: Sequelize.STRING
       },
       content: {
-        type: Sequelize.TEXT
+        type: Sequelize.STRING
       },
       articleId: {
         type: Sequelize.INTEGER

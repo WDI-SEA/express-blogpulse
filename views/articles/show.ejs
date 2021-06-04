@@ -7,5 +7,21 @@
 <p><%= article.content %></p>
 
 <hr />
-
+<ul>
+  <% article.comments.forEach(comment => { %>
+    <li><%= comment.content %></li>
+    <li>-<%= comment.commentName %></li>
+  <% }) %>
+</ul>
+<form method="GET" action="/articles">
+  
+  Name: <input type="text" name="usrname">
+  <input type="submit">
+</form>
+<br>
+<textarea rows="4" cols="50" name="comment" form="usrform">
+Enter text here...</textarea>
+  
+</form>
+<br>
 <a href="/">&larr; Back Home</a>
