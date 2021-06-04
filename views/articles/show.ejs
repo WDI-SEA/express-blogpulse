@@ -11,12 +11,17 @@
 <p><strong><h5>Comments</h5></strong></p>
 
 <div class="showComments">
-  <ul>
+  
     <% article.comments.forEach ( comment => { %>
-      <li class="eachComment">"<%= comment.content %>" <small>- <%= comment.name %></small></li>
+      
+        <div class="eachComment bg-info">
+        <div class="text-muted"><%= comment.name %></div>
+        <%= comment.content %>
+        - <small><%= moment(comment.createdAt).calendar() %></small>
+      </div>
       
       <% }) %>
-    </ul>
+
     
   </div>
   
@@ -24,7 +29,7 @@
     <p><strong><h5>Add a comment here</h5></strong></p>
   <form method="POST" action="/articles/<%= article.id %>/comments">
     <textarea class="commentInput" placeholder="Write comment" name="comContent"></textarea>
-    <br><input type="text" class="nameInput" placeholder="Your name" name="comName">
+    <br><input type="text" class="nameInput mb-5" placeholder="Your name" name="comName">
     <input type="submit">
   </form>
 </div>
