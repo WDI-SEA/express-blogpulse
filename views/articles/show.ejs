@@ -9,5 +9,16 @@
 <p><%= article.content %></p>
 
 <hr />
-
+<h4>Comments:</h4>
+<% article.comments.forEach((comment)=>{ %>
+<p><%=comment.userName%> says: <%=comment.comment%></p>
+<% })%>
+<hr />
+<form action="/articles/<%=article.id%>/comments" method="POST">
+  <input id="" type="text" placeholder="Your Name" name="userName" /><br />
+  <input id="" type="text" placeholder="Your Comment" name="comment" />
+  <br />
+  <input type="submit" />
+</form>
+<br />
 <a href="/">&larr; Back Home</a>

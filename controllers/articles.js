@@ -37,11 +37,12 @@ router.get("/:id", (req, res) => {
   db.article
     .findOne({
       where: { id: req.params.id },
-      include: [db.author],
+      include: [db.author, db.comment],
     })
     .then((article) => {
       if (!article) throw Error();
       console.log(article.author);
+      console.log(article.comments);
       res.render("articles/show", { article: article });
     })
     .catch((error) => {
@@ -50,19 +51,16 @@ router.get("/:id", (req, res) => {
     });
 });
 
-// GET - display all comments
-router.get("/:id", (req, res) => {
-  console.log(req.params.id);
-  console.log(req.params.id, "🔥");
+router.post("/:id/comments", (req, res) => {
   db.comment
-    .findAll({
-      where: { articleId: req.params.id },
+    .create({
+      userName: req.body.userName,
+      comment: req.body.comment,
+      articleId: req.params.id,
     })
-    .then((comments) => {
-      // if no comment, throw the error - what is 'Error()'?
-      if (!comment) throw Error();
-      console.log(comment.article);
-      res.render("articles/show", { article: article });
+    .then((comment) => {
+      console.log(comment);
+      res.redirect(`/articles/${req.params.id}`);
     })
     .catch((error) => {
       console.log(error);
