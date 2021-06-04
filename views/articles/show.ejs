@@ -6,6 +6,34 @@
 
 <p><%= article.content %></p>
 
+<ul>
+ <% article.comments.forEach(comment => { %>
+    <li>
+      <%= comment.content %> <br> ~ <%= comment.name %>
+      </li>
+ <% }) %>
+</ul>
+
 <hr />
 
+<h4>Submit your own comment here:</h4>
+
+<form method="POST" action="/articles/<%= article.id %>/comments">
+<div>
+  <input type="text" name="name" placeholder="Name">
+</div>  
+
+<br>
+
+<div>
+  <textarea type="text" name="content" placeholder="Write your comment here" rows="5" cols="40" required></textarea>
+</div>
+
+
+<br>
+<input type="submit">
+
+</form>
+
+<br>
 <a href="/">&larr; Back Home</a>
