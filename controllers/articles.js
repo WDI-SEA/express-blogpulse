@@ -64,7 +64,7 @@ router.post('/:id/comments', (req, res) => {
 
   })
   .then((comment) => {
-   console.log('I created a comment', comment.name)
+   
     res.redirect(`/articles/${req.params.id}`)
     
     

@@ -3,7 +3,15 @@
   height: auto;
 }
 .comments{
-  background-color: rgb(233, 231, 223);
+  background-color: rgb(223, 225, 228);
   font-size: smaller;
-  margin-right: 50%;
+  margin-right: 25%;
+  overflow-wrap: break-word;
+
+}
+
+#commentbox{
+  height:100px;
+  width: 400px;
+  
 }

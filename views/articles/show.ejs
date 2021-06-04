@@ -9,7 +9,7 @@
 <div class='comments'>
 
   <%article.comments.forEach((comment)  => { %>
-    
+  
     <p><u><%= comment.name %> </u> </p>
     <p><%= comment.content %> </p>
     <hr />
@@ -19,8 +19,9 @@
 <br>
 <form action="/articles/<%=article.id%>/comments" method="POST" >
  
-  <input type="text" required name="com_name" placeholder="Name"><br>
-  <input type="text" required name="content" placeholder="Leave a comment"><br><br>
+  <input type="text" required name="com_name" placeholder="Your Name"><br>
+  <textarea rows="2" cols="25" required name="content" placeholder="Leave a comment"></textarea><br>
+  <!-- <input type="text" required name="content" placeholder="Leave a comment"  id="commentbox"><br><br> -->
   
   <input type="submit">
 </form>
