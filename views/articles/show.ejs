@@ -8,16 +8,22 @@
 
 <p><%= article.content %></p>
 
-<a href="/">&larr; Back Home</a>
-
 <hr />
 
-
-
-
 <ul>
+  
   <% article.comments.forEach(function(comment){ %>
-    <%- include('../comments/show', {comment: comment}); %>
-  <% }); %>
-</ul>
+    
+    <%- include('../comments/show', {comment: comment}) %>
+ 
+    <% }); %>
 
+  </ul>
+
+  <div class="form-div">
+    
+    <%- include('../comments/new', {articleId : article.id}) %>
+  
+  </div>
+
+  <a href="/">&larr; Back Home</a>

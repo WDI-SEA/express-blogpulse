@@ -9,14 +9,7 @@ const db = require('./models')
 //   console.log(comment.get())
 // })
 
-// db.comment.create({
-//     name: 'Siouxsie Sioux',
-//     content: 'Meh!',
-//     articleId: 3
-//   })
-//   .then(comment => {
-//     console.log(comment.get())
-//   })
+
 
 // db.article.findOne({
 //   where: { id: 1 },
