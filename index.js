@@ -9,7 +9,7 @@ rowdy.begin(app)
 
 app.set('view engine', 'ejs')
 
-app.use(require('morgan')('dev'))
+// app.use(require('morgan')('dev'))
 app.use(express.urlencoded({ extended: false }))
 app.use(ejsLayouts)
 app.use(express.static(__dirname + '/public/'))
@@ -35,7 +35,7 @@ app.get('/', (req, res) => {
 // bring in authors and articles controllers
 app.use('/authors', require('./controllers/authors'))
 app.use('/articles', require('./controllers/articles'))
-app.use('/comments', require('./controllers/comments'))
+// app.use('/comments', require('./controllers/comments'))
 
 var server = app.listen(process.env.PORT || 3000, () => {
   rowdy.print()

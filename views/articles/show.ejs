@@ -8,14 +8,20 @@
 
 <hr />
 
-<h2>Comments</h2>
+<h2>Comments:</h2>
 
-<% if (comments) { %>
-  <% comments.forEach(comment => { %>
-  <p style="font-size: 15px; margin-bottom: 0;"><strong><%= comment.dataValues.name %> said:</strong></p>
-  <p><%= comment.dataValues.content %></p>
-  <% }); %>
-  <% } %>
+<% if (article.comments && article.comments.length) { %>
+    <% article.comments.forEach((comm) => { %>
+        <p>
+          <%= comm.content %>
+          <br>
+          <%= comm.name %>
+        </p>
+    <% }) %>
+<% } %>
+
+
+
   
   <form action="/comments" method="POST" style="margin-top: 40px">
     <div class="form-group">
