@@ -61,6 +61,7 @@ router.post("/:id/comments", (req, res) => {
     .then((comment) => {
       console.log(comment);
       res.redirect(`/articles/${req.params.id}`);
+      // res.redirect(`/articles/${db.comment.articleId}`);
     })
     .catch((error) => {
       console.log(error);

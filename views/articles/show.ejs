@@ -9,14 +9,22 @@
 <p><%= article.content %></p>
 
 <hr />
+
 <h4>Comments:</h4>
 <% article.comments.forEach((comment)=>{ %>
-<p><%=comment.userName%> says: <%=comment.comment%></p>
-<% })%>
+  <em><b><%=comment.userName%></b></em> said: <br /><span style="font-size: 16px">"<%=comment.comment%>"</span>
+  <br />
+  <span style="font-size: 10px">Created: <%=comment.createdAt%></span>
+</p>
 <hr />
+<% })%>
+
+<h4>Add a new comment:</h4>
+
 <form action="/articles/<%=article.id%>/comments" method="POST">
   <input id="" type="text" placeholder="Your Name" name="userName" /><br />
-  <input id="" type="text" placeholder="Your Comment" name="comment" />
+  <!-- <input id="" type="text" placeholder="Your Comment" name="comment" /> -->
+  <textarea id="" class="comments" type="text" name="comment" rows="4" cols="50" placeholder="Enter comments here" maxlength="300"></textarea>
   <br />
   <input type="submit" />
 </form>
