@@ -13,14 +13,18 @@
     <li>-<%= comment.commentName %></li>
   <% }) %>
 </ul>
-<form method="GET" action="/articles">
-  
-  Name: <input type="text" name="usrname">
+
+<form method="POST" action="/articles/<%= article.id %>/comments">
+  <label for="name">Name:</label>
+  <input id="name" type="text" name="name" />
+  <br>
+  <br>
+  <textarea rows="4" cols="50" name="comment" placeholder="Enter text here..." ></textarea>
+  <br>
   <input type="submit">
 </form>
+
 <br>
-<textarea rows="4" cols="50" name="comment" form="usrform">
-Enter text here...</textarea>
   
 </form>
 <br>

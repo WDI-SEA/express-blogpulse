@@ -36,13 +36,32 @@ router.get('/:id', (req, res) => {
   })
   .then((article) => {
     if (!article) throw Error()
-    console.log(article.author)
+    // console.log(article.author)
     res.render('articles/show', { article: article })
   })
   .catch((error) => {
     console.log(error)
     res.status(400).render('main/404')
   })
+})
+
+router.post('/:id/comments', (req, res) => {
+  // console.log('*** req.body:    ', req.body)
+
+  db.comment.create({
+    
+    commentName: req.body.name,
+    content: req.body.comment,
+    articleId: req.params.id
+
+  })
+  .then((post) => {
+    res.redirect(`/articles/${req.params.id}`)
+  }) 
+   .catch((error) => {
+    res.status(400).render('main/404')
+  })
+
 })
 
 module.exports = router
