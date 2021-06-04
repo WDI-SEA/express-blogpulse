@@ -7,17 +7,31 @@
 <p><%= article.content %></p>
 
 <hr />
+<h3>Comments</h3>
 <ul>
   <% article.comments.forEach(comment => { %>
-    <li><%= comment.content %></li>
-    <li>-<%= comment.commentName %></li>
+    <div id='comments'>
+
+      <li ><%= comment.content %></li>
+    
+      <li id="commentName">-<%= comment.commentName %></li>
+      
+    </div>
+    <br>
   <% }) %>
 </ul>
-
+<!--if we have comments for article
+loop through all comments associated with current
+display comment content formatted a bit
+add in form and move to top to add in comment  -->
+<h4>Comment on this post</h4>
 <form method="POST" action="/articles/<%= article.id %>/comments">
   <label for="name">Name:</label>
-  <input id="name" type="text" name="name" />
   <br>
+  <input  type="text" name="name" />
+  <br>
+  <br>
+  <label for="name">Content:</label>
   <br>
   <textarea rows="4" cols="50" name="comment" placeholder="Enter text here..." ></textarea>
   <br>
