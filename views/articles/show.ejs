@@ -8,12 +8,12 @@
 
 <hr />
 
-<ul>
   <% article.comments.forEach(comment => { %>
-    <li><%= comment.commentName %></li>
-    <li><%= comment.content %></li>
+    <p><%= comment.content %></p>
+    <p><%= comment.commentName %></p>
+    <hr>
   <% }) %>
-</ul>
+
 
 <form action="/articles/<%= article.id %>/comments" method="POST">
   <div class="form-group">
