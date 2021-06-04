@@ -8,4 +8,26 @@
 
 <hr />
 
+<p><strong><h5>Comments</h5></strong></p>
+
+<div class="showComments">
+  <ul>
+    <% article.comments.forEach ( comment => { %>
+      <li class="eachComment">"<%= comment.content %>" <small>- <%= comment.name %></small></li>
+      
+      <% }) %>
+    </ul>
+    
+  </div>
+  
+  <div class="formBox">
+    <p><strong><h5>Add a comment here</h5></strong></p>
+  <form method="POST" action="/articles/<%= article.id %>/comments">
+    <textarea class="commentInput" placeholder="Write comment" name="comContent"></textarea>
+    <br><input type="text" class="nameInput" placeholder="Your name" name="comName">
+    <input type="submit">
+  </form>
+</div>
+
+
 <a href="/">&larr; Back Home</a>
