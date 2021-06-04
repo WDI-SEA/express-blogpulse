@@ -6,11 +6,11 @@
 
 <p><%= article.content %></p>
 
-<p>
-  <%= article.comments.forEach((userComment) => { %>
-      <h2> <%= userComment.text %> </h2>
+
+  <% article.comments.forEach((userComment) => { %>
+      <h2> <%= userComment.dataValues.content %> </h2>
  <% }) %>
-</p>
+
 
 <hr />
 
