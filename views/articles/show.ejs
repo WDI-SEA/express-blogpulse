@@ -12,8 +12,11 @@
 
 <% if(article && article.comments) { %>
   <% article.comments.forEach(function(a) { %>
-    <h5><%= a.name %></h5>
-    <h5><%= a.content %></h5>
+    <hr>
+    <h4><%= a.name %></h4>
+    <h6><%= moment(a.createdAt).calendar() %></h6>
+    <p><%= a.content %></p>
+    <hr>
   <% }) %>
 <% } else { %>
   <h3>No comments yet!</h3>
