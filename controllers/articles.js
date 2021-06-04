@@ -32,7 +32,7 @@ router.get('/new', (req, res) => {
 router.get('/:id', (req, res) => {
   db.article.findOne({
     where: { id: req.params.id },
-    include: [db.author, db.comment] // "hey article who is your author? what are your comments?"
+    include: [db.author, db.comment] // "hey article who is your author? what are your"
   })
   .then((article) => {
     if (!article) throw Error()
@@ -58,8 +58,9 @@ router.post('/:id/comments', (req,res) => {
     res.redirect(`/articles/${req.params.id}`)
     console.log(comment.get())
   })
-  .catch(err => {
-    res.status(404).render('main/404')
+  .catch((error) => {
+    console.log(error)
+    res.status(400).render('main/404')
   })
 })
 
