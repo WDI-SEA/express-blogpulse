@@ -55,6 +55,9 @@ router.post("/:id/comments", (req, res) => {
     console.log(comment.get())
     res.redirect(`/articles/${req.params.id}`)
   })
+  .catch(err => {
+    res.status(404).render("main/404")
+  })
 })
 
 module.exports = router
