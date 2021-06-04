@@ -40,3 +40,9 @@ var server = app.listen(process.env.PORT || 3000, () => {
 })
 
 module.exports = server
+
+// GET /articles/:id route to view comments
+  // use EJS to render comments
+  // on same page GET /articles/:id to submit new comments
+    // create new route to receive form data
+    // redirect back to article commented on
