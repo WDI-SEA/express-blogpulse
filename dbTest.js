@@ -23,9 +23,9 @@ const createComment = async () => {
   }
 }
 
-createComment()
+// createComment()
 
-// const db = require('./models')
+// TESTING ARTICLES
 
 db.article.findOne({
   where: { id: 1 },
@@ -39,7 +39,7 @@ const readArticles = async () => {
   try {
     const article = await db.article.findOne({
       where: { id: 2},
-      include: [db.author]
+      include: [db.author, db.comment]
     })
     console.log(article)
   } catch (err) {
@@ -47,4 +47,4 @@ const readArticles = async () => {
   }
 }
 
-readArticles()
+// readArticles()

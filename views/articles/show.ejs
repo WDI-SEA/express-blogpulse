@@ -8,22 +8,38 @@
 
 <hr />
 
+<% if (article.comments){ %> 
+<!-- DISPLAYS COMMENTS -->
 <h2> Comments </h2>
-<% comment.forEach( comm =>{ %>
+<% article.comments.forEach( comment =>{ %>
   <li>
-   <%= comm.commentator %> -->
-    <%= comm.comment_content %>
+   <%= comment.name %> 
+    <%= comment.content %>
   </li>
 
 <% }) %>
-<!-- Form to submit comments -->
-<form method="POST" action="/article/<%= article.id %>" >
-  <label for = "commentatorName" > Name:</label>
-  <input id ="commentatorName" type="text" name="name" id="commentatorName">
+<% } %>
 
-  <label for ="commentText"> Comment: </label>
-  <input id="commentText" type="text" name="comment" id="commentText">
+<!-- Form to submit comments -->
+<form method="POST" action="/articles/<%= article.id %>/comments">
+  <label for="name">Your Name:</label>
+<input type="text" name="name">
+<label for="content">Write your comment here:</label>
+<input type="text" name="content">
+<input type="submit">
+</form>  
+
+
+<!-- <form method="POST" action="/article/<%=//article.id%>/comments"  >
+  <label for = "name" > Name:</label>
+  <input type="text" name="name" >
+
+  <label for ="content"> Comment: </label>
+  <input type="text" name="content" >
+  
+
+
   <button type="submit">Post Your Comment</button>
-  </form>
+  </form>   -->
   
 <a href="/">&larr; Back Home</a>

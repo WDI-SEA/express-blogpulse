@@ -1,3 +1,0 @@
-sequelize model:create --name comment --attributes firstName:string,lastName:string,age:integer,email:string
-
-sequelize model:create --name comment --attributes commentator:string,comment_content:text,articleId:integer
