@@ -1,9 +1,7 @@
 <h1><%= article.title %> <small>by <%= article.author.getFullName() %></small></h1>
-
 <p>
   	<strong><%= moment(article.createdAt).calendar() %></strong>
 </p>
-
 <p><%= article.content %></p>
 
 <hr />
@@ -13,6 +11,8 @@
 	<p><%= comment.dataValues.content %></p>
 	<p>- <%= comment.dataValues.name %></p>
 <% }) %>
+
+<hr />
 
 <h4>Comment on this post</h4>
 <form method="POST" action="/comments">
@@ -27,5 +27,7 @@
 	<input hidden value="<%= article.id %>" name="articleId">
 	<input type="submit" class="btn btn-primary">
 </form>
+
+<hr />
 
 <a href="/">&larr; Back Home</a>

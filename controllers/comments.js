@@ -3,9 +3,9 @@ const db = require("../models");
 const router = express.Router();
 
 // POST /articles/:id/comments - create a new comment
-router.post("/", (req, res) =>
+router.post("/", async (req, res) =>
 {
-    db.comment.create(req.body);
+    await db.comment.create(req.body);
     res.redirect(`/articles/${req.body.articleId}`);
 })
 
