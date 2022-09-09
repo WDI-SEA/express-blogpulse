@@ -8,4 +8,22 @@
 
 <hr />
 
+<h4>Comment on this Post:</h4>
+    <div class="form-group">
+      <form action="/comments/<%=article.id%>" method="POST">
+
+        <label for="name">Your name:</label>
+        <input type="text" class="form-control" id="name" name="name" required>
+
+        <label for="content">Comment:</label>
+        <input type="text" class="form-control" id="content" name="content" required>
+        <input hidden value="<%=article.id%>" name="articleID">
+
+        <input type="submit" class="btn btn-primary" />
+    </div>
+
+
+
+
 <a href="/">&larr; Back Home</a>
+
