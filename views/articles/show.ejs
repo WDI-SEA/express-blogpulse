@@ -15,7 +15,7 @@
 <% }) %>
 
 <h4>Comment on this post</h4>
-<form method="POST" action="/articles/:id/comments">
+<form method="POST" action="/articles/<%= article.id %>/comments">
 	<div class="form-group">
 		<label for="name-input">Name</label>
 		<input id="name-input" class="form-control" type="text" name="name" required>
