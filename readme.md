@@ -44,6 +44,11 @@ After setup, **STOP**. You're using an existing application, so make sure to rea
     * Attributes: `title`, `content`, `authorId`
     * Associations: Belongs to one author
 
+sequelize model:create --name comment --attributes name:string,content:text,articleId:integer
+sequelize model:create --name user --attributes firstName:string,lastName:string,age:integer,email:string
+
+
+
 ## User Stories
 
 * As a user, I want to comment on an article in order to express my opinions.

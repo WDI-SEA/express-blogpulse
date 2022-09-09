@@ -34,10 +34,17 @@ router.get('/:id', (req, res) => {
     where: { id: req.params.id },
     include: [db.author]
   })
+
+  
   .then((article) => {
     if (!article) throw Error()
+    db.comment.findAll({
+        where: { articleId: req.params.id }
+    })
+    .then((comment) => {
+      res.render('articles/show', { article: article, comment:comment })
+    })
     console.log(article.author)
-    res.render('articles/show', { article: article })
   })
   .catch((error) => {
     console.log(error)
@@ -45,4 +52,4 @@ router.get('/:id', (req, res) => {
   })
 })
 
-module.exports = router
+module.exports = router;

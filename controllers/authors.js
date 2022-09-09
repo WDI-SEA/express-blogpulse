@@ -1,3 +1,4 @@
+const { application } = require('express')
 let express = require('express')
 let db = require('../models')
 let router = express.Router()
@@ -44,6 +45,17 @@ router.get('/:id', (req, res) => {
     console.log(error)
     res.status(400).render('main/404')
   })
+})
+
+//POST /comment
+router.post ('/:id', async (req, res) => {
+  try {
+    await db.comment.create(req.body)
+    res.redirect('/:id')
+  } catch(err) {
+    console.log(err)
+    res.send('server error')
+  }
 })
 
 module.exports = router
