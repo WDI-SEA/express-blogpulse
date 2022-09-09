@@ -2,3 +2,16 @@
   width: 100%;
   height: auto;
 }
+
+.comment-container
+{
+  background-color: rgba(245, 245, 245, 1);
+  border: 2px solid rgba(228, 228, 228, 1);
+  border-radius: 5px;
+  padding: 15px;
+  margin: 10px auto 20px;
+}
+#comment-name
+{
+  font-weight: bold;
+}

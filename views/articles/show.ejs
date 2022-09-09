@@ -8,8 +8,10 @@
 
 <h2>Comments</h2>
 <% article.comments.forEach(comment => { %>
-	<p><%= comment.dataValues.content %></p>
-	<p>- <%= comment.dataValues.name %></p>
+	<div class="comment-container">
+		<p><%= comment.dataValues.content %></p>
+		<p id="comment-name">- <%= comment.dataValues.name %></p>
+	</div>
 <% }) %>
 
 <hr />
