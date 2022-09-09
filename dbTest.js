@@ -23,7 +23,7 @@ const createComment = async () => {
   }
 }
 
-// createComment()
+createComment()
 
 // const db = require('./models')
 
