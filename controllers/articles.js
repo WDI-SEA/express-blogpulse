@@ -61,17 +61,5 @@ router.post('/:id/comments', async (req, res) => {
 
 })
 
-  // try {
-  //   await db.comment.create({
-  //     name: req.body.postername,
-  //     content: req.body.comment,
-  //     articleId: req.params.id,
-  //   }
-  //   res.redirect(`/articles/${req.params.id}`)
-  // } catch(err) {
-  //   console.log(err)
-  //   res.status(404).render('main/404')
-  // }
-  
 
 module.exports = router
