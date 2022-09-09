@@ -32,7 +32,8 @@ router.get('/new', (req, res) => {
 router.get('/:id', (req, res) => {
   db.article.findOne({
     where: { id: req.params.id },
-    include: [db.author]
+    include: [db.author],
+    // include: [db.comment]
   })
   .then((article) => {
     if (!article) throw Error()
@@ -41,6 +42,21 @@ router.get('/:id', (req, res) => {
   })
   .catch((error) => {
     console.log(error)
+    res.status(400).render('main/404')
+  })
+})
+
+// POST /articles/:id - create new comment
+router.post('/:id', (req, res) => {
+  db.comment.create({
+    userName: req.body.userName,
+    content: req.body.content,
+    articleId: req.params.id
+  })
+  .then((post) => {
+    res.redirect(`/articles/${req.params.id}`)
+  })
+  .catch((error) => {
     res.status(400).render('main/404')
   })
 })
