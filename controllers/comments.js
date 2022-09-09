@@ -2,15 +2,16 @@ let express = require('express')
 let db = require('../models')
 let router = express.Router()
 
-router.post('/', (req, res) => {
+router.post('/', async (req, res) => {
     try {
-        db.comment.create({
+        await db.comment.create({
             name: req.body.name,
-            content: req.body.content
+            content: req.body.content,
+            articleId: req.body.id
         })
-        
+        res.redirect(`/articles/1`)
     } catch(err) {
-        console.log(error)
+        console.log(err)
         res.status(400).render('main/404')
     }  
 })
