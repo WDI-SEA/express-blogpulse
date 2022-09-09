@@ -1,0 +1,3 @@
+sequelize model:create --name user --attributes firstName:string,lastName:string,age:integer,email:string
+
+sequelize model:create --name comment --attributes name:string,content:text,articleId:integer
