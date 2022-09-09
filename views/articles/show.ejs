@@ -1,11 +1,45 @@
-<h1><%= article.title %> <small>by <%= article.author.getFullName() %></small></h1>
+<h1>
+  <%= article.title %> <small>by <%= article.author.getFullName() %></small>
+</h1>
 
 <p>
-  <strong><%= moment(article.createdAt).calendar() %></strong>
+  <strong>
+    <%= moment(article.createdAt).calendar() %>
+  </strong>
 </p>
 
-<p><%= article.content %></p>
+<p>
+  <%= article.content %>
+</p>
 
 <hr />
 
-<a href="/">&larr; Back Home</a>
+<h4>Comments:</h4>
+<% comments.forEach(comment=> { %>
+  <p><strong>
+      <%= comment.name %> (<%= moment(comment.createdAt).calendar()%>)
+    </strong></p>
+  <p>
+    <%= comment.content %>
+  </p>
+
+  <%}) %>
+
+    <h4>Comment on this Post:</h4>
+    <div>
+      <form action="/comments/<%=article.id%>" method="POST">
+
+        
+        <label for="name">Your name:</label>
+        <input type="text" class="form-control" id="name" name="name" required>
+        
+        <label for="content">Comment:</label>
+        <input type="text" class="form-control id=" content" name="content" required>
+        <input hidden value="<%=article.id%>" name="articleID">
+        <div>
+          <div>
+            <button type="submit">Post</button>
+          </div>
+
+
+          <a href="/">&larr; Back Home</a>
