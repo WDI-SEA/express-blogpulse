@@ -1,5 +1,7 @@
 # Express BlogPulse
 
+sequelize model:create --name comment --attributes name:string,content:text,articleId:integer
+
 To practice 1:M associations, we'll be adding comment functionality to an existing blog application.
 
 #### Backstory: BlogPulse

@@ -3,14 +3,17 @@ let db = require('../models')
 let router = express.Router()
 
 // GET /authors - display all authors
-router.get('/', (req, res) => {
-  db.author.findAll()
-  .then((authors) => {
-    res.render('authors/index', { authors: authors })
-  })
-  .catch((error) => {
+router.get('/', async (req, res) => {
+  // db.author.findAll()
+  // .then((authors) => {
+  //   res.render('authors/index', { authors: authors })
+  // })
+  try {
+    const allAuthors = await db.author.findAll()
+    res.render('authors/index', { authors: allAuthors })
+  } catch(err) {
     res.status(400).render('main/404')
-  })
+  }
 })
 
 // POST /authors - create a new author
