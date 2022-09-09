@@ -52,4 +52,21 @@ router.get('/:id', (req, res) => {
   })
 })
 
+// POST /comments -> creates a new comment
+router.post ("/:id", async (req, res) =>{
+  try{
+    const newComment = await db.comment.create
+    ({
+      name: req.body.name,
+      content: req.body.content,
+      articleId: req.body.articleId,
+    })
+    console.log(newComment)
+    res.redirect("/")
+  }catch(error){
+    console.log(error)
+    res.send ("server error")
+  }
+})
+
 module.exports = router

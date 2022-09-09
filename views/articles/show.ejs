@@ -11,10 +11,19 @@
 <h2> Comments </h2>
 <% comment.forEach( comm =>{ %>
   <li>
-    <%= comm.commentator %>
+   <%= comm.commentator %> -->
     <%= comm.comment_content %>
   </li>
 
 <% }) %>
+<!-- Form to submit comments -->
+<form method="POST" action="/article/<%= article.id %>" >
+  <label for = "commentatorName" > Name:</label>
+  <input id ="commentatorName" type="text" name="name" id="commentatorName">
 
+  <label for ="commentText"> Comment: </label>
+  <input id="commentText" type="text" name="comment" id="commentText">
+  <button type="submit">Post Your Comment</button>
+  </form>
+  
 <a href="/">&larr; Back Home</a>
