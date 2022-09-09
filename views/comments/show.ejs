@@ -1,0 +1,26 @@
+<h1>Comments</h1>
+<%comments.forEach(element => {%>
+   <ul>
+    <li>
+        <div>
+            <p>  Article: <%= element.articleId%></p>
+            <p>By: <%=element.name%></p>
+            <p><%= element.content%></p>
+            
+        </div>
+     </ul>
+    </li>
+<%})%>
+
+
+<a href="/">&larr; Back Home</a>
+<p></p>
+<h2>Add comment</h2>
+<form method="POST" action="/comments">
+    <input type="text" name="articleId" placeholder="article Id">
+    <input type="text" name="userName" placeholder="Enter your name">
+    <input id="articleComment" type="text" name="comment" placeholder="Comment">
+    
+    <p></p>
+    <button>Submit</button>
+</form>
