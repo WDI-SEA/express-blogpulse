@@ -49,17 +49,17 @@ const db = require('./models')
 
 // readArticles()
 
-const numRowsDeleted = async () => {
-  try {
-    const comment = await db.comment.destroy({
-      where: {
-        name: 'Stephen'
-      }
-    })
-    console.log(comment)
-  } catch (err) {
-    console.log(err)
-  }
-}
+// const numRowsDeleted = async () => {
+//   try {
+//     const comment = await db.comment.destroy({
+//       where: {
+//         id: [2,3]
+//       }
+//     })
+//     console.log(comment)
+//   } catch (err) {
+//     console.log(err)
+//   }
+// }
 
-numRowsDeleted()
+// numRowsDeleted()
