@@ -16,6 +16,22 @@ router.post('/', (req, res) => {
     res.status(400).render('main/404')
   })
 })
+// POST /comments - create a new comment
+router.post('/:id', async (req,res) =>{
+  try{
+    const newComment = await db.comment.create({
+      name: req.body.name,
+      content: req.body.content,
+      articleId: req.params.id
+    })
+    console.log(newComment)
+    res.redirect(`articles/${req.params.id}`)
+  }catch (err){
+    console.log(err)
+    res.send('server error')
+  }
+})
+
 
 // GET /articles/new - display form for creating new articles
 router.get('/new', (req, res) => {
@@ -36,8 +52,14 @@ router.get('/:id', (req, res) => {
   })
   .then((article) => {
     if (!article) throw Error()
-    console.log(article.author)
-    res.render('articles/show', { article: article })
+    // console.log(article.author)
+    db.comment.findAll({
+      where: {articleId: req.params.id}
+    })
+    .then((comment) =>{
+      // console.log('comment',comment)
+      res.render('articles/show', { article: article, comment: comment})
+    })
   })
   .catch((error) => {
     console.log(error)
