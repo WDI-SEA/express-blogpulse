@@ -45,7 +45,7 @@ router.get('/:id', (req, res) => {
   })
 })
 
-router.post('/:id', async (req, res) => {
+router.post('/:id/comments', async (req, res) => {
   try {
     const newComment = {
       name: req.body.name,
