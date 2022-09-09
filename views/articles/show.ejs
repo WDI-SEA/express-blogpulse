@@ -8,4 +8,15 @@
 
 <hr />
 
+<h2>Comments</h2>
+<div>
+  <% article.comments.forEach(comment => { %>
+    <div>
+      <p> <%= comment.content %></p>
+      <p> <strong> - <%= comment.name %> </strong></p>
+    </div>
+  <%}) %>
+</div>
+
+<hr />
 <a href="/">&larr; Back Home</a>
