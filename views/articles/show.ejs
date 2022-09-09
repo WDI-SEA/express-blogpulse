@@ -15,7 +15,7 @@
 <% }) %>
 
 <h4>Comment on this post</h4>
-<form method="POST" action="/articles/<%= article.id %>/comments">
+<form method="POST" action="/comments">
 	<div class="form-group">
 		<label for="name-input">Name</label>
 		<input id="name-input" class="form-control" type="text" name="name" required>
@@ -24,6 +24,7 @@
 		<label for="content-input">Content</label>
 		<input id="content-input" class="form-control" type="text" name="content" required>
 	</div>
+	<input hidden value="<%= article.id %>" name="articleId">
 	<input type="submit" class="btn btn-primary">
 </form>
 
