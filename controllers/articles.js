@@ -17,6 +17,24 @@ router.post('/', (req, res) => {
   })
 })
 
+// POST /comments - create a new comment on the article
+router.post('/:id', async (req, res) => {
+  try {
+    console.log(req.body)
+    const newComment = await db.comment.create({
+      name: req.body.name,
+      content: req.body.content,
+      articleId: req.params.id
+    })
+    console.log("COMMENT!!!!", newComment)
+    res.redirect(`articles/${req.params.id}`)
+  } catch(err) {
+    console.warn(err)
+    res.send(`server error!`)
+  }
+})
+
+
 // GET /articles/new - display form for creating new articles
 router.get('/new', (req, res) => {
   db.author.findAll()
