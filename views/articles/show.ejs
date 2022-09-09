@@ -5,7 +5,28 @@
 </p>
 
 <p><%= article.content %></p>
+<h3>Comments:</h3>
+<!-- for each -->
+<% comments.forEach((comment) => { %>
+  <div>
+    <p><%= comment.dataValues.content %></p>
+  </div>
+  <div>
+    <p>User: <%= comment.dataValues.name %></p>
+  </div>
+<% }) %>
+
+<!-- <p><%=// comment[article.id].dataValues.content %></p> -->
 
 <hr />
+
+<form method="POST" action="/article/:id">
+  <label for="postName">Name</label>
+  <input id="postName" type="text" name="name">
+  </br>
+  <label for="postComment">Comment</label>
+  <input id="postComment" type="text" name="content" />
+  <button type="submit">Post</button>
+</form>
 
 <a href="/">&larr; Back Home</a>
