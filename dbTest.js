@@ -39,7 +39,7 @@
 //   try {
 //     const article = await db.article.findOne({
 //       where: { id: 2},
-//       include: [db.author]
+//       include: [db.author, db.comment]
 //     })
 //     console.log(article)
 //   } catch (err) {
