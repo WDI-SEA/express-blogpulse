@@ -13,7 +13,7 @@ router.post('/', (req, res) => {
     res.redirect('/')
   })
   .catch((error) => {
-    res.status(400).render('main/404')
+    res.send(error)
   })
 })
 
@@ -21,28 +21,42 @@ router.post('/', (req, res) => {
 router.get('/new', (req, res) => {
   db.author.findAll()
   .then((authors) => {
+    console.log(authors)
     res.render('articles/new', { authors: authors })
   })
   .catch((error) => {
-    res.status(400).render('main/404')
+    res.send('error')
   })
 })
 
 // GET /articles/:id - display a specific post and its author
-router.get('/:id', (req, res) => {
-  db.article.findOne({
+router.get('/:id', async (req, res) => {
+  await db.article.findOne({
     where: { id: req.params.id },
     include: [db.author]
   })
   .then((article) => {
-    if (!article) throw Error()
     console.log(article.author)
-    res.render('articles/show', { article: article })
+    res.render('show.ejs', { article: article })
   })
   .catch((error) => {
     console.log(error)
-    res.status(400).render('main/404')
+    res.send('error')
   })
 })
-
+router.post('/:id', async (req, res) => {
+  await db.comment.create({
+    name: req.body.name,
+    content: req.body.content,
+    articleId: req.params.id
+  })
+  .then((comment) => {
+    res.redirect(`/articles/${req.params.id}`)
+    res.send('comment created')
+    res.send(comment)
+  })
+  .catch((error) => {
+    res.send(error)
+  })
+})
 module.exports = router

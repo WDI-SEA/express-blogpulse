@@ -11,7 +11,8 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      models.author.hasMany(models.article)
+      models.author.hasMany(models.article);
+      models.author.hasMany(models.comment);
     }
     // instance mothods
     getFullName(){
