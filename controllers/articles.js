@@ -44,7 +44,32 @@ router.get('/:id', (req, res) => {
     res.status(400).render('main/404')
   })
 })
+  
+  // GET articles/:id/edit to display a form to edit an article
+router.get('/:id/edit', async (req, res) => {
+    try {
+      const article = await db.article.findByPk(req.params.id)
+      res.render('articles/edit.ejs', { article })
+    } catch(error) {
+      console.log(error)
+      res.status(400).render('main/404')
+    }
+})
 
+// PUT articles/:id to UPDATE article
+router.put('/:id', async (req, res) => {
+  try {
+    await db.article.update(req.body, {
+      where: {id: req.params.id}})
+
+    res.redirect(`/articles/${req.params.id}`)
+  } catch(error) {
+    console.log(error)
+    res.status(400).render('main/404')
+  }
+})
+
+// POST articles/:id/comments to create new comments
 router.post('/:id/comments', async (req, res) => {
   try {
     const newComment = {

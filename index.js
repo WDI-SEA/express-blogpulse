@@ -3,6 +3,7 @@ const ejsLayouts = require('express-ejs-layouts')
 const db = require('./models')
 const moment = require('moment')
 const rowdy = require('rowdy-logger')
+const methodOverride = require('method-override')
 
 const app = express()
 const port = process.env.PORT || 3000
@@ -13,6 +14,7 @@ app.set('view engine', 'ejs')
 app.use(express.urlencoded({ extended: false }))
 app.use(ejsLayouts)
 app.use(express.static(__dirname + '/public/'))
+app.use(methodOverride('_method'))
 
 // middleware that allows us to access the 'moment' library in every EJS view
 app.use((req, res, next) => {
