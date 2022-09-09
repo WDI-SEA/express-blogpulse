@@ -8,6 +8,7 @@
 
 <hr />
 
+<!-- Form box for comment-->
 <h4>New Comment:</h4>
 <form method="POST" action="/articles/<% article.id %>/comments">
   <div class="form-container">
@@ -23,11 +24,22 @@
   <button type="submit" class="btn">Comment</button>
 </form>
 
-<h3>Comments</h3>
 
-<% article.comments.forEach(comment => { %> 
-  <p><%= comment.content %> -<%= comment.name %></p>
-<% }) %>
+<!-- Comments to show -- do this first -->
+<h3>Comments</h3>
+<!-- reference for each article.. get article string 
+article.comments.forEach(comment => {
+  comment.content comment.name
+})
+use p tags to show it on the page
+-->
+  <% article.comments.forEach(comment => { %> 
+      
+      <p><%= comment.content %></p>
+      <p><%= comment.name %></p>
+  <% }) %>
+
+
 
 <hr />
 

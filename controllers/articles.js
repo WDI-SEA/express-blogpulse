@@ -45,18 +45,37 @@ router.get('/:id', (req, res) => {
   })
 })
 
-router.post('/:id/comments', async (req, res) => {
+// router.post('/:id/comments', async (req, res) => {
+//   try {
+//     const newComment = {
+//       name: req.body.name,
+//       content: req.body.content,
+//       articleId: req.params.id
+//     }
+//     await db.comment.create(newComment)
+//     res.redirect(`/articles/${req.params.id}`)
+//   }  catch(error) {
+//     console.log(error)
+//     res.status(400).render('main/404')
+//   }
+// })
+
+// POST :3000/articles/:id/comments - route to save comment to db
+router.post("/:id/comments", async (req, res) => {
   try {
-    const newComment = {
+    // get the data from the req.body
+    console.log('req dot body', req.body)
+    // create a new comment from data ^
+    // console that new comment
+    // re render the page so user can see comment
+    const newComment = await db.comment.create({
       name: req.body.name,
       content: req.body.content,
       articleId: req.params.id
-    }
-    await db.comment.create(newComment)
+    })
     res.redirect(`/articles/${req.params.id}`)
-  }  catch(error) {
-    console.log(error)
-    res.status(400).render('main/404')
+  } catch(err) {
+    console.log(err)
   }
 })
 
