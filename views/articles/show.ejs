@@ -9,14 +9,18 @@
 <hr />
 
 <h4>New Comment:</h4>
-<form method="POST" action="/articles/<%= article.id %>/comments">  
-  <label for="comment">Thoughts?</label>
-  <input id="comment" type="text" name="content" />
+<form method="POST" action="/articles/<%= article.id %>/comments">
+  <div class="form-group">
+    <label for="comment">Thoughts?</label>
+    <input id="comment" type="text" class="form-control" name="content" required/>
+  </div>
+    
+  <div class="form-group">
+    <label for="userName">Your Name:</label>
+    <input id="userName" type="text" class="form-control" name="name" required/>
+  </div>
   
-  <label for="userName">Your Name:</label>
-  <input id="userName" type="text" name="name" />
-  
-  <button type="submit">Comment</button>
+  <button type="submit" class="btn btn-primary">Comment</button>
 </form>
 
 <h3>Comments</h3>
