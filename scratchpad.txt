@@ -6,3 +6,10 @@ In order to add comments, create a Sequelize model to store comments. It's recom
 Once this model has been created, add the associations between comments the articles. This may look similar to how Authors and Articles are related in the existing code in this app. Note the associate section in the models for both article and author.
 
 sequelize model:create --name comment --attributes name:string,content:text,articleId:integer
+
+comment model
+name - string
+content - text
+articleId - integer
+
+sequelize model:create --name comment --attributes name:string,content:text,articleId:integer
