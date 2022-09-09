@@ -27,7 +27,7 @@ router.post('/:id', async (req, res) => {
       articleId: req.params.id
     })
     console.log("COMMENT!!!!", newComment)
-    res.redirect(`articles/${req.params.id}`)
+    res.redirect(`${req.params.id}`)
   } catch(err) {
     console.warn(err)
     res.send(`server error!`)

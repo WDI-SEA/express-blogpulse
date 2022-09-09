@@ -5,27 +5,39 @@
 </p>
 
 <p><%= article.content %></p>
-<h3>Comments:</h3>
+
+
+<!-- <h3>Comments:</h3> -->
 <!-- for each -->
-<% comments.forEach((comment) => { %>
+<!-- <% // comments.forEach((comment) => { %>
   <div>
-    <p><%= comment.dataValues.content %></p>
+    <p><%= // comment.dataValues.content %></p>
   </div>
   <div>
-    <p>User: <%= comment.dataValues.name %></p>
+    <p>User: <%= // comment.dataValues.name %></p>
   </div>
-<% }) %>
+<% // }) %> -->
 
 <!-- <p><%=// comment[article.id].dataValues.content %></p> -->
 
 <hr />
 
-<form method="POST" action="/article/<%= article.id %>">
-  <label for="postName">Name</label>
-  <input id="postName" type="text" name="name">
+<h3>Comments:</h3>
+
+<% if (article.comments && article.comments.length){ %>
+  <% article.comments.forEach(comment => { %>
+   <p> <%= comment.content %> </p>
+   <p>User: <%= comment.name %> </p>
+  <% }) %>
+<% } %>
+
+
+<form method="POST" action="/articles/<%= article.id %>">
+  <label for="name">Name</label>
+  <input id="name" type="text" name="name">
   </br>
-  <label for="postComment">Comment</label>
-  <input id="postComment" type="text" name="content" />
+  <label for="content">Comment</label>
+  <input id="content" type="text" name="content" />
   <button type="submit">Post</button>
 </form>
 
