@@ -8,4 +8,21 @@
 
 <hr />
 
+<h2>Comments:</h2>
+
+<% if (article.comments) { %>
+    <% article.comments.forEach(comm => { %>
+        <h4><%= comm.postername %>: <%= comm.comment %> </h4>
+    <% }) %>
+<% } %>
+
+<form action="<%= article.id %>/comments" method="POST">
+  <label for="comment">Add comment:</label>
+  <input type="text" id="comment" name="comment" required>
+  <label for="postername">Name: </label>
+  <input type="text" id="postername" name="postername" required>
+  <input type="text" name="authorId" value="<%= article.id %>" hidden>
+  <button type="submit">Comment</button>
+</form>
+
 <a href="/">&larr; Back Home</a>
