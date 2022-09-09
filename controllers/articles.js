@@ -36,8 +36,8 @@ router.get('/:id', (req, res) => {
   })
   .then((article) => {
     if (!article) throw Error()
-    console.log(article.author)
-    // console.log(article.comment)
+    //console.log(article.author)
+    console.log(article.comments)
     res.render('articles/show', { article: article })
   })
   .catch((error) => {
@@ -45,5 +45,6 @@ router.get('/:id', (req, res) => {
     res.status(400).render('main/404')
   })
 })
+
 
 module.exports = router

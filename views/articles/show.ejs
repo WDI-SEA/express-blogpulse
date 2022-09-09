@@ -7,7 +7,10 @@
 <p><%= article.content %></p>
 
 <h2>Comments</h2>
-<p><%= article.comment %></p>
+<% article.comments.forEach(com => { %>
+  <p><%= com.name %>: <%= com.content %></p>
+<% }) %>
+
 
 <hr />
 
