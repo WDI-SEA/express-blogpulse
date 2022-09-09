@@ -37,6 +37,7 @@ router.get('/:id', (req, res) => {
   })
   .then((article) => {
     if (!article) throw Error()
+    console.log(article.comment)
     res.render('articles/show', {article: article})
   })
   .catch((error) => {
@@ -45,20 +46,32 @@ router.get('/:id', (req, res) => {
   })
 })
 
-router.post('/:id/comments', (req, res) => {
-  console.log(req.body.postername)
-  console.log(req.body.comment)
-  db.comment.create({
-    name: req.body.postername,
-    content: req.body.comment,
-    articleId: req.params.id,
-  })
-  .then((response) => {
-      res.redirect(`/articles/${req.params.id}`)
-  })
-  .catch(err => {
+router.post('/:id/comments', async (req, res) => {
+  try {
+    await db.comment.create({
+      postername: req.body.postername,
+      comment: req.body.comment,
+      articleId: req.params.id
+    })
+    res.redirect(`/articles/${req.params.id}`)
+  } catch(err) {
+    console.warn('error',err)
     res.status(404).render('main/404')
-  })
+  }
+
 })
+
+  // try {
+  //   await db.comment.create({
+  //     name: req.body.postername,
+  //     content: req.body.comment,
+  //     articleId: req.params.id,
+  //   }
+  //   res.redirect(`/articles/${req.params.id}`)
+  // } catch(err) {
+  //   console.log(err)
+  //   res.status(404).render('main/404')
+  // }
+  
 
 module.exports = router

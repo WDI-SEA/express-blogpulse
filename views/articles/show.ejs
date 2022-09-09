@@ -18,10 +18,10 @@
 
 <form action="<%= article.id %>/comments" method="POST">
   <label for="comment">Add comment:</label>
-  <input type="text" id="comment" name="comment" required>
+  <input type="text"  name="comment" required>
   <label for="postername">Name: </label>
-  <input type="text" id="postername" name="postername" required>
-  <input type="text" name="authorId" value="<%= article.id %>" hidden>
+  <input type="text"  name="postername" required>
+  <input type="integer" name="authorId" value="<%= article.id %>" hidden>
   <button type="submit">Comment</button>
 </form>
 
