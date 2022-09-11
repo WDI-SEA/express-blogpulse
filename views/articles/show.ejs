@@ -8,4 +8,19 @@
 
 <hr />
 
+<% if(article.comments.length) { %>
+  <% article.comments.forEach(comment => { %>
+    <p><%= comment.content %><br />
+      - <%= comment.name %></p>
+  <% }) %>
+<% } %>
+
+<form class='comment-section' method="POST" action="/articles/<%= article.id %>/comments">
+  <label for="name">Your Name: </label>
+  <input type="text" name="name" id="name">
+  <label for="content">Comment: </label>
+  <input type="text" name="content" id="content">
+  <input class="btn" type="submit" value="Comment">
+</form>
+
 <a href="/">&larr; Back Home</a>
