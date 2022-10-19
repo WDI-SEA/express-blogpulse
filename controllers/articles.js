@@ -46,4 +46,21 @@ router.get('/:id', (req, res) => {
   })
 })
 
+
+// POST /articles/:id/comments - adding comments
+router.post('/:id/comments', (req, res)=>{
+  try{
+    db.comment.create({
+      name: req.body.name,
+      content: req.body.content,
+      articleId: req.params.id
+    })
+    .then(comment =>{
+    res.redirect(`/articles/${req.params.id}`)
+    })
+  }
+  catch(err){
+    console.log(err)
+  }
+})
 module.exports = router

@@ -7,20 +7,24 @@
 <p><%= article.content %></p>
 
 <hr />
+<h2>Comments</h2>
 
-<% if(article.comments.length) { %>
-  <% article.comments.forEach(comment => { %>
-    <p><%= comment.content %><br />
-      - <%= comment.name %></p>
-  <% }) %>
-<% } %>
+<% article.comments.forEach(function(comment) { %>
+  <div class="well">
+      <p><%= comment.content %></p>
+        <strong><%=comment.name%></strong>
+  </div>
+<% }) %>
 
 <form class='comment-section' method="POST" action="/articles/<%= article.id %>/comments">
   <label for="name">Your Name: </label>
   <input type="text" name="name" id="name">
-  <label for="content">Comment: </label>
-  <input type="text" name="content" id="content">
-  <input class="btn" type="submit" value="Comment">
+  <div class="form-group">
+    <label for="content">Content</label>
+    <textarea type="text" class="form-control" id="content" name="content" required></textarea>
+  </div>
+
+  <input type="submit" class="btn btn-primary">
 </form>
 
 <a href="/">&larr; Back Home</a>
