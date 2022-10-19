@@ -64,15 +64,4 @@ router.post('/:id/comments', (req, res)=>{
 
 })
 
-
-// router.get('/comments', (req, res) => {
-//   db.article.findAll()
-//   .then((articles) => {
-//       res.render('show', { articles: articles })
-//   })
-//   .catch((error) => {
-//       res.status(400).render('main/404')
-//   })
-// })
-
 module.exports = router
