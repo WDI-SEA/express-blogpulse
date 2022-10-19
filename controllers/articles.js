@@ -48,4 +48,31 @@ router.get('/:id', (req, res) => {
   
 })
 
+//To create a new comment
+router.post('/:id/comments', (req, res)=>{
+  db.comment.create({
+    name: req.body.name,
+    content: req.body.content,
+    articleId: req.params.id
+  })
+  .then((comment) => {
+    res.redirect(`/articles/${req.params.id}`)
+  })
+  .catch((error) => {
+    res.status(400).render('main/404')
+  })
+
+})
+
+
+// router.get('/comments', (req, res) => {
+//   db.article.findAll()
+//   .then((articles) => {
+//       res.render('show', { articles: articles })
+//   })
+//   .catch((error) => {
+//       res.status(400).render('main/404')
+//   })
+// })
+
 module.exports = router
