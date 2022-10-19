@@ -1,4 +1,64 @@
+* {
+  margin: 0;
+  overflow-x: hidden;
+  box-sizing: border-box;
+}
+
+:root {
+  --bg-clr-1: #545;
+  --bg-clr-2: #333;
+  --bg-clr-3: #a62;
+  --bdr-clr-1: #555;
+}
+
+body {
+  width: 100vw; min-height: 100vh;
+  background: 
+    linear-gradient(
+      var(--bg-clr-3),
+      var(--bg-clr-1) 75%,
+      var(--bg-clr-1) 83%,
+      var(--bg-clr-2)
+  );
+  color: #fff;
+}
+
+.navbar {
+  background: var(--bg-clr-2);
+  border: 1px solid var(--bdr-clr-1);
+}
+
+.well {
+  background: #ffc;
+}
+
+.well p, .well h2 a{
+  color: var(--bg-clr-1);
+}
+
+.btn {
+  background: #333;
+  border: #444;
+}
+
+.btn:hover {
+  color: #aaa;
+}
+
 .hero {
   width: 100%;
   height: auto;
+}
+
+.comment-section {
+  display: flex;
+  flex-direction: column;
+}
+
+#name {
+  width: 12vw;
+}
+
+#content {
+  height: 12em;
 }
