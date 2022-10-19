@@ -7,5 +7,16 @@
 <p><%= article.content %></p>
 
 <hr />
+  <div style="width:100;height:100;background: yellow;">
+    <%=uComs.content%>
+    By <%=uComs.name%>
+  </div>
+  <form style="margin-top:20%;background-color: antiquewhite; width:50%" action="/comments" method="post">
+    <h4>Add a new comment</h4>
+    <input style="margin-bottom: 10px;" type="text" placeholder="Name" name="commName"/>
+    <input type="hidden" value="<%=article.id%>" name="articleId"/>
+    <textarea name="com" rows=8 cols=50 style="display: block" placeholder="Enter your comment" maxlength="100"></textarea>
+    <input style="width:50%;margin-left:20px;" type="submit" value="submit">
+  </form>
 
 <a href="/">&larr; Back Home</a>
