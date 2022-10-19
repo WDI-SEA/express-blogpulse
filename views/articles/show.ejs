@@ -5,7 +5,38 @@
 </p>
 
 <p><%= article.content %></p>
-
+<hr />
+<!-- show comment for article -->
+<% if (article.comments.length > 0) { %>
+  <h3>Comments</h3>
+  <div class="well">
+    <ul>
+      <%article.comments.forEach(cm=>{ %>
+        <li>
+          <p><%= cm.content %></p>
+          <strong>- <%= cm.name %></strong>
+        </li>
+      <% }) %>
+    </ul>
+  </div>
+ 
+  <%}%>
 <hr />
 
+<form action="/articles/<%=article.id%>/comments" method="POST">
+  <h4>Comment on this post</h4>
+
+  <div class="form-group">
+  <label for="name">Name</label><br>
+  <input type="text" name="name"  class="form-control">
+  </div>
+
+  <div class="form-group">
+    <label for="content">Content</label>
+    <textarea type="text" class="form-control" id="content" name="content"></textarea>
+  </div>
+
+  <input type="submit" class="btn btn-primary">
+</form>
+<hr />
 <a href="/">&larr; Back Home</a>
