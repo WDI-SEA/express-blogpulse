@@ -5,8 +5,10 @@
 </p>
 
 <p><%= article.content %></p>
-
 <hr />
+
+<% if (article.comments.length !== 0) { %>
+
 
   <h1>Comments</h1>
 
@@ -14,9 +16,13 @@
   <div class="well">
     <h4><%= comment.content %></h4>
     <p>-<%= comment.name %></p>
+    <hr />
   </div>
 
   <% }) %>
+
+  <hr />
+<% } %>
 
 
   <!-- Form for new comment -->
