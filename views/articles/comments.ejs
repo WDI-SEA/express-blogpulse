@@ -1,0 +1,18 @@
+<!-- <h1><%= //article.title %> <small>by <%= //article.author.getFullName() %></small></h1> -->
+
+<p>
+  <strong><%= //moment(article.createdAt).calendar() %></strong>
+</p>
+<h1>Comments</h1>
+<div class="jumbotron" style="height:auto;padding:1px 30px !important;">
+  <p><%= comment.content %> </p>
+
+  <h4>- <%= comment.articleId %> </h4>
+
+</div>
+
+
+
+<hr />
+
+<a href="/">&larr; Back Home</a>
