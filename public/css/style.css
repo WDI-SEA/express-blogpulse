@@ -1,4 +1,64 @@
+* {
+  margin: 0;
+  overflow-x: hidden;
+  box-sizing: border-box;
+}
+
+:root {
+  --bg-clr-1: rgb(214, 125, 8);
+  --bg-clr-2: rgb(100, 9, 70);
+  --bg-clr-3: rgb(95, 6, 6);
+  --bdr-clr-1: rgb(4, 58, 33);
+}
+
+body {
+  width: 100vw; min-height: 100vh;
+  background: 
+    linear-gradient(
+      var(--bg-clr-3),
+      var(--bg-clr-1) 75%,
+      var(--bg-clr-1) 83%,
+      var(--bg-clr-2)
+  );
+  color: rgb(236, 188, 133);
+}
+
+.navbar {
+  background: var(--bg-clr-2);
+  border: 1px solid var(--bdr-clr-1);
+}
+
+.well {
+  background: rgb(61, 4, 42);
+}
+
+.well p, .well h2 a{
+  color: var(--bg-clr-1);
+}
+
+.btn {
+  background: rgb(100, 4, 4);
+  border: rgb(12, 0, 0);
+}
+
+.btn:hover {
+  color: rgb(167, 107, 107);
+}
+
 .hero {
   width: 100%;
   height: auto;
+}
+
+.comment-section {
+  display: flex;
+  flex-direction: column;
+}
+
+#name {
+  width: 12vw;
+}
+
+#content {
+  height: 12em;
 }
