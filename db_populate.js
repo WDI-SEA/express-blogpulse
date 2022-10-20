@@ -70,26 +70,26 @@ const db = require('./models')
 
 
 //Assoicate article with author
-async function associateComments(){
-    try {
+// async function associateComments(){
+//     try {
         
-        const [ahmedComment, created] = await db.comment.findOrCreate({
-            where: {
-                content: 'This article is very cool!'
-            }
-        })
+//         const [ahmedComment, created] = await db.comment.findOrCreate({
+//             where: {
+//                 content: 'This article is very cool!'
+//             }
+//         })
 
-        const annArticle = await db.article.findOne({
-            where: {
-                title: 'JoJo article'
-            }
-        })
+//         const annArticle = await db.article.findOne({
+//             where: {
+//                 title: 'JoJo article'
+//             }
+//         })
 
-        await annArticle.addComment(ahmedComment)
+//         await annArticle.addComment(ahmedComment)
 
-    } catch (error) {
-        console.log(error)
-    }
-}
+//     } catch (error) {
+//         console.log(error)
+//     }
+// }
 
-associateComments()
+// associateComments()

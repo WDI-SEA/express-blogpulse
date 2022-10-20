@@ -37,10 +37,6 @@ router.get('/:id', (req, res) => {
   })
   .then((article) => {
     if (!article) throw Error()
-
-
-    console.log(article.id)
-
     res.render('articles/show', { article: article })
   })
   .catch((error) => {
@@ -51,7 +47,7 @@ router.get('/:id', (req, res) => {
 
 
 // POST /articles/:id - add new comment to page
-router.post('/:id', (req, res) => {
+router.post('/:id/comments', (req, res) => {
   
 
   console.log('req.params.id: ' + req.params.id)
@@ -61,12 +57,7 @@ router.post('/:id', (req, res) => {
     name: req.body.name,
     content: req.body.content,
     articleId: req.params.id
-  
-  }).then(newComment => {
-
-
-
-    console.log('New comment added!', newComment)
+  }).then(() => {
     res.redirect(`/articles/${req.params.id}`)
   })
   .catch((error) => {
