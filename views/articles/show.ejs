@@ -6,6 +6,29 @@
 
 <p><%= article.content %></p>
 
+<h2>Don't read the comments section:</h2>
+
+<h3>What say you?</h3>
+
+<form method="POST" action="/articles/<%= article.id %>/comment">
+  <label for="name">Name:</label>
+  <input id="name" type="text" placeholder="Your Name here..." name="name" required />
+
+  <label for="content">Comment:</label>
+  <input id="content" type="text" placeholder="Enter Your Comment..." name="content" required />
+
+  <button type="submit">Add Comment</button>
+</form>
+
+<h3>Other people said:</h3>
+
+<div>
+  <% article.comments.forEach(comment => { %>
+    <p><%= comment.name %> has this to say: </p>
+    <p><%= comment.content %></p>
+  <% }) %>
+</div>
+
 <hr />
 
 <a href="/">&larr; Back Home</a>

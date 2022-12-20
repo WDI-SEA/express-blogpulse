@@ -32,17 +32,37 @@ router.get('/new', (req, res) => {
 router.get('/:id', (req, res) => {
   db.article.findOne({
     where: { id: req.params.id },
-    include: [db.author]
+    include: [db.author, db.comment]
   })
   .then((article) => {
     if (!article) throw Error()
-    console.log(article.author)
+    console.log(article.comments)
     res.render('articles/show', { article: article })
   })
   .catch((error) => {
     console.log(error)
     res.status(400).render('main/404')
   })
+})
+
+// POST /articles/:id/comment -- CREATES a new comment in the database
+router.post('/:id/comment', async (req, res) => {
+  try {
+    // look up the article in the database from the :id in the url
+    const article = await db.article.findByPk(req.params.id)
+    console.log(article)
+    // (optional) make sure the artivle being CRUDED on actually exists
+    if (!article) {
+      throw Error(`article id: ${req.params.id} not found`)
+    }
+    // add a comment to the article with the post payload data in the req.body
+    await article.createComment(req.body)
+    // redirect to this article's details page again
+    res.redirect(`/articles/${req.params.id}`)
+  } catch(err) {
+    console.log(err)
+    res.status(400).render('main/404')
+  }
 })
 
 module.exports = router
