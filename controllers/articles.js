@@ -32,17 +32,32 @@ router.get('/new', (req, res) => {
 router.get('/:id', (req, res) => {
   db.article.findOne({
     where: { id: req.params.id },
-    include: [db.author]
+    include: [db.author, db.comment]
   })
   .then((article) => {
     if (!article) throw Error()
-    console.log(article.author)
+    console.log(article.comments)
     res.render('articles/show', { article: article })
   })
   .catch((error) => {
     console.log(error)
     res.status(400).render('main/404')
   })
+})
+
+// POST /articles/:id/comments -- ingest POST payload and CREATE new comment
+router.post("/:id/comments", async (req, res) => {
+  try {
+    // lookup the article first
+    const article = await db.article.findByPk(req.params.id)
+    // mixin method to create a comment
+    await article.createComment(req.body)
+    // redirect to this same article page
+    res.redirect(`/articles/${req.params.id}`)
+  } catch(err) {
+    console.log(err)
+    res.status(400).render('main/404')
+  }
 })
 
 module.exports = router
